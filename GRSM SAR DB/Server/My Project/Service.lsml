@@ -173,19 +173,19 @@
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
     <AssociationSetMapping
-      AssociationSet="xref_EmployeeCerts_CertificationsSet">
+      AssociationSet="xref_EmployeeCerts_SARCertificationsSetItems">
       <AssociationSetMapping.Attributes>
         <SsdlAssociationSet
           Name="xref_EmployeeCerts_CertificationsSet" />
         <SsdlAssociationSetEnd
-          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_CertificationsSet]/Members[xref_EmployeeCerts]">
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_SARCertificationsSetItems]/Members[xref_EmployeeCerts]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="xref_EmployeeCerts_Certifications" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
         <SsdlAssociationSetEnd
-          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_CertificationsSet]/Members[Certifications]">
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_SARCertificationsSetItems]/Members[SARCertificationsSetItem]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="Id" />

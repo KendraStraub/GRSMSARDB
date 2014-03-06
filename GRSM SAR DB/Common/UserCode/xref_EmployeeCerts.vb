@@ -4,8 +4,8 @@ Namespace LightSwitchApplication
     Public Class xref_EmployeeCerts
 
         Private Sub Summary_Compute(ByRef result As String)
-            If (Certifications IsNot Nothing) Then
-                result = Certifications.Certification
+            If (SARCertificationsSetItem IsNot Nothing) Then
+                result = SARCertificationsSetItem.Certification
             End If
         End Sub
     End Class

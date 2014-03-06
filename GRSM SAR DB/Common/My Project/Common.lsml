@@ -592,11 +592,11 @@
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="Certifications"
-      Name="CertificationsSet" />
+      EntityType="SARCertificationsSetItem"
+      Name="SARCertificationsSet" />
     <QueryOperation
-      Name="CertificationsSet_Single"
-      ReturnType="Certifications">
+      Name="SARCertificationsSet_Single"
+      ReturnType="SARCertificationsSetItem">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -622,7 +622,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="CertificationsSet" />
+            Member="SARCertificationsSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -635,8 +635,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="CertificationsSet_SingleOrDefault"
-      ReturnType="Certifications">
+      Name="SARCertificationsSet_SingleOrDefault"
+      ReturnType="SARCertificationsSetItem">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -662,7 +662,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="CertificationsSet" />
+            Member="SARCertificationsSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -781,14 +781,14 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Association="xref_EmployeeCerts_Certifications"
-      Name="xref_EmployeeCerts_CertificationsSet">
+      Association="xref_EmployeeCerts_SARCertificationsSetItem"
+      Name="xref_EmployeeCerts_SARCertificationsSetItems">
       <AssociationSetEnd
         EntitySet="xref_EmployeeCertsSet"
         Name="xref_EmployeeCerts" />
       <AssociationSetEnd
-        EntitySet="CertificationsSet"
-        Name="Certifications" />
+        EntitySet="SARCertificationsSet"
+        Name="SARCertificationsSetItem" />
     </AssociationSet>
     <AssociationSet
       Association="xref_EmployeeCerts_Employee"
@@ -1391,7 +1391,7 @@
     </EntityType.Properties>
   </EntityType>
   <EntityType
-    Name="Certifications">
+    Name="SARCertificationsSetItem">
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -1440,8 +1440,8 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="xref_EmployeeCerts_Certifications"
-        FromEnd="Certifications"
+        Association="xref_EmployeeCerts_SARCertificationsSetItem"
+        FromEnd="SARCertificationsSetItem"
         Name="xref_EmployeeCertsCollection"
         ToEnd="xref_EmployeeCerts">
         <NavigationProperty.Attributes>
@@ -1513,10 +1513,10 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="xref_EmployeeCerts_Certifications"
+        Association="xref_EmployeeCerts_SARCertificationsSetItem"
         FromEnd="xref_EmployeeCerts"
-        Name="Certifications"
-        ToEnd="Certifications" />
+        Name="SARCertificationsSetItem"
+        ToEnd="SARCertificationsSetItem" />
       <NavigationProperty
         Association="xref_EmployeeCerts_Employee"
         FromEnd="xref_EmployeeCerts"
@@ -1532,15 +1532,15 @@
     </EntityType.Properties>
   </EntityType>
   <Association
-    Name="xref_EmployeeCerts_Certifications">
+    Name="xref_EmployeeCerts_SARCertificationsSetItem">
     <AssociationEnd
       EntityType="xref_EmployeeCerts"
       Multiplicity="Many"
       Name="xref_EmployeeCerts" />
     <AssociationEnd
-      EntityType="Certifications"
+      EntityType="SARCertificationsSetItem"
       Multiplicity="One"
-      Name="Certifications">
+      Name="SARCertificationsSetItem">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
