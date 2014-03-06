@@ -1076,6 +1076,7 @@
         <KeyProperty.Attributes>
           <Required />
           <NotSearchable />
+          <Hidden />
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty
@@ -1303,6 +1304,7 @@
         <KeyProperty.Attributes>
           <Required />
           <NotSearchable />
+          <Hidden />
         </KeyProperty.Attributes>
       </KeyProperty>
       <EntityProperty

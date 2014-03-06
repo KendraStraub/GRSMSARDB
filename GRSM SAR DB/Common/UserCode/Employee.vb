@@ -11,7 +11,11 @@ Namespace LightSwitchApplication
         Private Sub DaysSinceLastFit_Compute(ByRef result As String)
             'Set result to the desired field value
             Dim daysSince = Date.Now.Subtract(Me.DateFit).Days
-            result = daysSince & " Days Since Last Fitness Test"
+            If Me.DateFit Is Nothing Then
+                result = "No Fitness Test Date"
+            Else
+                result = daysSince & " Days Since Last Fitness Test"
+            End If
         End Sub
 
         Private Sub PersonalSMS_Compute(ByRef result As String)
