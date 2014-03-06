@@ -2,7 +2,12 @@
 Namespace LightSwitchApplication
 
     Public Class Employee
-
+        Private Sub EmployeeItem_Created()
+            CreatedTime = DateTime.Now
+            UpdatedTime = DateTime.Now
+            UpdatedBy = Application.User.Name
+            CreatedBy = Application.User.Name
+        End Sub
         Private Sub DaysSinceLastFit_Compute(ByRef result As String)
             'Set result to the desired field value
             Dim daysSince = Date.Now.Subtract(Me.DateFit).Days

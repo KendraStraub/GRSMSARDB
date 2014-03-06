@@ -1006,6 +1006,36 @@
           <Computed />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <EntityProperty
+        Name="CreatedTime"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="CreatedBy"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="UpdatedTime"
+        PropertyType=":DateTime?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="UpdatedBy"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
     </EntityType.Properties>
   </EntityType>
   <Permission
