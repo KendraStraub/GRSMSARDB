@@ -75,7 +75,8 @@
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="UserCode\Employee.vb" />
-    <Compile Include="UserCode\xref_EmployeeCerts.vb" />
+    <Compile Include="UserCode\xref_EmployeeSARCerts.vb" />
+    <Compile Include="UserCode\xref_EmployeeTechCert.vb" />
     <Compile Include="UserCode\xref_EmployeeZones.vb" />
   </ItemGroup>
   <ItemGroup>

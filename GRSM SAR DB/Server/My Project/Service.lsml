@@ -173,19 +173,19 @@
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
     <AssociationSetMapping
-      AssociationSet="xref_EmployeeCerts_SARCertificationsSetItems">
+      AssociationSet="xref_EmployeeSARCerts_SARCertificationsSetItems">
       <AssociationSetMapping.Attributes>
         <SsdlAssociationSet
           Name="xref_EmployeeCerts_CertificationsSet" />
         <SsdlAssociationSetEnd
-          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_SARCertificationsSetItems]/Members[xref_EmployeeCerts]">
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeSARCerts_SARCertificationsSetItems]/Members[xref_EmployeeSARCerts]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="xref_EmployeeCerts_Certifications" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
         <SsdlAssociationSetEnd
-          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_SARCertificationsSetItems]/Members[SARCertificationsSetItem]">
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeSARCerts_SARCertificationsSetItems]/Members[SARCertificationsSetItem]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="Id" />
@@ -194,7 +194,7 @@
       </AssociationSetMapping.Attributes>
     </AssociationSetMapping>
     <EntitySetMapping
-      EntitySet="xref_EmployeeCertsSet">
+      EntitySet="xref_EmployeeSARCertsSet">
       <EntitySetMapping.Attributes>
         <SsdlForeignKeyProperty
           Name="xref_EmployeeCerts_Certifications"
@@ -207,19 +207,74 @@
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
     <AssociationSetMapping
-      AssociationSet="xref_EmployeeCerts_Employees">
+      AssociationSet="xref_EmployeeSARCerts_Employees">
       <AssociationSetMapping.Attributes>
         <SsdlAssociationSet
           Name="xref_EmployeeCerts_Employees" />
         <SsdlAssociationSetEnd
-          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_Employees]/Members[xref_EmployeeCerts]">
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeSARCerts_Employees]/Members[xref_EmployeeSARCerts]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="xref_EmployeeCerts_Employee" />
           </SsdlAssociationSetEnd.Attributes>
         </SsdlAssociationSetEnd>
         <SsdlAssociationSetEnd
-          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_Employees]/Members[Employee]">
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeSARCerts_Employees]/Members[Employee]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="xref_EmployeeTechCert_Employees">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="xref_EmployeeTechCert_Employees" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeTechCert_Employees]/Members[xref_EmployeeTechCert]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="xref_EmployeeTechCert_Employee" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeTechCert_Employees]/Members[Employee]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="xref_EmployeeTechCerts">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="xref_EmployeeTechCert_Employee"
+          Nullable="True"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="xref_EmployeeTechCert_TechRescueCerts"
+          Nullable="True"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="xref_EmployeeTechCert_TechRescueCertsSet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="xref_EmployeeTechCert_TechRescueCertsSet" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeTechCert_TechRescueCertsSet]/Members[xref_EmployeeTechCert]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="xref_EmployeeTechCert_TechRescueCerts" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeTechCert_TechRescueCertsSet]/Members[TechRescueCerts]">
           <SsdlAssociationSetEnd.Attributes>
             <SsdlPropertyRef
               Name="Id" />

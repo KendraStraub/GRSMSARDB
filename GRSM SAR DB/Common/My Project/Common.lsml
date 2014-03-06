@@ -698,11 +698,11 @@
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="xref_EmployeeCerts"
-      Name="xref_EmployeeCertsSet" />
+      EntityType="xref_EmployeeSARCerts"
+      Name="xref_EmployeeSARCertsSet" />
     <QueryOperation
-      Name="xref_EmployeeCertsSet_Single"
-      ReturnType="xref_EmployeeCerts">
+      Name="xref_EmployeeSARCertsSet_Single"
+      ReturnType="xref_EmployeeSARCerts">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -728,7 +728,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="xref_EmployeeCertsSet" />
+            Member="xref_EmployeeSARCertsSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -741,8 +741,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="xref_EmployeeCertsSet_SingleOrDefault"
-      ReturnType="xref_EmployeeCerts">
+      Name="xref_EmployeeSARCertsSet_SingleOrDefault"
+      ReturnType="xref_EmployeeSARCerts">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -768,7 +768,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="xref_EmployeeCertsSet" />
+            Member="xref_EmployeeSARCertsSet" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -781,24 +781,216 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Association="xref_EmployeeCerts_SARCertificationsSetItem"
-      Name="xref_EmployeeCerts_SARCertificationsSetItems">
+      Association="xref_EmployeeSARCerts_SARCertificationsSetItem"
+      Name="xref_EmployeeSARCerts_SARCertificationsSetItems">
       <AssociationSetEnd
-        EntitySet="xref_EmployeeCertsSet"
-        Name="xref_EmployeeCerts" />
+        EntitySet="xref_EmployeeSARCertsSet"
+        Name="xref_EmployeeSARCerts" />
       <AssociationSetEnd
         EntitySet="SARCertificationsSet"
         Name="SARCertificationsSetItem" />
     </AssociationSet>
     <AssociationSet
-      Association="xref_EmployeeCerts_Employee"
-      Name="xref_EmployeeCerts_Employees">
+      Association="xref_EmployeeSARCerts_Employee"
+      Name="xref_EmployeeSARCerts_Employees">
       <AssociationSetEnd
-        EntitySet="xref_EmployeeCertsSet"
-        Name="xref_EmployeeCerts" />
+        EntitySet="xref_EmployeeSARCertsSet"
+        Name="xref_EmployeeSARCerts" />
       <AssociationSetEnd
         EntitySet="Employees"
         Name="Employee" />
+    </AssociationSet>
+    <EntitySet
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="TechRescueCerts"
+      Name="TechRescueCertsSet" />
+    <QueryOperation
+      Name="TechRescueCertsSet_Single"
+      ReturnType="TechRescueCerts">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="TechRescueCertsSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="TechRescueCertsSet_SingleOrDefault"
+      ReturnType="TechRescueCerts">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="TechRescueCertsSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <EntitySet
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="xref_EmployeeTechCert"
+      Name="xref_EmployeeTechCerts" />
+    <QueryOperation
+      Name="xref_EmployeeTechCerts_Single"
+      ReturnType="xref_EmployeeTechCert">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="xref_EmployeeTechCerts" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="xref_EmployeeTechCerts_SingleOrDefault"
+      ReturnType="xref_EmployeeTechCert">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="xref_EmployeeTechCerts" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Association="xref_EmployeeTechCert_Employee"
+      Name="xref_EmployeeTechCert_Employees">
+      <AssociationSetEnd
+        EntitySet="xref_EmployeeTechCerts"
+        Name="xref_EmployeeTechCert" />
+      <AssociationSetEnd
+        EntitySet="Employees"
+        Name="Employee" />
+    </AssociationSet>
+    <AssociationSet
+      Association="xref_EmployeeTechCert_TechRescueCerts"
+      Name="xref_EmployeeTechCert_TechRescueCertsSet">
+      <AssociationSetEnd
+        EntitySet="xref_EmployeeTechCerts"
+        Name="xref_EmployeeTechCert" />
+      <AssociationSetEnd
+        EntitySet="TechRescueCertsSet"
+        Name="TechRescueCerts" />
     </AssociationSet>
   </EntityContainer>
   <EntityType
@@ -988,10 +1180,10 @@
         </NavigationProperty.Attributes>
       </NavigationProperty>
       <NavigationProperty
-        Association="xref_EmployeeCerts_Employee"
+        Association="xref_EmployeeSARCerts_Employee"
         FromEnd="Employee"
         Name="xref_EmployeeCertsCollection"
-        ToEnd="xref_EmployeeCerts">
+        ToEnd="xref_EmployeeSARCerts">
         <NavigationProperty.Attributes>
           <DisplayName
             Value="Certifications" />
@@ -1036,6 +1228,11 @@
             Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Association="xref_EmployeeTechCert_Employee"
+        FromEnd="Employee"
+        Name="xref_EmployeeTechCerts"
+        ToEnd="xref_EmployeeTechCert" />
     </EntityType.Properties>
   </EntityType>
   <Permission
@@ -1429,21 +1626,20 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Cert"
-        PropertyType=":String">
+        Name="Rank"
+        PropertyType=":Int32">
         <EntityProperty.Attributes>
           <Required />
-          <MaxLength
-            Value="6" />
           <Description
             Value="Certification Code" />
+          <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="xref_EmployeeCerts_SARCertificationsSetItem"
+        Association="xref_EmployeeSARCerts_SARCertificationsSetItem"
         FromEnd="SARCertificationsSetItem"
         Name="xref_EmployeeCertsCollection"
-        ToEnd="xref_EmployeeCerts">
+        ToEnd="xref_EmployeeSARCerts">
         <NavigationProperty.Attributes>
           <DisplayName
             Value="Employee Certifications" />
@@ -1484,7 +1680,7 @@
     </AssociationEnd>
   </Association>
   <EntityType
-    Name="xref_EmployeeCerts">
+    Name="xref_EmployeeSARCerts">
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -1513,13 +1709,13 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="xref_EmployeeCerts_SARCertificationsSetItem"
-        FromEnd="xref_EmployeeCerts"
+        Association="xref_EmployeeSARCerts_SARCertificationsSetItem"
+        FromEnd="xref_EmployeeSARCerts"
         Name="SARCertificationsSetItem"
         ToEnd="SARCertificationsSetItem" />
       <NavigationProperty
-        Association="xref_EmployeeCerts_Employee"
-        FromEnd="xref_EmployeeCerts"
+        Association="xref_EmployeeSARCerts_Employee"
+        FromEnd="xref_EmployeeSARCerts"
         Name="Employee"
         ToEnd="Employee" />
       <EntityProperty
@@ -1532,11 +1728,11 @@
     </EntityType.Properties>
   </EntityType>
   <Association
-    Name="xref_EmployeeCerts_SARCertificationsSetItem">
+    Name="xref_EmployeeSARCerts_SARCertificationsSetItem">
     <AssociationEnd
-      EntityType="xref_EmployeeCerts"
+      EntityType="xref_EmployeeSARCerts"
       Multiplicity="Many"
-      Name="xref_EmployeeCerts" />
+      Name="xref_EmployeeSARCerts" />
     <AssociationEnd
       EntityType="SARCertificationsSetItem"
       Multiplicity="One"
@@ -1548,15 +1744,146 @@
     </AssociationEnd>
   </Association>
   <Association
-    Name="xref_EmployeeCerts_Employee">
+    Name="xref_EmployeeSARCerts_Employee">
     <AssociationEnd
-      EntityType="xref_EmployeeCerts"
+      EntityType="xref_EmployeeSARCerts"
       Multiplicity="Many"
-      Name="xref_EmployeeCerts" />
+      Name="xref_EmployeeSARCerts" />
     <AssociationEnd
       EntityType="Employee"
       Multiplicity="One"
       Name="Employee">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <EntityType
+    Name="TechRescueCerts">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Certification"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Rank"
+        PropertyType=":Int32">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Association="xref_EmployeeTechCert_TechRescueCerts"
+        FromEnd="TechRescueCerts"
+        Name="xref_EmployeeTechCerts"
+        ToEnd="xref_EmployeeTechCert" />
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="xref_EmployeeTechCert">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Association="xref_EmployeeTechCert_Employee"
+        FromEnd="xref_EmployeeTechCert"
+        Name="Employee"
+        ToEnd="Employee" />
+      <NavigationProperty
+        Association="xref_EmployeeTechCert_TechRescueCerts"
+        FromEnd="xref_EmployeeTechCert"
+        Name="TechRescueCerts"
+        ToEnd="TechRescueCerts" />
+      <EntityProperty
+        Name="Summary"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Computed />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="xref_EmployeeTechCert_Employee">
+    <AssociationEnd
+      EntityType="xref_EmployeeTechCert"
+      Multiplicity="Many"
+      Name="xref_EmployeeTechCert" />
+    <AssociationEnd
+      EntityType="Employee"
+      Name="Employee">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="xref_EmployeeTechCert_TechRescueCerts">
+    <AssociationEnd
+      EntityType="xref_EmployeeTechCert"
+      Multiplicity="Many"
+      Name="xref_EmployeeTechCert" />
+    <AssociationEnd
+      EntityType="TechRescueCerts"
+      Name="TechRescueCerts">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />

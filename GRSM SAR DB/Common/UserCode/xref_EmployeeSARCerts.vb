@@ -1,7 +1,7 @@
 ﻿
 Namespace LightSwitchApplication
 
-    Public Class xref_EmployeeCerts
+    Public Class xref_EmployeeSARCerts
 
         Private Sub Summary_Compute(ByRef result As String)
             If (SARCertificationsSetItem IsNot Nothing) Then
