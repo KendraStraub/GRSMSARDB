@@ -65,6 +65,12 @@
     <Import Include="Microsoft.LightSwitch.Security.Server" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="FilterControl.Common">
+      <HintPath>..\_Pvt_Extensions\FilterControl\Server\Reference\FilterControl.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="FilterControl.Server">
+      <HintPath>..\_Pvt_Extensions\FilterControl\Server\Reference\FilterControl.Server.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.LightSwitch.Extensions.Server">
       <HintPath>..\_Pvt_Extensions\Microsoft.LightSwitch.Extensions\ServerGen\Reference\Microsoft.LightSwitch.Extensions.Server.dll</HintPath>
     </Reference>

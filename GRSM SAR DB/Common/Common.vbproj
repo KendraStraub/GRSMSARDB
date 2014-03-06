@@ -8,7 +8,7 @@
     <SchemaVersion>
     </SchemaVersion>
     <ProjectTypeGuids>{01074E5A-9000-460e-AB81-3A9263818D40};{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
-    <ProjectGuid>{72100b47-b9e9-4d9c-b337-9a7466963a75}</ProjectGuid>
+    <ProjectGuid>{72100B47-B9E9-4D9C-B337-9A7466963A75}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>
     </RootNamespace>
@@ -74,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="UserCode\Employee.vb" />
+    <Compile Include="UserCode\xref_EmployeeCerts.vb" />
+    <Compile Include="UserCode\xref_EmployeeZones.vb" />
   </ItemGroup>
   <ItemGroup>
     <LightSwitchModel Include="My Project\Common.lsml">
@@ -91,4 +94,17 @@
   </Target>
   <Target Name="AfterBuild">
   </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+      <FlavorProperties GUID="{01074E5A-9000-460e-AB81-3A9263818D40}" Configuration="Debug|Any CPU">
+        <SpecializedConfiguration />
+      </FlavorProperties>
+      <FlavorProperties GUID="{01074E5A-9000-460e-AB81-3A9263818D40}" Configuration="Release|Any CPU">
+        <SpecializedConfiguration />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

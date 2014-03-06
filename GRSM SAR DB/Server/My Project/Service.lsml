@@ -11,5 +11,221 @@
   <DataService
     DataProvider="EntityFrameworkDataProvider"
     EntityContainer="LightSwitchCommonModule:ApplicationData"
-    Name="ApplicationDataMapping" />
+    Name="ApplicationDataMapping">
+    <AssociationSetMapping
+      AssociationSet="ParkDivision_Employees">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="ParkDivisions_Employees" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[ParkDivision_Employees]/Members[ParkDivision]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[ParkDivision_Employees]/Members[Employee]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="ParkDivisions_Employee" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="Employees">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="ParkDivisions_Employee"
+          Nullable="True"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="YearRoundRes_Employee"
+          Nullable="True"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="SMSCarriers_Employee"
+          Nullable="True"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="SMSCarrier_Employee1"
+          Nullable="True"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="YearRoundRes_Employees">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="YearRoundRes_Employees" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[YearRoundRes_Employees]/Members[YearRoundRes]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[YearRoundRes_Employees]/Members[Employee]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="YearRoundRes_Employee" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="SMSCarrier_Employees">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="SMSCarriers_Employees" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[SMSCarrier_Employees]/Members[SMSCarrier]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[SMSCarrier_Employees]/Members[Employee]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="SMSCarriers_Employee" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="SMSCarrier_Employee1Set">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="SMSCarrier_Employee1Set" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[SMSCarrier_Employee1Set]/Members[SMSCarrier]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[SMSCarrier_Employee1Set]/Members[Employee]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="SMSCarrier_Employee1" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="xref_EmployeeZones_ResponseZonesSet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="xref_EmployeeZones_ResponseZonesSet" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeZones_ResponseZonesSet]/Members[xref_EmployeeZones]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="xref_EmployeeZones_ResponseZones" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeZones_ResponseZonesSet]/Members[ResponseZones]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="xref_EmployeeZonesSet">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="xref_EmployeeZones_ResponseZones"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="xref_EmployeeZones_Employee"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="xref_EmployeeZones_Employees">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="xref_EmployeeZones_Employees" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeZones_Employees]/Members[xref_EmployeeZones]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="xref_EmployeeZones_Employee" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeZones_Employees]/Members[Employee]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <AssociationSetMapping
+      AssociationSet="xref_EmployeeCerts_CertificationsSet">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="xref_EmployeeCerts_CertificationsSet" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_CertificationsSet]/Members[xref_EmployeeCerts]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="xref_EmployeeCerts_Certifications" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_CertificationsSet]/Members[Certifications]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+    <EntitySetMapping
+      EntitySet="xref_EmployeeCertsSet">
+      <EntitySetMapping.Attributes>
+        <SsdlForeignKeyProperty
+          Name="xref_EmployeeCerts_Certifications"
+          Nullable="False"
+          Type="int" />
+        <SsdlForeignKeyProperty
+          Name="xref_EmployeeCerts_Employee"
+          Nullable="False"
+          Type="int" />
+      </EntitySetMapping.Attributes>
+    </EntitySetMapping>
+    <AssociationSetMapping
+      AssociationSet="xref_EmployeeCerts_Employees">
+      <AssociationSetMapping.Attributes>
+        <SsdlAssociationSet
+          Name="xref_EmployeeCerts_Employees" />
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_Employees]/Members[xref_EmployeeCerts]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="xref_EmployeeCerts_Employee" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+        <SsdlAssociationSetEnd
+          End="LightSwitchCommonModule:ApplicationData/Members[xref_EmployeeCerts_Employees]/Members[Employee]">
+          <SsdlAssociationSetEnd.Attributes>
+            <SsdlPropertyRef
+              Name="Id" />
+          </SsdlAssociationSetEnd.Attributes>
+        </SsdlAssociationSetEnd>
+      </AssociationSetMapping.Attributes>
+    </AssociationSetMapping>
+  </DataService>
 </ModelFragment>

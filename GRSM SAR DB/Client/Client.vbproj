@@ -71,6 +71,16 @@
     <UseDesignTimeFeatures>false</UseDesignTimeFeatures>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FilterControl.Client">
+      <HintPath>..\_Pvt_Extensions\FilterControl\Client\Reference\FilterControl.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="FilterControl.Client.Design">
+      <HintPath>..\_Pvt_Extensions\FilterControl\Client\DebugOnlyRef\FilterControl.Client.Design.dll</HintPath>
+      <ExtensionReferenceType>DebugOnly</ExtensionReferenceType>
+    </Reference>
+    <Reference Include="FilterControl.Common">
+      <HintPath>..\_Pvt_Extensions\FilterControl\Client\Reference\FilterControl.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.LightSwitch, Version=10.0.11.0, Culture=neutral, PublicKeyToken=8e9329cecb4700e9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(LightSwitchPath)\LightSwitch\Client\Microsoft.LightSwitch.dll</HintPath>

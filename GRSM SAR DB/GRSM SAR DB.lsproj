@@ -22,12 +22,13 @@
     <BaseIntermediateOutputPath>bin</BaseIntermediateOutputPath>
     <ApplicationClientType>Desktop</ApplicationClientType>
     <ApplicationServerType>LocalHost</ApplicationServerType>
-    <AuthenticationType>None</AuthenticationType>
+    <AuthenticationType>Windows</AuthenticationType>
     <ApplicationName>GRSM_SAR_DB</ApplicationName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <ServiceDefinitionFile>ServiceDefinition.csdef</ServiceDefinitionFile>
     <ServiceConfigurationFile>ServiceConfiguration.cscfg</ServiceConfigurationFile>
     <SqlExpressInstanceName>(LocalDB)\v11.0</SqlExpressInstanceName>
+    <AllowAllWindowsUsers>false</AllowAllWindowsUsers>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -163,6 +164,10 @@
     </_BuildFile>
   </ItemGroup>
   <ItemGroup>
+    <LightSwitchExtension Include="FilterControl">
+      <Client>FILTERCONTROL.CLIENT;FILTERCONTROL.COMMON;FILTERCONTROL.CLIENT.DESIGN</Client>
+      <Server>FILTERCONTROL.COMMON;FILTERCONTROL.SERVER</Server>
+    </LightSwitchExtension>
     <LightSwitchExtension Include="Microsoft.LightSwitch.Cosmopolitan">
       <Client>MICROSOFT.LIGHTSWITCH.COSMOPOLITAN.CLIENT</Client>
     </LightSwitchExtension>
