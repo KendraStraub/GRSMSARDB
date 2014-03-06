@@ -36,11 +36,11 @@
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="Table1Item"
-      Name="Table1Items" />
+      EntityType="Employee"
+      Name="Employees" />
     <QueryOperation
-      Name="Table1Items_Single"
-      ReturnType="Table1Item">
+      Name="Employees_Single"
+      ReturnType="Employee">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -66,7 +66,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="Table1Items" />
+            Member="Employees" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -79,8 +79,8 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="Table1Items_SingleOrDefault"
-      ReturnType="Table1Item">
+      Name="Employees_SingleOrDefault"
+      ReturnType="Employee">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -106,7 +106,7 @@
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
           <MemberExpression
-            Member="Table1Items" />
+            Member="Employees" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
@@ -120,7 +120,7 @@
     </QueryOperation>
   </EntityContainer>
   <EntityType
-    Name="Table1Item">
+    Name="Employee">
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
