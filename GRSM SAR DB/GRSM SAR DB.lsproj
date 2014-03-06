@@ -20,8 +20,8 @@
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>false</SignManifests>
     <BaseIntermediateOutputPath>bin</BaseIntermediateOutputPath>
-    <ApplicationClientType>Desktop</ApplicationClientType>
-    <ApplicationServerType>LocalHost</ApplicationServerType>
+    <ApplicationClientType>Browser</ApplicationClientType>
+    <ApplicationServerType>IIS</ApplicationServerType>
     <AuthenticationType>Windows</AuthenticationType>
     <ApplicationName>GRSM_SAR_DB</ApplicationName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
