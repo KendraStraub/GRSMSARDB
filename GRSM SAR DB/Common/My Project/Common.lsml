@@ -1433,13 +1433,20 @@
           <Required />
           <MaxLength
             Value="6" />
+          <Description
+            Value="Certification Code" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
         Association="xref_EmployeeCerts_Certifications"
         FromEnd="Certifications"
         Name="xref_EmployeeCertsCollection"
-        ToEnd="xref_EmployeeCerts" />
+        ToEnd="xref_EmployeeCerts">
+        <NavigationProperty.Attributes>
+          <DisplayName
+            Value="Employee Certifications" />
+        </NavigationProperty.Attributes>
+      </NavigationProperty>
     </EntityType.Properties>
   </EntityType>
   <Association
