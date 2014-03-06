@@ -999,6 +999,13 @@
             Value="Incident Certifications" />
         </NavigationProperty.Attributes>
       </NavigationProperty>
+      <EntityProperty
+        Name="Summary"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Computed />
+        </EntityProperty.Attributes>
+      </EntityProperty>
     </EntityType.Properties>
   </EntityType>
   <Permission

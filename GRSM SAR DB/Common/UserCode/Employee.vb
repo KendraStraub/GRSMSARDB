@@ -18,6 +18,11 @@ Namespace LightSwitchApplication
             'concatonate cell phone number with carrier sms gateway from pickkist
             result = WorkMobile + WorkSMSCarriers.SMSGateway
         End Sub
+
+        Private Sub Summary_Compute(ByRef result As String)
+            'concatonate first and last name for summary field, used for lists
+            result = LastName & ", " & FirstName
+        End Sub
     End Class
 
 End Namespace
