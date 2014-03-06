@@ -9,23 +9,39 @@ Namespace LightSwitchApplication
             CreatedBy = Application.User.Name
         End Sub
         Private Sub DaysSinceLastFit_Compute(ByRef result As String)
-            'Set result to the desired field value
-            Dim daysSince = Date.Now.Subtract(Me.DateFit).Days
+            'If DateFit is null at form initialize, need to handle the null
+            'else exception is thrown
             If Me.DateFit Is Nothing Then
                 result = "No Fitness Test Date"
             Else
+                'If a DateFit is entered then calculate days since fit test
+                Dim daysSince = Date.Now.Subtract(Me.DateFit).Days
                 result = daysSince & " Days Since Last Fitness Test"
             End If
         End Sub
 
         Private Sub PersonalSMS_Compute(ByRef result As String)
-            'concatonate cell phone number with carrier sms gateway from pickkist
-            result = PersonalMobile + PersonalSMSCarriers.SMSGateway
+            'If PersonalSMSCarriers is null at form initialize, need to handle the null
+            'else exception is thrown
+            If Me.PersonalSMSCarriers Is Nothing Then
+                'use a bogus sms gateway which the email function will ignore
+                result = "@nophone.com"
+            Else
+                'If a PersonalSMSCarrier is entered then concatonate cell phone number with carrier sms gateway from picklist
+                result = PersonalMobile + PersonalSMSCarriers.SMSGateway
+            End If
         End Sub
 
         Private Sub WorksSMS_Compute(ByRef result As String)
-            'concatonate cell phone number with carrier sms gateway from pickkist
-            result = WorkMobile + WorkSMSCarriers.SMSGateway
+            'If PersonalSMSCarriers is null at form initialize, need to handle the null
+            'else exception is thrown
+            If Me.WorkSMSCarriers Is Nothing Then
+                'use a bogus sms gateway which the email function will ignore
+                result = "@nophone.com"
+            Else
+                'If a Workarrier is entered then concatonate cell phone number with carrier sms gateway from picklist
+                result = WorkMobile + WorkSMSCarriers.SMSGateway
+            End If
         End Sub
 
         Private Sub Summary_Compute(ByRef result As String)
