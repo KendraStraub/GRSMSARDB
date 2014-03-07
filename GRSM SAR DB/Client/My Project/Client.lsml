@@ -3593,6 +3593,16 @@
                         </ContentItem.PropertySources>
                       </ContentItem>
                     </ContentItem.CommandItems>
+                    <ContentItem.PropertySources>
+                      <ControlPropertySource
+                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        <ScreenExpressionTree>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Center" />
+                        </ScreenExpressionTree>
+                      </ControlPropertySource>
+                    </ContentItem.PropertySources>
                   </ContentItem>
                   <ContentItem
                     Kind="Group"
@@ -3629,6 +3639,16 @@
                         </ContentItem.PropertySources>
                       </ContentItem>
                     </ContentItem.CommandItems>
+                    <ContentItem.PropertySources>
+                      <ControlPropertySource
+                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        <ScreenExpressionTree>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Center" />
+                        </ScreenExpressionTree>
+                      </ControlPropertySource>
+                    </ContentItem.PropertySources>
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
@@ -3753,6 +3773,16 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     DataType="LightSwitchCommonModule:xref_EmployeeZones"
                     Kind="Details"
@@ -3811,6 +3841,32 @@
                     <DisplayName
                       Value="Response Zone Group" />
                   </ContentItem.Attributes>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Center" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Top" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     Kind="Group"
                     Name="AddZoneGroup">
@@ -3832,6 +3888,16 @@
                         </ContentItem.DataSource>
                       </ContentItem>
                     </ContentItem.CommandItems>
+                    <ContentItem.PropertySources>
+                      <ControlPropertySource
+                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        <ScreenExpressionTree>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Center" />
+                        </ScreenExpressionTree>
+                      </ControlPropertySource>
+                    </ContentItem.PropertySources>
                   </ContentItem>
                   <ContentItem
                     Kind="Group"
@@ -3854,6 +3920,16 @@
                         </ContentItem.DataSource>
                       </ContentItem>
                     </ContentItem.CommandItems>
+                    <ContentItem.PropertySources>
+                      <ControlPropertySource
+                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        <ScreenExpressionTree>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Center" />
+                        </ScreenExpressionTree>
+                      </ControlPropertySource>
+                    </ContentItem.PropertySources>
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
@@ -3869,6 +3945,16 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     DataType="LightSwitchCommonModule:ResponseZones"
                     Kind="Details"
@@ -3952,6 +4038,16 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     DataType="LightSwitchCommonModule:xref_EmployeeTechCert"
                     Kind="Details"
@@ -4033,6 +4129,32 @@
                     <DisplayName
                       Value="Tech Certifications Group" />
                   </ContentItem.Attributes>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Center" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Top" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     Kind="Group"
                     Name="AddTechCertsGroup">
@@ -4058,6 +4180,16 @@
                         </ContentItem.DataSource>
                       </ContentItem>
                     </ContentItem.CommandItems>
+                    <ContentItem.PropertySources>
+                      <ControlPropertySource
+                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        <ScreenExpressionTree>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Center" />
+                        </ScreenExpressionTree>
+                      </ControlPropertySource>
+                    </ContentItem.PropertySources>
                   </ContentItem>
                   <ContentItem
                     Kind="Group"
@@ -4084,6 +4216,16 @@
                         </ContentItem.DataSource>
                       </ContentItem>
                     </ContentItem.CommandItems>
+                    <ContentItem.PropertySources>
+                      <ControlPropertySource
+                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        <ScreenExpressionTree>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Center" />
+                        </ScreenExpressionTree>
+                      </ControlPropertySource>
+                    </ContentItem.PropertySources>
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
@@ -4103,6 +4245,16 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     DataType="LightSwitchCommonModule:TechRescueCerts"
                     Kind="Details"
@@ -4186,6 +4338,16 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     DataType="LightSwitchCommonModule:xref_EmployeeWaterCert"
                     Kind="Details"
@@ -4267,6 +4429,32 @@
                     <DisplayName
                       Value="Swift Water Rescue Certifications Group" />
                   </ContentItem.Attributes>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Center" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Top" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     Kind="Group"
                     Name="AddWaterCertsGroup">
@@ -4288,6 +4476,16 @@
                         </ContentItem.DataSource>
                       </ContentItem>
                     </ContentItem.CommandItems>
+                    <ContentItem.PropertySources>
+                      <ControlPropertySource
+                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        <ScreenExpressionTree>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Center" />
+                        </ScreenExpressionTree>
+                      </ControlPropertySource>
+                    </ContentItem.PropertySources>
                   </ContentItem>
                   <ContentItem
                     Kind="Group"
@@ -4310,6 +4508,16 @@
                         </ContentItem.DataSource>
                       </ContentItem>
                     </ContentItem.CommandItems>
+                    <ContentItem.PropertySources>
+                      <ControlPropertySource
+                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        <ScreenExpressionTree>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Center" />
+                        </ScreenExpressionTree>
+                      </ControlPropertySource>
+                    </ContentItem.PropertySources>
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
@@ -4329,6 +4537,16 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Boolean"
+                          Value="True" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                   <ContentItem
                     DataType="LightSwitchCommonModule:WaterRescueCerts"
                     Kind="Details"
