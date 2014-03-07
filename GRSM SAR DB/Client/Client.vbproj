@@ -224,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="UserCode\Application.vb" />
     <Compile Include="UserCode\CreateNewTeamMember.vb" />
     <Compile Include="UserCode\ManageDivisions.vb" />
     <Compile Include="UserCode\ManageResidency.vb" />

@@ -197,6 +197,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="UserCode\ApplicationDataService.vb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web\GRSM_SAR_DB.Client.xap" />
