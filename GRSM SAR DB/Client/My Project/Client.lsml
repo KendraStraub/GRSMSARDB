@@ -61,10 +61,10 @@
         </ApplicationMethod.Attributes>
       </ApplicationMethod>
       <ApplicationMethod
-        Name="ShowEditableTechRescueCertsSetGrid">
+        Name="ShowManageTechRescueCerts">
         <ApplicationMethod.Attributes>
           <ShowScreenMethod
-            TargetScreen="EditableTechRescueCertsSetGrid" />
+            TargetScreen="ManageTechRescueCerts" />
         </ApplicationMethod.Attributes>
       </ApplicationMethod>
     </Application.Methods>
@@ -98,8 +98,8 @@
           Command="!module/Commands[ScreenCommandShowManageTeamMembers]"
           Name="ManageTeamMembers" />
         <ApplicationNavigationLink
-          Command="!module/Commands[ScreenCommandShowEditableTechRescueCertsSetGrid]"
-          Name="EditableTechRescueCertsSetGrid" />
+          Command="!module/Commands[ScreenCommandShowManageTechRescueCerts]"
+          Name="ManageTechRescueCerts" />
       </ApplicationNavigationGroup>
       <ApplicationNavigationGroup
         Name="Administration">
@@ -137,8 +137,8 @@
       Name="ScreenCommandShowManageTeamMembers"
       Target="!module/Methods[ShowManageTeamMembers]" />
     <ApplicationCommand
-      Name="ScreenCommandShowEditableTechRescueCertsSetGrid"
-      Target="!module/Methods[ShowEditableTechRescueCertsSetGrid]" />
+      Name="ScreenCommandShowManageTechRescueCerts"
+      Target="!module/Methods[ShowManageTechRescueCerts]" />
   </Application>
   <Screen
     LaunchMode="Multiple"
@@ -244,6 +244,72 @@
           <ChainExpression>
             <CallExpression
               Target="CreateNewTeamMember/Properties[xref_EmployeeCertsCollection]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
+        Name="xref_EmployeeTechCerts"
+        PageSize="45"
+        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeTechCert">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="xref_EmployeeTechCertsQuery"
+            ReturnType="LightSwitchCommonModule:xref_EmployeeTechCert*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateNewTeamMember/Properties[EmployeeProperty]" />
+                  <MemberExpression
+                    Member="xref_EmployeeTechCerts" />
+                </ChainExpression>
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="CreateNewTeamMember/Properties[xref_EmployeeTechCerts]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
+        Name="xref_EmployeeWaterCerts"
+        PageSize="45"
+        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeWaterCert">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="xref_EmployeeWaterCertsQuery"
+            ReturnType="LightSwitchCommonModule:xref_EmployeeWaterCert*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateNewTeamMember/Properties[EmployeeProperty]" />
+                  <MemberExpression
+                    Member="xref_EmployeeWaterCerts" />
+                </ChainExpression>
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
@@ -678,7 +744,7 @@
               Name="xref_EmployeeZonesCollection">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="Response Zones" />
+                  Value="Assign Response Zones" />
               </ContentItem.Attributes>
               <ContentItem.CommandItems>
                 <ContentItem
@@ -750,7 +816,7 @@
                 Name="RowTemplate4">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Response Zones" />
+                    Value="Assigned Response Zones" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -780,19 +846,6 @@
                     </ContentItem.DataSource>
                   </ContentItem>
                 </ContentItem>
-                <ContentItem
-                  DataType=":String"
-                  Kind="Value"
-                  Name="Summary1">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="LightSwitchCommonModule:xref_EmployeeZones/Properties[Summary]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
               </ContentItem>
             </ContentItem>
             <ContentItem
@@ -801,7 +854,7 @@
               Name="xref_EmployeeCertsCollection">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="Employee Certifications" />
+                  Value="Assign SAR Certifications" />
               </ContentItem.Attributes>
               <ContentItem.CommandItems>
                 <ContentItem
@@ -873,7 +926,7 @@
                 Name="RowTemplate6">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Employee Certifications" />
+                    Value="Assigned  SAR Certifications" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -884,6 +937,10 @@
                   DataType="LightSwitchCommonModule:SARCertificationsSetItem"
                   Kind="Details"
                   Name="Certifications">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Employee SAR Certifications" />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -896,6 +953,10 @@
                     DataType="LightSwitchCommonModule:SARCertificationsSetItem"
                     Kind="Details"
                     Name="RowTemplate7">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="Employee SAR Certifications" />
+                    </ContentItem.Attributes>
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
@@ -903,18 +964,217 @@
                     </ContentItem.DataSource>
                   </ContentItem>
                 </ContentItem>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem
+              DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeTechCert"
+              Kind="Collection"
+              Name="xref_EmployeeTechCerts">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Assign Tech Certifications" />
+              </ContentItem.Attributes>
+              <ContentItem.CommandItems>
                 <ContentItem
-                  DataType=":String"
-                  Kind="Value"
-                  Name="Summary2">
+                  Kind="Command"
+                  Name="xref_EmployeeTechCerts_AddAndEditNew">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:xref_EmployeeSARCerts/Properties[Summary]" />
+                          Member="CreateNewTeamMember/Properties[xref_EmployeeTechCerts]" />
+                        <CallExpression
+                          Target="AddAndEditNew" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Kind="Command"
+                  Name="xref_EmployeeTechCerts_EditSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CreateNewTeamMember/Properties[xref_EmployeeTechCerts]" />
+                        <CallExpression
+                          Target="EditSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Kind="Command"
+                  Name="xref_EmployeeTechCerts_DeleteSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CreateNewTeamMember/Properties[xref_EmployeeTechCerts]" />
+                        <CallExpression
+                          Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem.CommandItems>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="CreateNewTeamMember/Properties[xref_EmployeeTechCerts]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                DataType="LightSwitchCommonModule:xref_EmployeeTechCert"
+                Kind="Details"
+                Name="xref_EmployeeTechCertsTemplate">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Assigned Tech Certifications" />
+                </ContentItem.Attributes>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:TechRescueCerts"
+                  Kind="Details"
+                  Name="TechRescueCerts">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Employee Tech Certifications" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="LightSwitchCommonModule:xref_EmployeeTechCert/Properties[TechRescueCerts]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    DataType="LightSwitchCommonModule:TechRescueCerts"
+                    Kind="Details"
+                    Name="TechRescueCerts1">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="Employee Tech Certifications" />
+                    </ContentItem.Attributes>
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem
+              DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeWaterCert"
+              Kind="Collection"
+              Name="xref_EmployeeWaterCerts">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Assign Swift Water Rescue Certifications" />
+              </ContentItem.Attributes>
+              <ContentItem.CommandItems>
+                <ContentItem
+                  Kind="Command"
+                  Name="xref_EmployeeWaterCerts_AddAndEditNew">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]" />
+                        <CallExpression
+                          Target="AddAndEditNew" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Kind="Command"
+                  Name="xref_EmployeeWaterCerts_EditSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]" />
+                        <CallExpression
+                          Target="EditSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Kind="Command"
+                  Name="xref_EmployeeWaterCerts_DeleteSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]" />
+                        <CallExpression
+                          Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem.CommandItems>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression
+                      Member="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                DataType="LightSwitchCommonModule:xref_EmployeeWaterCert"
+                Kind="Details"
+                Name="xref_EmployeeWaterCertsTemplate">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Assigned Swift Water Rescue Certifications" />
+                </ContentItem.Attributes>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:WaterRescueCerts"
+                  Kind="Details"
+                  Name="WaterRescueCerts">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Swift Water Rescue Certifications" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="LightSwitchCommonModule:xref_EmployeeWaterCert/Properties[WaterRescueCerts]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    DataType="LightSwitchCommonModule:WaterRescueCerts"
+                    Kind="Details"
+                    Name="WaterRescueCerts1">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="Swift Water Rescue Certifications" />
+                    </ContentItem.Attributes>
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
                 </ContentItem>
               </ContentItem>
             </ContentItem>
@@ -961,6 +1221,9 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
         Name="ParkDivisions"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$ParkDivision">
@@ -1025,20 +1288,6 @@
             Kind="Collection"
             Name="grid">
             <ContentItem.CommandItems>
-              <ContentItem
-                Kind="Command"
-                Name="ParkDivisions_AddAndEditNew">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="ManageDivisions/Properties[ParkDivisions]" />
-                      <CallExpression
-                        Target="AddAndEditNew" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
               <ContentItem
                 Kind="Command"
                 Name="ParkDivisions_EditSelected">
@@ -1183,6 +1432,9 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
         Name="CertificationsSet"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$SARCertificationsSetItem">
@@ -1403,6 +1655,9 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
         Name="ResponseZonesSet"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$ResponseZones">
@@ -1590,6 +1845,8 @@
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="LightSwitchCommonModule:ApplicationData" />
+      <DisplayName
+        Value="Manage SMS Carriers" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -1623,6 +1880,9 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
         Name="SMSCarriers"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$SMSCarrier">
@@ -1847,6 +2107,9 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
         Name="YearRoundResSet"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$YearRoundRes">
@@ -2080,6 +2343,17 @@
         Name="DeleteTechCert" />
       <ScreenMethod
         Name="AddTechCert" />
+      <ScreenMethod
+        Name="AddWaterCertification" />
+      <ScreenMethod
+        Name="DeleteWaterCertification" />
+      <ScreenMethod
+        Name="EmployeeListAddAndEditNew">
+        <ScreenMethod.Attributes>
+          <BuiltInMethodOverride
+            MethodName="AddAndEditNew" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
@@ -2144,32 +2418,6 @@
         DisablePaging="True"
         DisableSearch="True"
         DisableSorting="True"
-        Name="AllCertifications"
-        PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$SARCertificationsSetItem">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="AllCertificationsQuery"
-            ReturnType="LightSwitchCommonModule:SARCertificationsSetItem*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[SARCertificationsSet]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ManageTeamMembers/Properties[AllCertifications]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenCollectionProperty
         Name="AllResponseZones"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$ResponseZones">
@@ -2228,6 +2476,35 @@
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
       <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
+        Name="AllCertifications"
+        PageSize="45"
+        PropertyType="LightSwitchCommonModule:CollectionView$SARCertificationsSetItem">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="AllCertificationsQuery"
+            ReturnType="LightSwitchCommonModule:SARCertificationsSetItem*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="LightSwitchCommonModule:ApplicationData/Members[SARCertificationsSet]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="ManageTeamMembers/Properties[AllCertifications]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
         Name="xref_EmployeeTechCerts"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeTechCert">
@@ -2260,6 +2537,9 @@
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
       <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
         Name="AllTechCertifications"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$TechRescueCerts">
@@ -2282,6 +2562,67 @@
           <ChainExpression>
             <CallExpression
               Target="ManageTeamMembers/Properties[AllTechCertifications]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        Name="xref_EmployeeWaterCerts"
+        PageSize="45"
+        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeWaterCert">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="xref_EmployeeWaterCertsQuery"
+            ReturnType="LightSwitchCommonModule:xref_EmployeeWaterCert*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="ManageTeamMembers/Properties[Employees]" />
+                  <MemberExpression
+                    Member="SelectedItem" />
+                  <MemberExpression
+                    Member="xref_EmployeeWaterCerts" />
+                </ChainExpression>
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="ManageTeamMembers/Properties[xref_EmployeeWaterCerts]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
+        Name="AllWaterRescueCerts"
+        PageSize="45"
+        PropertyType="LightSwitchCommonModule:CollectionView$WaterRescueCerts">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="AllWaterRescueCertsQuery"
+            ReturnType="LightSwitchCommonModule:WaterRescueCerts*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="LightSwitchCommonModule:ApplicationData/Members[WaterRescueCertsSet]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="ManageTeamMembers/Properties[AllWaterRescueCerts]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
@@ -2343,14 +2684,16 @@
               <ContentItem.CommandItems>
                 <ContentItem
                   Kind="Command"
-                  Name="Employees_AddAndEditNew">
+                  Name="EmployeeListAddAndEditNew">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Add..." />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
-                        <MemberExpression
-                          Member="ManageTeamMembers/Properties[Employees]" />
                         <CallExpression
-                          Target="AddAndEditNew" />
+                          Target="ManageTeamMembers/Methods[EmployeeListAddAndEditNew]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2797,6 +3140,19 @@
               <ContentItem
                 DataType=":String"
                 Kind="Value"
+                Name="Summary1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType=":String"
+                Kind="Value"
                 Name="FirstName1">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -2886,6 +3242,91 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
+                DataType="LightSwitchCommonModule:SMSCarrier"
+                Kind="Details"
+                Name="WorkSMSCarriers1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WorkSMSCarriers]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  Kind="Details"
+                  Name="RowTemplate7">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                DataType=":String"
+                Kind="Value"
+                Name="WorksSMS1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                Kind="Value"
+                Name="PersonalMobile1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType="LightSwitchCommonModule:SMSCarrier"
+                Kind="Details"
+                Name="PersonalSMSCarriers1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMSCarriers]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  Kind="Details"
+                  Name="RowTemplate8">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                DataType=":String"
+                Kind="Value"
+                Name="PersonalSMS1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
                 DataType=":Date?"
                 Kind="Value"
                 Name="DateFit1">
@@ -2956,156 +3397,6 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
-              </ContentItem>
-              <ContentItem
-                DataType="LightSwitchCommonModule:SMSCarrier"
-                Kind="Details"
-                Name="WorkSMSCarriers1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkSMSCarriers]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
-                  Kind="Details"
-                  Name="RowTemplate7">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression />
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem>
-              <ContentItem
-                DataType="LightSwitchCommonModule:SMSCarrier"
-                Kind="Details"
-                Name="PersonalSMSCarriers1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMSCarriers]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
-                  Kind="Details"
-                  Name="RowTemplate8">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression />
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="PersonalSMS1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
-                Kind="Value"
-                Name="PersonalMobile1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="WorksSMS1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="Summary1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":DateTime?"
-                Kind="Value"
-                Name="CreatedTime1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CreatedTime]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String?"
-                Kind="Value"
-                Name="CreatedBy1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CreatedBy]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":DateTime?"
-                Kind="Value"
-                Name="UpdatedTime1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[UpdatedTime]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String?"
-                Kind="Value"
-                Name="UpdatedBy1">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[UpdatedBy]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
               </ContentItem>
             </ContentItem>
             <ContentItem
@@ -3744,10 +4035,10 @@
                   </ContentItem.Attributes>
                   <ContentItem
                     Kind="Group"
-                    Name="DeleteTechCertsGroup">
+                    Name="AddTechCertsGroup">
                     <ContentItem.Attributes>
                       <DisplayName
-                        Value="Delete Group" />
+                        Value="Add Group" />
                     </ContentItem.Attributes>
                     <ContentItem.CommandItems>
                       <ContentItem
@@ -3770,10 +4061,10 @@
                   </ContentItem>
                   <ContentItem
                     Kind="Group"
-                    Name="AddTechCertGroup">
+                    Name="DeleteTechCertGroup">
                     <ContentItem.Attributes>
                       <DisplayName
-                        Value="Add Group" />
+                        Value="Delete Group" />
                     </ContentItem.Attributes>
                     <ContentItem.CommandItems>
                       <ContentItem
@@ -3804,50 +4095,6 @@
                     <DisplayName
                       Value="Available Tech Certifications" />
                   </ContentItem.Attributes>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Kind="Command"
-                      Name="AllTechCertifications_AddAndEditNew">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="ManageTeamMembers/Properties[AllTechCertifications]" />
-                            <CallExpression
-                              Target="AddAndEditNew" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                    <ContentItem
-                      Kind="Command"
-                      Name="AllTechCertifications_EditSelected">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="ManageTeamMembers/Properties[AllTechCertifications]" />
-                            <CallExpression
-                              Target="EditSelected" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                    <ContentItem
-                      Kind="Command"
-                      Name="AllTechCertifications_DeleteSelected">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="ManageTeamMembers/Properties[AllTechCertifications]" />
-                            <CallExpression
-                              Target="DeleteSelected" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -3898,6 +4145,232 @@
                   </ContentItem>
                 </ContentItem>
               </ContentItem>
+              <ContentItem
+                Kind="Group"
+                Name="WaterCertificationsGroups"
+                View=":ColumnsLayout">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Swift Water Rescue Certifications Group" />
+                </ContentItem.Attributes>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeWaterCert"
+                  Kind="Collection"
+                  Name="xref_EmployeeWaterCerts"
+                  View=":List">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Swift Water Rescue Certifications Assigned" />
+                  </ContentItem.Attributes>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Kind="Command"
+                      Name="xref_EmployeeWaterCerts_DeleteSelected">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="ManageTeamMembers/Properties[xref_EmployeeWaterCerts]" />
+                            <CallExpression
+                              Target="DeleteSelected" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="ManageTeamMembers/Properties[xref_EmployeeWaterCerts]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    DataType="LightSwitchCommonModule:xref_EmployeeWaterCert"
+                    Kind="Details"
+                    Name="xref_EmployeeWaterCertsTemplate">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="Employee Water Rescue Certifications" />
+                    </ContentItem.Attributes>
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                    <ContentItem
+                      DataType="LightSwitchCommonModule:Employee"
+                      Kind="Details"
+                      Name="Employee2">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="LightSwitchCommonModule:xref_EmployeeWaterCert/Properties[Employee]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                      <ContentItem
+                        DataType="LightSwitchCommonModule:Employee"
+                        Kind="Details"
+                        Name="Employee3">
+                        <ContentItem.DataSource>
+                          <ScreenExpressionTree>
+                            <ChainExpression />
+                          </ScreenExpressionTree>
+                        </ContentItem.DataSource>
+                      </ContentItem>
+                    </ContentItem>
+                    <ContentItem
+                      DataType="LightSwitchCommonModule:WaterRescueCerts"
+                      Kind="Details"
+                      Name="WaterRescueCerts">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="LightSwitchCommonModule:xref_EmployeeWaterCert/Properties[WaterRescueCerts]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                      <ContentItem
+                        DataType="LightSwitchCommonModule:WaterRescueCerts"
+                        Kind="Details"
+                        Name="WaterRescueCerts1">
+                        <ContentItem.DataSource>
+                          <ScreenExpressionTree>
+                            <ChainExpression />
+                          </ScreenExpressionTree>
+                        </ContentItem.DataSource>
+                      </ContentItem>
+                    </ContentItem>
+                    <ContentItem
+                      DataType=":String"
+                      Kind="Value"
+                      Name="Summary5">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="LightSwitchCommonModule:xref_EmployeeWaterCert/Properties[Summary]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem>
+                </ContentItem>
+                <ContentItem
+                  Kind="Group"
+                  Name="WaterCertGroup">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Swift Water Rescue Certifications Group" />
+                  </ContentItem.Attributes>
+                  <ContentItem
+                    Kind="Group"
+                    Name="AddWaterCertsGroup">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="Add Group" />
+                    </ContentItem.Attributes>
+                    <ContentItem.CommandItems>
+                      <ContentItem
+                        Kind="Command"
+                        Name="AddWaterCertification">
+                        <ContentItem.DataSource>
+                          <ScreenExpressionTree>
+                            <ChainExpression>
+                              <CallExpression
+                                Target="ManageTeamMembers/Methods[AddWaterCertification]" />
+                            </ChainExpression>
+                          </ScreenExpressionTree>
+                        </ContentItem.DataSource>
+                      </ContentItem>
+                    </ContentItem.CommandItems>
+                  </ContentItem>
+                  <ContentItem
+                    Kind="Group"
+                    Name="DeleteWaterCertsGroup">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="Delete Group" />
+                    </ContentItem.Attributes>
+                    <ContentItem.CommandItems>
+                      <ContentItem
+                        Kind="Command"
+                        Name="DeleteWaterCertification">
+                        <ContentItem.DataSource>
+                          <ScreenExpressionTree>
+                            <ChainExpression>
+                              <CallExpression
+                                Target="ManageTeamMembers/Methods[DeleteWaterCertification]" />
+                            </ChainExpression>
+                          </ScreenExpressionTree>
+                        </ContentItem.DataSource>
+                      </ContentItem>
+                    </ContentItem.CommandItems>
+                  </ContentItem>
+                </ContentItem>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:CollectionView$WaterRescueCerts"
+                  Kind="Collection"
+                  Name="AllWaterRescueCerts"
+                  View=":List">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Available Swift Water Rescue Certifications" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="ManageTeamMembers/Properties[AllWaterRescueCerts]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    DataType="LightSwitchCommonModule:WaterRescueCerts"
+                    Kind="Details"
+                    Name="AllWaterRescueCertsTemplate">
+                    <ContentItem.Attributes>
+                      <DisplayName
+                        Value="List of  Swift Water Rescue Certifications" />
+                    </ContentItem.Attributes>
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                    <ContentItem
+                      DataType=":String"
+                      Kind="Value"
+                      Name="SWRescueCert">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="LightSwitchCommonModule:WaterRescueCerts/Properties[SWRescueCert]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                    <ContentItem
+                      DataType=":Int32"
+                      Kind="Value"
+                      Name="Rank1">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <MemberExpression
+                              Member="LightSwitchCommonModule:WaterRescueCerts/Properties[Rank]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem>
+                </ContentItem>
+              </ContentItem>
             </ContentItem>
           </ContentItem>
         </ContentItem>
@@ -3905,10 +4378,12 @@
     </Screen.RootContentItem>
   </Screen>
   <Screen
-    Name="EditableTechRescueCertsSetGrid">
+    Name="ManageTechRescueCerts">
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="LightSwitchCommonModule:ApplicationData" />
+      <DisplayName
+        Value="Manage Tech Rescue Certifications" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -3942,6 +4417,9 @@
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
+        DisablePaging="True"
+        DisableSearch="True"
+        DisableSorting="True"
         Name="TechRescueCertsSet"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$TechRescueCerts">
@@ -3963,7 +4441,7 @@
         <ScreenExpressionTree>
           <ChainExpression>
             <CallExpression
-              Target="EditableTechRescueCertsSetGrid/Properties[TechRescueCertsSet]/Query" />
+              Target="ManageTechRescueCerts/Properties[TechRescueCertsSet]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
@@ -3980,7 +4458,7 @@
               <ScreenExpressionTree>
                 <ChainExpression>
                   <CallExpression
-                    Target="EditableTechRescueCertsSetGrid/Methods[Save]" />
+                    Target="ManageTechRescueCerts/Methods[Save]" />
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>
@@ -3992,7 +4470,7 @@
               <ScreenExpressionTree>
                 <ChainExpression>
                   <CallExpression
-                    Target="EditableTechRescueCertsSetGrid/Methods[Refresh]" />
+                    Target="ManageTechRescueCerts/Methods[Refresh]" />
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>
@@ -4005,6 +4483,10 @@
             DataType="LightSwitchCommonModule:CollectionView$TechRescueCerts"
             Kind="Collection"
             Name="grid">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Tech Rescue Certifications" />
+            </ContentItem.Attributes>
             <ContentItem.CommandItems>
               <ContentItem
                 Kind="Command"
@@ -4013,7 +4495,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="EditableTechRescueCertsSetGrid/Properties[TechRescueCertsSet]" />
+                        Member="ManageTechRescueCerts/Properties[TechRescueCertsSet]" />
                       <CallExpression
                         Target="AddAndEditNew" />
                     </ChainExpression>
@@ -4027,7 +4509,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="EditableTechRescueCertsSetGrid/Properties[TechRescueCertsSet]" />
+                        Member="ManageTechRescueCerts/Properties[TechRescueCertsSet]" />
                       <CallExpression
                         Target="EditSelected" />
                     </ChainExpression>
@@ -4041,7 +4523,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="EditableTechRescueCertsSetGrid/Properties[TechRescueCertsSet]" />
+                        Member="ManageTechRescueCerts/Properties[TechRescueCertsSet]" />
                       <CallExpression
                         Target="DeleteSelected" />
                     </ChainExpression>
@@ -4053,7 +4535,7 @@
               <ScreenExpressionTree>
                 <ChainExpression>
                   <MemberExpression
-                    Member="EditableTechRescueCertsSetGrid/Properties[TechRescueCertsSet]" />
+                    Member="ManageTechRescueCerts/Properties[TechRescueCertsSet]" />
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>

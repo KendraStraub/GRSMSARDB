@@ -992,6 +992,198 @@
         EntitySet="TechRescueCertsSet"
         Name="TechRescueCerts" />
     </AssociationSet>
+    <EntitySet
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="WaterRescueCerts"
+      Name="WaterRescueCertsSet" />
+    <QueryOperation
+      Name="WaterRescueCertsSet_Single"
+      ReturnType="WaterRescueCerts">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="WaterRescueCertsSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="WaterRescueCertsSet_SingleOrDefault"
+      ReturnType="WaterRescueCerts">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="WaterRescueCertsSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <EntitySet
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="xref_EmployeeWaterCert"
+      Name="xref_EmployeeWaterCerts" />
+    <QueryOperation
+      Name="xref_EmployeeWaterCerts_Single"
+      ReturnType="xref_EmployeeWaterCert">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="xref_EmployeeWaterCerts" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="xref_EmployeeWaterCerts_SingleOrDefault"
+      ReturnType="xref_EmployeeWaterCert">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="xref_EmployeeWaterCerts" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <AssociationSet
+      Association="xref_EmployeeWaterCert_Employee"
+      Name="xref_EmployeeWaterCert_Employees">
+      <AssociationSetEnd
+        EntitySet="xref_EmployeeWaterCerts"
+        Name="xref_EmployeeWaterCert" />
+      <AssociationSetEnd
+        EntitySet="Employees"
+        Name="Employee" />
+    </AssociationSet>
+    <AssociationSet
+      Association="xref_EmployeeWaterCert_WaterRescueCerts"
+      Name="xref_EmployeeWaterCert_WaterRescueCertsSet">
+      <AssociationSetEnd
+        EntitySet="xref_EmployeeWaterCerts"
+        Name="xref_EmployeeWaterCert" />
+      <AssociationSetEnd
+        EntitySet="WaterRescueCertsSet"
+        Name="WaterRescueCerts" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType
     Name="Employee">
@@ -1233,6 +1425,11 @@
         FromEnd="Employee"
         Name="xref_EmployeeTechCerts"
         ToEnd="xref_EmployeeTechCert" />
+      <NavigationProperty
+        Association="xref_EmployeeWaterCert_Employee"
+        FromEnd="Employee"
+        Name="xref_EmployeeWaterCerts"
+        ToEnd="xref_EmployeeWaterCert" />
     </EntityType.Properties>
   </EntityType>
   <Permission
@@ -1884,6 +2081,139 @@
     <AssociationEnd
       EntityType="TechRescueCerts"
       Name="TechRescueCerts">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <EntityType
+    Name="WaterRescueCerts">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="SWRescueCert"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="100" />
+          <DisplayName
+            Value="Swift Water Rescue Certification" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Rank"
+        PropertyType=":Int32">
+        <EntityProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Association="xref_EmployeeWaterCert_WaterRescueCerts"
+        FromEnd="WaterRescueCerts"
+        Name="xref_EmployeeWaterCerts"
+        ToEnd="xref_EmployeeWaterCert" />
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType
+    Name="xref_EmployeeWaterCert">
+    <EntityType.Methods>
+      <EntityMethod
+        Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty
+        Name="Id"
+        PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty
+        Name="RowVersion"
+        PropertyType=":RowVersion">
+        <EntityProperty.Attributes>
+          <UseForConcurrency />
+          <Generated />
+          <Hidden />
+          <NotSearchable />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <NavigationProperty
+        Association="xref_EmployeeWaterCert_Employee"
+        FromEnd="xref_EmployeeWaterCert"
+        Name="Employee"
+        ToEnd="Employee" />
+      <NavigationProperty
+        Association="xref_EmployeeWaterCert_WaterRescueCerts"
+        FromEnd="xref_EmployeeWaterCert"
+        Name="WaterRescueCerts"
+        ToEnd="WaterRescueCerts" />
+      <EntityProperty
+        Name="Summary"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Computed />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <Association
+    Name="xref_EmployeeWaterCert_Employee">
+    <AssociationEnd
+      EntityType="xref_EmployeeWaterCert"
+      Multiplicity="Many"
+      Name="xref_EmployeeWaterCert" />
+    <AssociationEnd
+      EntityType="Employee"
+      Name="Employee">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="xref_EmployeeWaterCert_WaterRescueCerts">
+    <AssociationEnd
+      EntityType="xref_EmployeeWaterCert"
+      Multiplicity="Many"
+      Name="xref_EmployeeWaterCert" />
+    <AssociationEnd
+      EntityType="WaterRescueCerts"
+      Name="WaterRescueCerts">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />

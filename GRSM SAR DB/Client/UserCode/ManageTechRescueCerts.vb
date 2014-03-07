@@ -1,8 +1,7 @@
 ﻿
 Namespace LightSwitchApplication
 
-    Public Class ManageDivisions
-
+    Public Class ManageTechRescueCerts
 
     End Class
 

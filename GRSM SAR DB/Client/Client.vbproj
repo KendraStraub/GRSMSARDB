@@ -225,7 +225,11 @@
   <ItemGroup>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="UserCode\CreateNewTeamMember.vb" />
+    <Compile Include="UserCode\ManageDivisions.vb" />
+    <Compile Include="UserCode\ManageResidency.vb" />
+    <Compile Include="UserCode\ManageSMSCarriers.vb" />
     <Compile Include="UserCode\ManageTeamMembers.vb" />
+    <Compile Include="UserCode\ManageTechRescueCerts.vb" />
   </ItemGroup>
   <ItemGroup>
     <LightSwitchModel Include="My Project\Client.lsml">
