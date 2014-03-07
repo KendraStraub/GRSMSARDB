@@ -48,6 +48,11 @@ Namespace LightSwitchApplication
             'concatonate first and last name for summary field, used for lists
             result = LastName & ", " & FirstName
         End Sub
+
+        Private Sub Employee_Created()
+            Me.CLEO = "No"
+            Me.MEDIC = "No"
+        End Sub
     End Class
 
 End Namespace

@@ -1430,6 +1430,40 @@
         FromEnd="Employee"
         Name="xref_EmployeeWaterCerts"
         ToEnd="xref_EmployeeWaterCert" />
+      <EntityProperty
+        Name="CLEO"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="3" />
+          <DisplayName
+            Value="Commissioned Law Enforcement Officer" />
+          <SupportedValue
+            DisplayName="Yes"
+            Value="Yes" />
+          <SupportedValue
+            DisplayName="No"
+            Value="No" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="MEDIC"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="3" />
+          <SupportedValue
+            DisplayName="Yes"
+            Value="Yes" />
+          <SupportedValue
+            DisplayName="No"
+            Value="No" />
+          <DisplayName
+            Value="Park Medic/EMT" />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
     </EntityType.Properties>
   </EntityType>
   <Permission
