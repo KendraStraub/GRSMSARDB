@@ -611,6 +611,10 @@
                 DataType=":String"
                 Kind="Value"
                 Name="CLEO">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Commissioned Law Enforcement Officer?" />
+                </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
@@ -640,6 +644,8 @@
                 <ContentItem.Attributes>
                   <Description
                     Value="Optional: Enter the work cellular phone number of the employee." />
+                  <DisplayName
+                    Value="Work Mobile Cellular Telephone Number" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -657,6 +663,8 @@
                 <ContentItem.Attributes>
                   <Description
                     Value="Optional: Enter the work cellular phone service provider of the employee." />
+                  <DisplayName
+                    Value="Work Cellular Telephone Service Provider" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -684,6 +692,8 @@
                 <ContentItem.Attributes>
                   <Description
                     Value="This automatically displays the Email Address of Employee Work Mobile Phone" />
+                  <DisplayName
+                    Value="Work Cellular Telephone Text Email Address" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -701,6 +711,8 @@
                 <ContentItem.Attributes>
                   <Description
                     Value="Optional: Enter the personal cellular phone number of the employee." />
+                  <DisplayName
+                    Value="Personal Mobile Cellular Telephone Number" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -718,6 +730,8 @@
                 <ContentItem.Attributes>
                   <Description
                     Value="Optional: Enter the home cellular phone service provider of the employee." />
+                  <DisplayName
+                    Value="Personal Cellular Telephone Service Provider" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -745,6 +759,8 @@
                 <ContentItem.Attributes>
                   <Description
                     Value="This automatically displays the Email Address of Employee Home Mobile Phone" />
+                  <DisplayName
+                    Value="Personal Cellular Telephone Text Email Address" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
