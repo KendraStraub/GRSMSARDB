@@ -198,6 +198,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="UserCode\ApplicationDataService.vb" />
+    <Compile Include="UserCode\EmailHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web\GRSM_SAR_DB.Client.xap" />

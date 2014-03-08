@@ -592,11 +592,11 @@
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="SARCertificationsSetItem"
+      EntityType="SARCertifications"
       Name="SARCertificationsSet" />
     <QueryOperation
       Name="SARCertificationsSet_Single"
-      ReturnType="SARCertificationsSetItem">
+      ReturnType="SARCertifications">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -636,7 +636,7 @@
     </QueryOperation>
     <QueryOperation
       Name="SARCertificationsSet_SingleOrDefault"
-      ReturnType="SARCertificationsSetItem">
+      ReturnType="SARCertifications">
       <QueryOperation.Attributes>
         <Generated />
         <Description
@@ -694,207 +694,15 @@
         EntitySet="Employees"
         Name="Employee" />
     </AssociationSet>
-    <EntitySet
-      CanDelete="True"
-      CanInsert="True"
-      CanUpdate="True"
-      EntityType="TechRescueCerts"
-      Name="TechRescueCertsSet" />
-    <QueryOperation
-      Name="TechRescueCertsSet_Single"
-      ReturnType="TechRescueCerts">
-      <QueryOperation.Attributes>
-        <Generated />
-        <Description
-          Value="Returns the entity whose identity is specified by the parameter(s)." />
-      </QueryOperation.Attributes>
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ParameterExpression
-                Parameter="Id" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="TechRescueCertsSet" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="Id"
-        ParameterType=":Int32?">
-        <QueryOperationParameter.Attributes>
-          <Description
-            Value="The value of the 'Id' key property of the entity to retrieve." />
-        </QueryOperationParameter.Attributes>
-      </QueryOperationParameter>
-    </QueryOperation>
-    <QueryOperation
-      Name="TechRescueCertsSet_SingleOrDefault"
-      ReturnType="TechRescueCerts">
-      <QueryOperation.Attributes>
-        <Generated />
-        <Description
-          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
-      </QueryOperation.Attributes>
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ParameterExpression
-                Parameter="Id" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="TechRescueCertsSet" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="Id"
-        ParameterType=":Int32?">
-        <QueryOperationParameter.Attributes>
-          <Description
-            Value="The value of the 'Id' key property of the entity to retrieve." />
-        </QueryOperationParameter.Attributes>
-      </QueryOperationParameter>
-    </QueryOperation>
-    <EntitySet
-      CanDelete="True"
-      CanInsert="True"
-      CanUpdate="True"
-      EntityType="WaterRescueCerts"
-      Name="WaterRescueCertsSet" />
-    <QueryOperation
-      Name="WaterRescueCertsSet_Single"
-      ReturnType="WaterRescueCerts">
-      <QueryOperation.Attributes>
-        <Generated />
-        <Description
-          Value="Returns the entity whose identity is specified by the parameter(s)." />
-      </QueryOperation.Attributes>
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ParameterExpression
-                Parameter="Id" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="WaterRescueCertsSet" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="Id"
-        ParameterType=":Int32?">
-        <QueryOperationParameter.Attributes>
-          <Description
-            Value="The value of the 'Id' key property of the entity to retrieve." />
-        </QueryOperationParameter.Attributes>
-      </QueryOperationParameter>
-    </QueryOperation>
-    <QueryOperation
-      Name="WaterRescueCertsSet_SingleOrDefault"
-      ReturnType="WaterRescueCerts">
-      <QueryOperation.Attributes>
-        <Generated />
-        <Description
-          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
-      </QueryOperation.Attributes>
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ParameterExpression
-                Parameter="Id" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="WaterRescueCertsSet" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="Id"
-        ParameterType=":Int32?">
-        <QueryOperationParameter.Attributes>
-          <Description
-            Value="The value of the 'Id' key property of the entity to retrieve." />
-        </QueryOperationParameter.Attributes>
-      </QueryOperationParameter>
-    </QueryOperation>
     <AssociationSet
-      Association="Employee_SARCertificationsSetItem"
-      Name="Employee_SARCertificationsSetItems">
+      Association="Employee_SARCertifications"
+      Name="Employee_SARCertificationsSet">
       <AssociationSetEnd
         EntitySet="Employees"
         Name="Employee" />
       <AssociationSetEnd
         EntitySet="SARCertificationsSet"
-        Name="SARCertificationsSetItem" />
-    </AssociationSet>
-    <AssociationSet
-      Association="Employee_TechRescueCerts"
-      Name="Employee_TechRescueCertsSet">
-      <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
-      <AssociationSetEnd
-        EntitySet="TechRescueCertsSet"
-        Name="TechRescueCerts" />
-    </AssociationSet>
-    <AssociationSet
-      Association="Employee_WaterRescueCerts"
-      Name="Employee_WaterRescueCertsSet">
-      <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
-      <AssociationSetEnd
-        EntitySet="WaterRescueCertsSet"
-        Name="WaterRescueCerts" />
+        Name="SARCertifications" />
     </AssociationSet>
     <QueryOperation
       Name="QRYZone"
@@ -927,6 +735,108 @@
         IsOptional="True"
         Name="ZoneID"
         ParameterType=":Int32?" />
+    </QueryOperation>
+    <QueryOperation
+      Name="QRYSarCert"
+      ReturnType="Employee*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree />
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Employees" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="MaxRank"
+        ParameterType=":Int32?" />
+    </QueryOperation>
+    <EntitySet
+      CanDelete="True"
+      CanInsert="True"
+      CanUpdate="True"
+      EntityType="ProxyEmail"
+      Name="ProxyEmails" />
+    <QueryOperation
+      Name="ProxyEmails_Single"
+      ReturnType="ProxyEmail">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ProxyEmails" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+    <QueryOperation
+      Name="ProxyEmails_SingleOrDefault"
+      ReturnType="ProxyEmail">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description
+          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression
+                Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ProxyEmails" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="Id"
+        ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description
+            Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
     </QueryOperation>
   </EntityContainer>
   <EntityType
@@ -1188,35 +1098,47 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="Employee_SARCertificationsSetItem"
+        Association="Employee_SARCertifications"
         FromEnd="Employee"
-        Name="SARCertificationsSetItem"
-        ToEnd="SARCertificationsSetItem">
+        Name="SARCertifications"
+        ToEnd="SARCertifications">
         <NavigationProperty.Attributes>
           <DisplayName
             Value="SAR Certification" />
         </NavigationProperty.Attributes>
       </NavigationProperty>
-      <NavigationProperty
-        Association="Employee_TechRescueCerts"
-        FromEnd="Employee"
-        Name="TechRescueCerts"
-        ToEnd="TechRescueCerts">
-        <NavigationProperty.Attributes>
+      <EntityProperty
+        Name="TechRescue"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="3" />
           <DisplayName
-            Value="Technical Rescue Certification" />
-        </NavigationProperty.Attributes>
-      </NavigationProperty>
-      <NavigationProperty
-        Association="Employee_WaterRescueCerts"
-        FromEnd="Employee"
-        Name="WaterRescueCerts"
-        ToEnd="WaterRescueCerts">
-        <NavigationProperty.Attributes>
+            Value="Technical Rescue Certified" />
+          <SupportedValue
+            DisplayName="Yes"
+            Value="Yes" />
+          <SupportedValue
+            DisplayName="No"
+            Value="No" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="Tracker"
+        PropertyType=":String?">
+        <EntityProperty.Attributes>
+          <MaxLength
+            Value="3" />
           <DisplayName
-            Value="Swift Water Rescue Certification" />
-        </NavigationProperty.Attributes>
-      </NavigationProperty>
+            Value="Technical Tracker?" />
+          <SupportedValue
+            DisplayName="Yes"
+            Value="Yes" />
+          <SupportedValue
+            DisplayName="No"
+            Value="No" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
     </EntityType.Properties>
   </EntityType>
   <Permission
@@ -1584,7 +1506,7 @@
     </EntityType.Properties>
   </EntityType>
   <EntityType
-    Name="SARCertificationsSetItem">
+    Name="SARCertifications">
     <EntityType.Attributes>
       <DisplayName
         Value="SAR Certification" />
@@ -1636,8 +1558,8 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="Employee_SARCertificationsSetItem"
-        FromEnd="SARCertificationsSetItem"
+        Association="Employee_SARCertifications"
+        FromEnd="SARCertifications"
         Name="Employees"
         ToEnd="Employee" />
     </EntityType.Properties>
@@ -1674,12 +1596,23 @@
       </AssociationEnd.Attributes>
     </AssociationEnd>
   </Association>
+  <Association
+    Name="Employee_SARCertifications">
+    <AssociationEnd
+      EntityType="Employee"
+      Multiplicity="Many"
+      Name="Employee" />
+    <AssociationEnd
+      EntityType="SARCertifications"
+      Name="SARCertifications">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
   <EntityType
-    Name="TechRescueCerts">
-    <EntityType.Attributes>
-      <DisplayName
-        Value="Technical Rescue Certification" />
-    </EntityType.Attributes>
+    Name="ProxyEmail">
     <EntityType.Methods>
       <EntityMethod
         Name="Delete">
@@ -1708,7 +1641,7 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Certification"
+        Name="SenderName"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
@@ -1717,122 +1650,32 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Rank"
-        PropertyType=":Int32">
-        <EntityProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <NavigationProperty
-        Association="Employee_TechRescueCerts"
-        FromEnd="TechRescueCerts"
-        Name="Employees"
-        ToEnd="Employee" />
-    </EntityType.Properties>
-  </EntityType>
-  <EntityType
-    Name="WaterRescueCerts">
-    <EntityType.Attributes>
-      <DisplayName
-        Value="Swift Water Rescue Certification" />
-    </EntityType.Attributes>
-    <EntityType.Methods>
-      <EntityMethod
-        Name="Delete">
-        <EntityMethod.Attributes>
-          <Generated />
-        </EntityMethod.Attributes>
-      </EntityMethod>
-    </EntityType.Methods>
-    <EntityType.Properties>
-      <KeyProperty
-        Name="Id"
-        PropertyType=":Int32">
-        <KeyProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </KeyProperty.Attributes>
-      </KeyProperty>
-      <EntityProperty
-        Name="RowVersion"
-        PropertyType=":RowVersion">
-        <EntityProperty.Attributes>
-          <UseForConcurrency />
-          <Generated />
-          <Hidden />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="SWRescueCert"
+        Name="SenderEmailAddress"
         PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
           <MaxLength
-            Value="100" />
-          <DisplayName
-            Value="Swift Water Rescue Certification" />
+            Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
-        Name="Rank"
-        PropertyType=":Int32">
+        Name="RecipientName"
+        PropertyType=":String">
         <EntityProperty.Attributes>
           <Required />
-          <NotSearchable />
+          <MaxLength
+            Value="255" />
         </EntityProperty.Attributes>
       </EntityProperty>
-      <NavigationProperty
-        Association="Employee_WaterRescueCerts"
-        FromEnd="WaterRescueCerts"
-        Name="Employees"
-        ToEnd="Employee" />
+      <EntityProperty
+        Name="RecipientEmailAddress"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
     </EntityType.Properties>
   </EntityType>
-  <Association
-    Name="Employee_SARCertificationsSetItem">
-    <AssociationEnd
-      EntityType="Employee"
-      Multiplicity="Many"
-      Name="Employee" />
-    <AssociationEnd
-      EntityType="SARCertificationsSetItem"
-      Name="SARCertificationsSetItem">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
-  <Association
-    Name="Employee_TechRescueCerts">
-    <AssociationEnd
-      EntityType="Employee"
-      Multiplicity="Many"
-      Name="Employee" />
-    <AssociationEnd
-      EntityType="TechRescueCerts"
-      Name="TechRescueCerts">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
-  <Association
-    Name="Employee_WaterRescueCerts">
-    <AssociationEnd
-      EntityType="Employee"
-      Multiplicity="Many"
-      Name="Employee" />
-    <AssociationEnd
-      EntityType="WaterRescueCerts"
-      Name="WaterRescueCerts">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
 </ModelFragment>

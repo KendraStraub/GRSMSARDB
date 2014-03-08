@@ -52,6 +52,8 @@ Namespace LightSwitchApplication
         Private Sub Employee_Created()
             Me.CLEO = "No"
             Me.MEDIC = "No"
+            Me.Tracker = "No"
+            Me.TechRescue = "No"
         End Sub
     End Class
 
