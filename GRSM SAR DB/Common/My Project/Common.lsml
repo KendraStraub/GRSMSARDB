@@ -698,112 +698,6 @@
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="xref_EmployeeSARCerts"
-      Name="xref_EmployeeSARCertsSet" />
-    <QueryOperation
-      Name="xref_EmployeeSARCertsSet_Single"
-      ReturnType="xref_EmployeeSARCerts">
-      <QueryOperation.Attributes>
-        <Generated />
-        <Description
-          Value="Returns the entity whose identity is specified by the parameter(s)." />
-      </QueryOperation.Attributes>
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ParameterExpression
-                Parameter="Id" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="xref_EmployeeSARCertsSet" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="Id"
-        ParameterType=":Int32?">
-        <QueryOperationParameter.Attributes>
-          <Description
-            Value="The value of the 'Id' key property of the entity to retrieve." />
-        </QueryOperationParameter.Attributes>
-      </QueryOperationParameter>
-    </QueryOperation>
-    <QueryOperation
-      Name="xref_EmployeeSARCertsSet_SingleOrDefault"
-      ReturnType="xref_EmployeeSARCerts">
-      <QueryOperation.Attributes>
-        <Generated />
-        <Description
-          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
-      </QueryOperation.Attributes>
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ParameterExpression
-                Parameter="Id" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="xref_EmployeeSARCertsSet" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="Id"
-        ParameterType=":Int32?">
-        <QueryOperationParameter.Attributes>
-          <Description
-            Value="The value of the 'Id' key property of the entity to retrieve." />
-        </QueryOperationParameter.Attributes>
-      </QueryOperationParameter>
-    </QueryOperation>
-    <AssociationSet
-      Association="xref_EmployeeSARCerts_SARCertificationsSetItem"
-      Name="xref_EmployeeSARCerts_SARCertificationsSetItems">
-      <AssociationSetEnd
-        EntitySet="xref_EmployeeSARCertsSet"
-        Name="xref_EmployeeSARCerts" />
-      <AssociationSetEnd
-        EntitySet="SARCertificationsSet"
-        Name="SARCertificationsSetItem" />
-    </AssociationSet>
-    <AssociationSet
-      Association="xref_EmployeeSARCerts_Employee"
-      Name="xref_EmployeeSARCerts_Employees">
-      <AssociationSetEnd
-        EntitySet="xref_EmployeeSARCertsSet"
-        Name="xref_EmployeeSARCerts" />
-      <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
-    </AssociationSet>
-    <EntitySet
-      CanDelete="True"
-      CanInsert="True"
-      CanUpdate="True"
       EntityType="TechRescueCerts"
       Name="TechRescueCertsSet" />
     <QueryOperation
@@ -1184,6 +1078,16 @@
         EntitySet="WaterRescueCertsSet"
         Name="WaterRescueCerts" />
     </AssociationSet>
+    <AssociationSet
+      Association="Employee_SARCertificationsSetItem"
+      Name="Employee_SARCertificationsSetItems">
+      <AssociationSetEnd
+        EntitySet="Employees"
+        Name="Employee" />
+      <AssociationSetEnd
+        EntitySet="SARCertificationsSet"
+        Name="SARCertificationsSetItem" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType
     Name="Employee">
@@ -1371,18 +1275,6 @@
             Value="Employee Point of Entrance to Park" />
         </NavigationProperty.Attributes>
       </NavigationProperty>
-      <NavigationProperty
-        Association="xref_EmployeeSARCerts_Employee"
-        FromEnd="Employee"
-        Name="xref_EmployeeCertsCollection"
-        ToEnd="xref_EmployeeSARCerts">
-        <NavigationProperty.Attributes>
-          <DisplayName
-            Value="Certifications" />
-          <Description
-            Value="Incident Certifications" />
-        </NavigationProperty.Attributes>
-      </NavigationProperty>
       <EntityProperty
         Name="Summary"
         PropertyType=":String">
@@ -1464,6 +1356,11 @@
           <Required />
         </EntityProperty.Attributes>
       </EntityProperty>
+      <NavigationProperty
+        Association="Employee_SARCertificationsSetItem"
+        FromEnd="Employee"
+        Name="SARCertificationsSetItem"
+        ToEnd="SARCertificationsSetItem" />
     </EntityType.Properties>
   </EntityType>
   <Permission
@@ -1867,15 +1764,10 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="xref_EmployeeSARCerts_SARCertificationsSetItem"
+        Association="Employee_SARCertificationsSetItem"
         FromEnd="SARCertificationsSetItem"
-        Name="xref_EmployeeCertsCollection"
-        ToEnd="xref_EmployeeSARCerts">
-        <NavigationProperty.Attributes>
-          <DisplayName
-            Value="Employee Certifications" />
-        </NavigationProperty.Attributes>
-      </NavigationProperty>
+        Name="Employees"
+        ToEnd="Employee" />
     </EntityType.Properties>
   </EntityType>
   <Association
@@ -1900,86 +1792,6 @@
       EntityType="xref_EmployeeZones"
       Multiplicity="Many"
       Name="xref_EmployeeZones" />
-    <AssociationEnd
-      EntityType="Employee"
-      Multiplicity="One"
-      Name="Employee">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
-  <EntityType
-    Name="xref_EmployeeSARCerts">
-    <EntityType.Methods>
-      <EntityMethod
-        Name="Delete">
-        <EntityMethod.Attributes>
-          <Generated />
-        </EntityMethod.Attributes>
-      </EntityMethod>
-    </EntityType.Methods>
-    <EntityType.Properties>
-      <KeyProperty
-        Name="Id"
-        PropertyType=":Int32">
-        <KeyProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </KeyProperty.Attributes>
-      </KeyProperty>
-      <EntityProperty
-        Name="RowVersion"
-        PropertyType=":RowVersion">
-        <EntityProperty.Attributes>
-          <UseForConcurrency />
-          <Generated />
-          <Hidden />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <NavigationProperty
-        Association="xref_EmployeeSARCerts_SARCertificationsSetItem"
-        FromEnd="xref_EmployeeSARCerts"
-        Name="SARCertificationsSetItem"
-        ToEnd="SARCertificationsSetItem" />
-      <NavigationProperty
-        Association="xref_EmployeeSARCerts_Employee"
-        FromEnd="xref_EmployeeSARCerts"
-        Name="Employee"
-        ToEnd="Employee" />
-      <EntityProperty
-        Name="Summary"
-        PropertyType=":String">
-        <EntityProperty.Attributes>
-          <Computed />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-    </EntityType.Properties>
-  </EntityType>
-  <Association
-    Name="xref_EmployeeSARCerts_SARCertificationsSetItem">
-    <AssociationEnd
-      EntityType="xref_EmployeeSARCerts"
-      Multiplicity="Many"
-      Name="xref_EmployeeSARCerts" />
-    <AssociationEnd
-      EntityType="SARCertificationsSetItem"
-      Multiplicity="One"
-      Name="SARCertificationsSetItem">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
-  <Association
-    Name="xref_EmployeeSARCerts_Employee">
-    <AssociationEnd
-      EntityType="xref_EmployeeSARCerts"
-      Multiplicity="Many"
-      Name="xref_EmployeeSARCerts" />
     <AssociationEnd
       EntityType="Employee"
       Multiplicity="One"
@@ -2248,6 +2060,21 @@
     <AssociationEnd
       EntityType="WaterRescueCerts"
       Name="WaterRescueCerts">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="Employee_SARCertificationsSetItem">
+    <AssociationEnd
+      EntityType="Employee"
+      Multiplicity="Many"
+      Name="Employee" />
+    <AssociationEnd
+      EntityType="SARCertificationsSetItem"
+      Name="SARCertificationsSetItem">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />

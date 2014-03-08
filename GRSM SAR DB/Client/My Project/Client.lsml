@@ -244,39 +244,6 @@
         DisablePaging="True"
         DisableSearch="True"
         DisableSorting="True"
-        Name="xref_EmployeeCertsCollection"
-        PageSize="15"
-        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeSARCerts">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="xref_EmployeeCertsCollectionQuery"
-            ReturnType="LightSwitchCommonModule:xref_EmployeeSARCerts*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="CreateNewTeamMember/Properties[EmployeeProperty]" />
-                  <MemberExpression
-                    Member="xref_EmployeeCertsCollection" />
-                </ChainExpression>
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="CreateNewTeamMember/Properties[xref_EmployeeCertsCollection]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        DisablePaging="True"
-        DisableSearch="True"
-        DisableSorting="True"
         Name="xref_EmployeeTechCerts"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeTechCert">
@@ -603,6 +570,33 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
+              <ContentItem
+                DataType="LightSwitchCommonModule:SARCertificationsSetItem"
+                Kind="Details"
+                Name="SARCertificationsSetItem">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="SAR Certification" />
+                </ContentItem.Attributes>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[SARCertificationsSetItem]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:SARCertificationsSetItem"
+                  Kind="Details"
+                  Name="SARCertificationsSetItem1">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
             </ContentItem>
             <ContentItem
               Kind="Group"
@@ -907,124 +901,6 @@
                     DataType="LightSwitchCommonModule:ResponseZones"
                     Kind="Details"
                     Name="RowTemplate5">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-              </ContentItem>
-            </ContentItem>
-            <ContentItem
-              DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeSARCerts"
-              Kind="Collection"
-              Name="xref_EmployeeCertsCollection">
-              <ContentItem.Attributes>
-                <DisplayName
-                  Value="Assign SAR Certifications" />
-              </ContentItem.Attributes>
-              <ContentItem.CommandItems>
-                <ContentItem
-                  Kind="Command"
-                  Name="xref_EmployeeCertsCollection_AddAndEditNew">
-                  <ContentItem.Attributes>
-                    <Description
-                      Value="Adds a new Certification to the list and displays a dialog to edit it." />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CreateNewTeamMember/Properties[xref_EmployeeCertsCollection]" />
-                        <CallExpression
-                          Target="AddAndEditNew" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Kind="Command"
-                  Name="xref_EmployeeCertsCollection_EditSelected">
-                  <ContentItem.Attributes>
-                    <Description
-                      Value="Displays a dialog to edit the current Certification in the list. This will change the selected Certificiation to another one, but will not change the &quot;Master&quot; list of Certifications." />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CreateNewTeamMember/Properties[xref_EmployeeCertsCollection]" />
-                        <CallExpression
-                          Target="EditSelected" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Kind="Command"
-                  Name="xref_EmployeeCertsCollection_DeleteSelected">
-                  <ContentItem.Attributes>
-                    <Description
-                      Value="Deletes the current Certification in the list" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CreateNewTeamMember/Properties[xref_EmployeeCertsCollection]" />
-                        <CallExpression
-                          Target="DeleteSelected" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem.CommandItems>
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="CreateNewTeamMember/Properties[xref_EmployeeCertsCollection]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem
-                DataType="LightSwitchCommonModule:xref_EmployeeSARCerts"
-                Kind="Details"
-                Name="RowTemplate6">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Assigned  SAR Certifications" />
-                </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression />
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:SARCertificationsSetItem"
-                  Kind="Details"
-                  Name="Certifications">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Employee SAR Certifications" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="LightSwitchCommonModule:xref_EmployeeSARCerts/Properties[SARCertificationsSetItem]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    DataType="LightSwitchCommonModule:SARCertificationsSetItem"
-                    Kind="Details"
-                    Name="RowTemplate7">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="Employee SAR Certifications" />
-                    </ContentItem.Attributes>
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
@@ -2518,70 +2394,6 @@
         DisablePaging="True"
         DisableSearch="True"
         DisableSorting="True"
-        Name="xref_EmployeeCertsCollection"
-        PageSize="15"
-        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeSARCerts">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="xref_EmployeeCertsCollectionQuery"
-            ReturnType="LightSwitchCommonModule:xref_EmployeeSARCerts*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="ManageTeamMembers/Properties[Employees]" />
-                  <MemberExpression
-                    Member="SelectedItem" />
-                  <MemberExpression
-                    Member="xref_EmployeeCertsCollection" />
-                </ChainExpression>
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ManageTeamMembers/Properties[xref_EmployeeCertsCollection]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        DisablePaging="True"
-        DisableSearch="True"
-        DisableSorting="True"
-        Name="AllCertifications"
-        PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$SARCertificationsSetItem">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="AllCertificationsQuery"
-            ReturnType="LightSwitchCommonModule:SARCertificationsSetItem*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[SARCertificationsSet]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ManageTeamMembers/Properties[AllCertifications]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        DisablePaging="True"
-        DisableSearch="True"
-        DisableSorting="True"
         Name="xref_EmployeeTechCerts"
         PageSize="45"
         PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeTechCert">
@@ -3433,6 +3245,33 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
+                DataType="LightSwitchCommonModule:SARCertificationsSetItem"
+                Kind="Details"
+                Name="SARCertificationsSetItem">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="SAR Certification" />
+                </ContentItem.Attributes>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[SARCertificationsSetItem]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:SARCertificationsSetItem"
+                  Kind="Details"
+                  Name="SARCertificationsSetItem1">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
                 DataType="LightSwitchCommonModule:ParkDivision"
                 Kind="Details"
                 Name="ParkDivision1">
@@ -3521,323 +3360,6 @@
                   </ScreenExpressionTree>
                 </ControlPropertySource>
               </ContentItem.PropertySources>
-              <ContentItem
-                Kind="Group"
-                Name="SARCertificationsGroup"
-                View=":ColumnsLayout">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="SAR Certifications Group" />
-                </ContentItem.Attributes>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeSARCerts"
-                  Kind="Collection"
-                  Name="xref_EmployeeCertsCollection"
-                  View=":List">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="SAR Certifications Assigned" />
-                  </ContentItem.Attributes>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Kind="Command"
-                      Name="xref_EmployeeCertsCollection_DeleteSelected">
-                      <ContentItem.Attributes>
-                        <Description
-                          Value="Deletes the current Certification in the list from the employees list of certifications." />
-                      </ContentItem.Attributes>
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="ManageTeamMembers/Properties[xref_EmployeeCertsCollection]" />
-                            <CallExpression
-                              Target="DeleteSelected" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="ManageTeamMembers/Properties[xref_EmployeeCertsCollection]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":Boolean"
-                          Value="True" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                  <ContentItem
-                    DataType="LightSwitchCommonModule:xref_EmployeeSARCerts"
-                    Kind="Details"
-                    Name="RowTemplate11">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="Employee SAR Certifications" />
-                    </ContentItem.Attributes>
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                    <ContentItem
-                      DataType="LightSwitchCommonModule:SARCertificationsSetItem"
-                      Kind="Details"
-                      Name="Certifications">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:xref_EmployeeSARCerts/Properties[SARCertificationsSetItem]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                      <ContentItem
-                        DataType="LightSwitchCommonModule:SARCertificationsSetItem"
-                        Kind="Details"
-                        Name="RowTemplate12">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression />
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                      </ContentItem>
-                    </ContentItem>
-                    <ContentItem
-                      DataType=":String"
-                      Kind="Value"
-                      Name="Summary3">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:xref_EmployeeSARCerts/Properties[Summary]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  Kind="Group"
-                  Name="SARCertGroup">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="SAR Certifcation Group" />
-                  </ContentItem.Attributes>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":Boolean"
-                          Value="True" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":String"
-                          Value="Top" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":String"
-                          Value="Left" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                  <ContentItem
-                    Kind="Group"
-                    Name="AddCertGroup">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="Add Group" />
-                    </ContentItem.Attributes>
-                    <ContentItem.CommandItems>
-                      <ContentItem
-                        Kind="Command"
-                        Name="AddCertification">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression>
-                              <CallExpression
-                                Target="ManageTeamMembers/Methods[AddCertification]" />
-                            </ChainExpression>
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                        <ContentItem.PropertySources>
-                          <ControlPropertySource
-                            Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
-                            <ScreenExpressionTree>
-                              <ConstantExpression
-                                ResultType=":String"
-                                Value="Center" />
-                            </ScreenExpressionTree>
-                          </ControlPropertySource>
-                          <ControlPropertySource
-                            Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
-                            <ScreenExpressionTree>
-                              <ConstantExpression
-                                ResultType=":String"
-                                Value="Center" />
-                            </ScreenExpressionTree>
-                          </ControlPropertySource>
-                        </ContentItem.PropertySources>
-                      </ContentItem>
-                    </ContentItem.CommandItems>
-                    <ContentItem.PropertySources>
-                      <ControlPropertySource
-                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
-                        <ScreenExpressionTree>
-                          <ConstantExpression
-                            ResultType=":String"
-                            Value="Center" />
-                        </ScreenExpressionTree>
-                      </ControlPropertySource>
-                    </ContentItem.PropertySources>
-                  </ContentItem>
-                  <ContentItem
-                    Kind="Group"
-                    Name="DeleteCertGroup">
-                    <ContentItem.CommandItems>
-                      <ContentItem
-                        Kind="Command"
-                        Name="RemoveCertification">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression>
-                              <CallExpression
-                                Target="ManageTeamMembers/Methods[RemoveCertification]" />
-                            </ChainExpression>
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                        <ContentItem.PropertySources>
-                          <ControlPropertySource
-                            Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
-                            <ScreenExpressionTree>
-                              <ConstantExpression
-                                ResultType=":String"
-                                Value="Center" />
-                            </ScreenExpressionTree>
-                          </ControlPropertySource>
-                          <ControlPropertySource
-                            Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
-                            <ScreenExpressionTree>
-                              <ConstantExpression
-                                ResultType=":String"
-                                Value="Center" />
-                            </ScreenExpressionTree>
-                          </ControlPropertySource>
-                        </ContentItem.PropertySources>
-                      </ContentItem>
-                    </ContentItem.CommandItems>
-                    <ContentItem.PropertySources>
-                      <ControlPropertySource
-                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
-                        <ScreenExpressionTree>
-                          <ConstantExpression
-                            ResultType=":String"
-                            Value="Center" />
-                        </ScreenExpressionTree>
-                      </ControlPropertySource>
-                    </ContentItem.PropertySources>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:CollectionView$SARCertificationsSetItem"
-                  Kind="Collection"
-                  Name="AllCertifications"
-                  View=":List">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Available SAR Certifications" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="ManageTeamMembers/Properties[AllCertifications]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":Boolean"
-                          Value="True" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                  <ContentItem
-                    DataType="LightSwitchCommonModule:SARCertificationsSetItem"
-                    Kind="Details"
-                    Name="AllCertificationsTemplate">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="List of SAR Certifications" />
-                    </ContentItem.Attributes>
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                    <ContentItem.PropertySources>
-                      <ControlPropertySource
-                        Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <ConstantExpression
-                              ResultType=":String"
-                              Value="Stretch" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ControlPropertySource>
-                    </ContentItem.PropertySources>
-                    <ContentItem
-                      DataType=":String"
-                      Kind="Value"
-                      Name="Certification">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:SARCertificationsSetItem/Properties[Certification]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                    <ContentItem
-                      DataType=":Int32"
-                      Kind="Value"
-                      Name="Cert">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:SARCertificationsSetItem/Properties[Rank]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem>
-                </ContentItem>
-              </ContentItem>
               <ContentItem
                 Kind="Group"
                 Name="ZoneGroup"
