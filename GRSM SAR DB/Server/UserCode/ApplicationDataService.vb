@@ -34,6 +34,13 @@ Namespace LightSwitchApplication
 
             mailHelper.SendMail()
         End Sub
+
+        Private Sub QRYDateFit_PreprocessQuery(ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.Employee))
+            Dim lastYear = DateAndTime.Now.AddYears(-1)
+            query = From q In query
+                    Where q.DateFit > lastYear
+             Select q
+        End Sub
     End Class
 
 End Namespace
