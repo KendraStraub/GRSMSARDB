@@ -867,16 +867,6 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Association="xref_EmployeeTechCert_Employee"
-      Name="xref_EmployeeTechCert_Employees">
-      <AssociationSetEnd
-        EntitySet="xref_EmployeeTechCerts"
-        Name="xref_EmployeeTechCert" />
-      <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
-    </AssociationSet>
-    <AssociationSet
       Association="xref_EmployeeTechCert_TechRescueCerts"
       Name="xref_EmployeeTechCert_TechRescueCertsSet">
       <AssociationSetEnd
@@ -1087,6 +1077,16 @@
       <AssociationSetEnd
         EntitySet="SARCertificationsSet"
         Name="SARCertificationsSetItem" />
+    </AssociationSet>
+    <AssociationSet
+      Association="Employee_TechRescueCerts"
+      Name="Employee_TechRescueCertsSet">
+      <AssociationSetEnd
+        EntitySet="Employees"
+        Name="Employee" />
+      <AssociationSetEnd
+        EntitySet="TechRescueCertsSet"
+        Name="TechRescueCerts" />
     </AssociationSet>
   </EntityContainer>
   <EntityType
@@ -1313,11 +1313,6 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="xref_EmployeeTechCert_Employee"
-        FromEnd="Employee"
-        Name="xref_EmployeeTechCerts"
-        ToEnd="xref_EmployeeTechCert" />
-      <NavigationProperty
         Association="xref_EmployeeWaterCert_Employee"
         FromEnd="Employee"
         Name="xref_EmployeeWaterCerts"
@@ -1361,6 +1356,11 @@
         FromEnd="Employee"
         Name="SARCertificationsSetItem"
         ToEnd="SARCertificationsSetItem" />
+      <NavigationProperty
+        Association="Employee_TechRescueCerts"
+        FromEnd="Employee"
+        Name="TechRescueCerts"
+        ToEnd="TechRescueCerts" />
     </EntityType.Properties>
   </EntityType>
   <Permission
@@ -1853,6 +1853,11 @@
         FromEnd="TechRescueCerts"
         Name="xref_EmployeeTechCerts"
         ToEnd="xref_EmployeeTechCert" />
+      <NavigationProperty
+        Association="Employee_TechRescueCerts"
+        FromEnd="TechRescueCerts"
+        Name="Employees"
+        ToEnd="Employee" />
     </EntityType.Properties>
   </EntityType>
   <EntityType
@@ -1885,11 +1890,6 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
-        Association="xref_EmployeeTechCert_Employee"
-        FromEnd="xref_EmployeeTechCert"
-        Name="Employee"
-        ToEnd="Employee" />
-      <NavigationProperty
         Association="xref_EmployeeTechCert_TechRescueCerts"
         FromEnd="xref_EmployeeTechCert"
         Name="TechRescueCerts"
@@ -1903,21 +1903,6 @@
       </EntityProperty>
     </EntityType.Properties>
   </EntityType>
-  <Association
-    Name="xref_EmployeeTechCert_Employee">
-    <AssociationEnd
-      EntityType="xref_EmployeeTechCert"
-      Multiplicity="Many"
-      Name="xref_EmployeeTechCert" />
-    <AssociationEnd
-      EntityType="Employee"
-      Name="Employee">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-  </Association>
   <Association
     Name="xref_EmployeeTechCert_TechRescueCerts">
     <AssociationEnd
@@ -2075,6 +2060,21 @@
     <AssociationEnd
       EntityType="SARCertificationsSetItem"
       Name="SARCertificationsSetItem">
+      <AssociationEnd.Attributes>
+        <DeleteRule
+          Action="Restrict" />
+      </AssociationEnd.Attributes>
+    </AssociationEnd>
+  </Association>
+  <Association
+    Name="Employee_TechRescueCerts">
+    <AssociationEnd
+      EntityType="Employee"
+      Multiplicity="Many"
+      Name="Employee" />
+    <AssociationEnd
+      EntityType="TechRescueCerts"
+      Name="TechRescueCerts">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
