@@ -240,39 +240,6 @@
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        DisablePaging="True"
-        DisableSearch="True"
-        DisableSorting="True"
-        Name="xref_EmployeeWaterCerts"
-        PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeWaterCert">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="xref_EmployeeWaterCertsQuery"
-            ReturnType="LightSwitchCommonModule:xref_EmployeeWaterCert*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="CreateNewTeamMember/Properties[EmployeeProperty]" />
-                  <MemberExpression
-                    Member="xref_EmployeeWaterCerts" />
-                </ChainExpression>
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
     <Screen.RootContentItem>
       <ContentItem
@@ -596,6 +563,29 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
+                DataType="LightSwitchCommonModule:WaterRescueCerts"
+                Kind="Details"
+                Name="WaterRescueCerts">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WaterRescueCerts]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:WaterRescueCerts"
+                  Kind="Details"
+                  Name="WaterRescueCerts1">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
                 DataType=":String"
                 Kind="Value"
                 Name="CLEO">
@@ -895,112 +885,6 @@
                     DataType="LightSwitchCommonModule:ResponseZones"
                     Kind="Details"
                     Name="RowTemplate5">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-              </ContentItem>
-            </ContentItem>
-            <ContentItem
-              DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeWaterCert"
-              Kind="Collection"
-              Name="xref_EmployeeWaterCerts">
-              <ContentItem.Attributes>
-                <DisplayName
-                  Value="Assign Swift Water Rescue Certifications" />
-              </ContentItem.Attributes>
-              <ContentItem.CommandItems>
-                <ContentItem
-                  Kind="Command"
-                  Name="xref_EmployeeWaterCerts_AddAndEditNew">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]" />
-                        <CallExpression
-                          Target="AddAndEditNew" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Kind="Command"
-                  Name="xref_EmployeeWaterCerts_EditSelected">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]" />
-                        <CallExpression
-                          Target="EditSelected" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Kind="Command"
-                  Name="xref_EmployeeWaterCerts_DeleteSelected">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]" />
-                        <CallExpression
-                          Target="DeleteSelected" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem.CommandItems>
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression
-                      Member="CreateNewTeamMember/Properties[xref_EmployeeWaterCerts]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem
-                DataType="LightSwitchCommonModule:xref_EmployeeWaterCert"
-                Kind="Details"
-                Name="xref_EmployeeWaterCertsTemplate">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Assigned Swift Water Rescue Certifications" />
-                </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression />
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:WaterRescueCerts"
-                  Kind="Details"
-                  Name="WaterRescueCerts">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Swift Water Rescue Certifications" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="LightSwitchCommonModule:xref_EmployeeWaterCert/Properties[WaterRescueCerts]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    DataType="LightSwitchCommonModule:WaterRescueCerts"
-                    Kind="Details"
-                    Name="WaterRescueCerts1">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="Swift Water Rescue Certifications" />
-                    </ContentItem.Attributes>
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
@@ -2278,70 +2162,6 @@
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        DisablePaging="True"
-        DisableSearch="True"
-        DisableSorting="True"
-        Name="xref_EmployeeWaterCerts"
-        PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeWaterCert">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="xref_EmployeeWaterCertsQuery"
-            ReturnType="LightSwitchCommonModule:xref_EmployeeWaterCert*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="ManageTeamMembers/Properties[Employees]" />
-                  <MemberExpression
-                    Member="SelectedItem" />
-                  <MemberExpression
-                    Member="xref_EmployeeWaterCerts" />
-                </ChainExpression>
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ManageTeamMembers/Properties[xref_EmployeeWaterCerts]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenCollectionProperty
-        DisablePaging="True"
-        DisableSearch="True"
-        DisableSorting="True"
-        Name="AllWaterRescueCerts"
-        PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$WaterRescueCerts">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="AllWaterRescueCertsQuery"
-            ReturnType="LightSwitchCommonModule:WaterRescueCerts*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[WaterRescueCertsSet]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ManageTeamMembers/Properties[AllWaterRescueCerts]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
     </Screen.Properties>
     <Screen.RootContentItem>
       <ContentItem
@@ -3123,6 +2943,29 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
+                DataType="LightSwitchCommonModule:WaterRescueCerts"
+                Kind="Details"
+                Name="WaterRescueCerts">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WaterRescueCerts]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:WaterRescueCerts"
+                  Kind="Details"
+                  Name="WaterRescueCerts1">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
                 DataType="LightSwitchCommonModule:ParkDivision"
                 Kind="Details"
                 Name="ParkDivision1">
@@ -3469,298 +3312,6 @@
                           <ChainExpression>
                             <MemberExpression
                               Member="LightSwitchCommonModule:ResponseZones/Properties[ZoneCode]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem>
-                </ContentItem>
-              </ContentItem>
-              <ContentItem
-                Kind="Group"
-                Name="WaterCertificationsGroups"
-                View=":ColumnsLayout">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Swift Water Rescue Certifications Group" />
-                </ContentItem.Attributes>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeWaterCert"
-                  Kind="Collection"
-                  Name="xref_EmployeeWaterCerts"
-                  View=":List">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Swift Water Rescue Certifications Assigned" />
-                  </ContentItem.Attributes>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Kind="Command"
-                      Name="xref_EmployeeWaterCerts_DeleteSelected">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="ManageTeamMembers/Properties[xref_EmployeeWaterCerts]" />
-                            <CallExpression
-                              Target="DeleteSelected" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="ManageTeamMembers/Properties[xref_EmployeeWaterCerts]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":Boolean"
-                          Value="True" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                  <ContentItem
-                    DataType="LightSwitchCommonModule:xref_EmployeeWaterCert"
-                    Kind="Details"
-                    Name="xref_EmployeeWaterCertsTemplate">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="Employee Water Rescue Certifications" />
-                    </ContentItem.Attributes>
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                    <ContentItem
-                      DataType="LightSwitchCommonModule:Employee"
-                      Kind="Details"
-                      Name="Employee2">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:xref_EmployeeWaterCert/Properties[Employee]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                      <ContentItem
-                        DataType="LightSwitchCommonModule:Employee"
-                        Kind="Details"
-                        Name="Employee3">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression />
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                      </ContentItem>
-                    </ContentItem>
-                    <ContentItem
-                      DataType="LightSwitchCommonModule:WaterRescueCerts"
-                      Kind="Details"
-                      Name="WaterRescueCerts">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:xref_EmployeeWaterCert/Properties[WaterRescueCerts]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                      <ContentItem
-                        DataType="LightSwitchCommonModule:WaterRescueCerts"
-                        Kind="Details"
-                        Name="WaterRescueCerts1">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression />
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                      </ContentItem>
-                    </ContentItem>
-                    <ContentItem
-                      DataType=":String"
-                      Kind="Value"
-                      Name="Summary5">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:xref_EmployeeWaterCert/Properties[Summary]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  Kind="Group"
-                  Name="WaterCertGroup">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Swift Water Rescue Certifications Group" />
-                  </ContentItem.Attributes>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":Boolean"
-                          Value="True" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":String"
-                          Value="Center" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":String"
-                          Value="Top" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                  <ContentItem
-                    Kind="Group"
-                    Name="AddWaterCertsGroup">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="Add Group" />
-                    </ContentItem.Attributes>
-                    <ContentItem.CommandItems>
-                      <ContentItem
-                        Kind="Command"
-                        Name="AddWaterCertification">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression>
-                              <CallExpression
-                                Target="ManageTeamMembers/Methods[AddWaterCertification]" />
-                            </ChainExpression>
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                      </ContentItem>
-                    </ContentItem.CommandItems>
-                    <ContentItem.PropertySources>
-                      <ControlPropertySource
-                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
-                        <ScreenExpressionTree>
-                          <ConstantExpression
-                            ResultType=":String"
-                            Value="Center" />
-                        </ScreenExpressionTree>
-                      </ControlPropertySource>
-                    </ContentItem.PropertySources>
-                  </ContentItem>
-                  <ContentItem
-                    Kind="Group"
-                    Name="DeleteWaterCertsGroup">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="Delete Group" />
-                    </ContentItem.Attributes>
-                    <ContentItem.CommandItems>
-                      <ContentItem
-                        Kind="Command"
-                        Name="DeleteWaterCertification">
-                        <ContentItem.DataSource>
-                          <ScreenExpressionTree>
-                            <ChainExpression>
-                              <CallExpression
-                                Target="ManageTeamMembers/Methods[DeleteWaterCertification]" />
-                            </ChainExpression>
-                          </ScreenExpressionTree>
-                        </ContentItem.DataSource>
-                      </ContentItem>
-                    </ContentItem.CommandItems>
-                    <ContentItem.PropertySources>
-                      <ControlPropertySource
-                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
-                        <ScreenExpressionTree>
-                          <ConstantExpression
-                            ResultType=":String"
-                            Value="Center" />
-                        </ScreenExpressionTree>
-                      </ControlPropertySource>
-                    </ContentItem.PropertySources>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:CollectionView$WaterRescueCerts"
-                  Kind="Collection"
-                  Name="AllWaterRescueCerts"
-                  View=":List">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Available Swift Water Rescue Certifications" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="ManageTeamMembers/Properties[AllWaterRescueCerts]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          ResultType=":Boolean"
-                          Value="True" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                  <ContentItem
-                    DataType="LightSwitchCommonModule:WaterRescueCerts"
-                    Kind="Details"
-                    Name="AllWaterRescueCertsTemplate">
-                    <ContentItem.Attributes>
-                      <DisplayName
-                        Value="List of  Swift Water Rescue Certifications" />
-                    </ContentItem.Attributes>
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                    <ContentItem
-                      DataType=":String"
-                      Kind="Value"
-                      Name="SWRescueCert">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:WaterRescueCerts/Properties[SWRescueCert]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                    <ContentItem
-                      DataType=":Int32"
-                      Kind="Value"
-                      Name="Rank1">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="LightSwitchCommonModule:WaterRescueCerts/Properties[Rank]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
