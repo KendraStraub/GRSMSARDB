@@ -3783,10 +3783,10 @@
         PropertyType=":Int32?">
         <ScreenProperty.Attributes>
           <SupportedValue
-            DisplayName="Current Year"
+            DisplayName="Current (Fitness test &lt; 1 year)"
             Value="1" />
           <SupportedValue
-            DisplayName="Last Year"
+            DisplayName="Recently Expired (Fitness test &lt; 2 years) "
             Value="2" />
           <SupportedValue
             DisplayName="We'll Take Anyone"
@@ -3841,6 +3841,21 @@
             </ControlPropertySource>
           </ContentItem.PropertySources>
           <ContentItem
+            Kind="ScreenContent"
+            Name="Text"
+            View=":StaticLabel">
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch:StaticLabel/Properties[Text]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    ResultType=":String"
+                    Value="This screen allows you to define requirements for an Incident Response Team based on parameters supplied by the Incident Commander. By default the list is populated with all responders that have taken a fitness test within the last year. " />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
+          <ContentItem
             Kind="Group"
             Name="Group1"
             View=":ColumnsLayout">
@@ -3867,65 +3882,225 @@
                 </ControlPropertySource>
               </ContentItem.PropertySources>
               <ContentItem
-                DataType=":Int32?"
-                Kind="Value"
-                Name="Year">
+                Kind="Group"
+                Name="Group4"
+                View=":GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Took Fitness Test?" />
+                    Value="Fitness Test" />
                 </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[Year]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType="LightSwitchCommonModule:SARCertifications"
-                Kind="Details"
-                Name="AllSARCerts">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="SAR Certification?" />
-                </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[AllSARCerts]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SARCertifications"
-                  Kind="Details"
-                  Name="SARCertifications2">
+                  Kind="ScreenContent"
+                  Name="Text1"
+                  View=":StaticLabel">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Fitness_Instructions" />
+                  </ContentItem.Attributes>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property=":StaticLabel/Properties[Text]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Select if the team member took a fitness test within the last year, the last 2 years, or never. Default is last year. " />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property=":RootControl/Properties[MinHeight]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Double"
+                          Value="15" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property=":RootControl/Properties[VerticalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Stretch" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property=":RootControl/Properties[Height]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Double"
+                          Value="10" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property=":RootControl/Properties[HeightSizingMode]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Lines" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property=":Label/Properties[Lines]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Int32"
+                          Value="2" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  DataType=":Int32?"
+                  Kind="Value"
+                  Name="Year">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Took Fitness Test?" />
+                    <Description
+                      Value="Select Fitness Test Requirement: Within the last 1 year, 2 years, or everyone." />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
-                      <ChainExpression />
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[Year]" />
+                      </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType=":String?"
-                Kind="Value"
-                Name="TechCertList1">
+                Kind="Group"
+                Name="Group5"
+                View=":GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Technical Rescuer Needed?" />
+                    Value="SAR Certification" />
                 </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[TechCertList]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
+                <ContentItem
+                  Kind="ScreenContent"
+                  Name="Text2"
+                  View=":StaticLabel">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="SARCERT_Instructions" />
+                  </ContentItem.Attributes>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property=":StaticLabel/Properties[Text]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Select the MINIMUM required SAR Certification. The result will be team members that posses the minimum certification. Default is no certification." />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property=":RootControl/Properties[HeightSizingMode]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Lines" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property=":Label/Properties[Lines]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":Int32"
+                          Value="3" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:SARCertifications"
+                  Kind="Details"
+                  Name="AllSARCerts">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="SAR Certification?" />
+                    <Description
+                      Value="Select MINIMUM SAR Certification. Results will be everyone meeting that certification OR higher. " />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[AllSARCerts]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    DataType="LightSwitchCommonModule:SARCertifications"
+                    Kind="Details"
+                    Name="SARCertifications2">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Kind="Group"
+                Name="Group6"
+                View=":GroupBox">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Technical Rescuer" />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Kind="ScreenContent"
+                  Name="StaticLabel"
+                  View=":StaticLabel">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="TECHRESC_Instructions" />
+                  </ContentItem.Attributes>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property=":StaticLabel/Properties[Text]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Select if a Certified Technical Rescuer is required. Ignored by default. " />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property=":RootControl/Properties[HeightSizingMode]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          ResultType=":String"
+                          Value="Lines" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  DataType=":String?"
+                  Kind="Value"
+                  Name="TechCertList1">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Technical Rescuer Needed?" />
+                    <Description
+                      Value="Select if a Certified Technical Rescuer is needed. " />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[TechCertList]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
               </ContentItem>
             </ContentItem>
             <ContentItem
@@ -3951,81 +4126,195 @@
                 </ControlPropertySource>
               </ContentItem.PropertySources>
               <ContentItem
-                DataType=":String?"
-                Kind="Value"
-                Name="TrackerList1">
+                Kind="Group"
+                Name="Group7"
+                View=":GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Tracker Required?" />
+                    Value="Certified Tracker" />
                 </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[TrackerList]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
+                <ContentItem
+                  Kind="ScreenContent"
+                  Name="TRACK_Instructions"
+                  View=":StaticLabel">
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:StaticLabel/Properties[Text]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Select if a Certified Tracker is required. Ignored by default. " />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  DataType=":String?"
+                  Kind="Value"
+                  Name="TrackerList1">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Tracker Required?" />
+                    <Description
+                      Value="Select if a Certified Tracker is needed. " />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[TrackerList]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType=":String?"
-                Kind="Value"
-                Name="MedicList1">
+                Kind="Group"
+                Name="Group8"
+                View=":GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Medic Required?" />
+                    Value="Medic" />
                 </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[MedicList]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
+                <ContentItem
+                  Kind="ScreenContent"
+                  Name="MEDIC_Instructions"
+                  View=":StaticLabel">
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:StaticLabel/Properties[Text]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Select if a Medic or EMT is required. Ignored by default. " />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  DataType=":String?"
+                  Kind="Value"
+                  Name="MedicList1">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Medic Required?" />
+                    <Description
+                      Value="Select if a Medic/EMT is needed. " />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[MedicList]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType=":String?"
-                Kind="Value"
-                Name="CLEOList1">
+                Kind="Group"
+                Name="Group9"
+                View=":GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Commissioned Law Enforcement Officer Needed?" />
+                    Value="Law Enforcement" />
                 </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[CLEOList]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
+                <ContentItem
+                  Kind="ScreenContent"
+                  Name="LEO_Instructions"
+                  View=":StaticLabel">
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property=":StaticLabel/Properties[Text]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Select if a Commissioned Law Enforcement Officer is required. Ignored by default. " />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem
+                  DataType=":String?"
+                  Kind="Value"
+                  Name="CLEOList1">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Commissioned Law Enforcement Officer Needed?" />
+                    <Description
+                      Value="Select if a Commissioned Law Enforcement Officer is needed. " />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[CLEOList]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
               </ContentItem>
             </ContentItem>
             <ContentItem
               Kind="Group"
               Name="Group3">
               <ContentItem
-                DataType="LightSwitchCommonModule:YearRoundRes"
-                Kind="Details"
-                Name="Residency">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[Residency]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
+                Kind="Group"
+                Name="Group10"
+                View=":GroupBox">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Residency" />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Kind="ScreenContent"
+                  Name="Text3"
+                  View=":StaticLabel">
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch:StaticLabel/Properties[Text]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            ResultType=":String"
+                            Value="Select if need someone whom lives here year-round or is temporar/seasonal (summer). Ignored by default. " />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
                 <ContentItem
                   DataType="LightSwitchCommonModule:YearRoundRes"
                   Kind="Details"
-                  Name="YearRoundRes1">
+                  Name="Residency">
+                  <ContentItem.Attributes>
+                    <Description
+                      Value="Select if they need to live here year-round or not." />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
-                      <ChainExpression />
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[Residency]" />
+                      </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem
+                    DataType="LightSwitchCommonModule:YearRoundRes"
+                    Kind="Details"
+                    Name="YearRoundRes1">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
                 </ContentItem>
               </ContentItem>
             </ContentItem>
@@ -4034,50 +4323,10 @@
             DataType="LightSwitchCommonModule:CollectionView$Employee"
             Kind="Collection"
             Name="IRT">
-            <ContentItem.CommandItems>
-              <ContentItem
-                Kind="Command"
-                Name="IRT_AddAndEditNew">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[IRT]" />
-                      <CallExpression
-                        Target="AddAndEditNew" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                Kind="Command"
-                Name="IRT_EditSelected">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[IRT]" />
-                      <CallExpression
-                        Target="EditSelected" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                Kind="Command"
-                Name="IRT_DeleteSelected">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchEmployees/Properties[IRT]" />
-                      <CallExpression
-                        Target="DeleteSelected" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-            </ContentItem.CommandItems>
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Incident Response Team" />
+            </ContentItem.Attributes>
             <ContentItem.DataSource>
               <ScreenExpressionTree>
                 <ChainExpression>
@@ -4086,15 +4335,43 @@
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch:DataGrid/Properties[ShowVirtualRow]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      ResultType=":Boolean"
+                      Value="False" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
             <ContentItem
               DataType="LightSwitchCommonModule:Employee"
               Kind="Details"
               Name="IRTTemplate">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Team" />
+              </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression />
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch:RootControl/Properties[BrowseOnly]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression
+                        ResultType=":Boolean"
+                        Value="True" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
               <ContentItem
                 DataType=":String"
                 Kind="Value"
@@ -4197,6 +4474,81 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
+                DataType="LightSwitchCommonModule:YearRoundRes"
+                Kind="Details"
+                Name="YearRoundRes">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[YearRoundRes]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem
+                  DataType="LightSwitchCommonModule:YearRoundRes"
+                  Kind="Details"
+                  Name="YearRoundRes2">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                Kind="Value"
+                Name="WorkMobile">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType=":String"
+                Kind="Value"
+                Name="WorksSMS">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                Kind="Value"
+                Name="PersonalMobile">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType=":String"
+                Kind="Value"
+                Name="PersonalSMS">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
                 DataType="Microsoft.LightSwitch.Extensions:EmailAddress?"
                 Kind="Value"
                 Name="WorkEmail">
@@ -4249,19 +4601,6 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
-                Kind="Value"
-                Name="WorkMobile">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
                 DataType="LightSwitchCommonModule:ParkDivision"
                 Kind="Details"
                 Name="ParkDivision">
@@ -4283,68 +4622,6 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
-              </ContentItem>
-              <ContentItem
-                DataType="LightSwitchCommonModule:YearRoundRes"
-                Kind="Details"
-                Name="YearRoundRes">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[YearRoundRes]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  DataType="LightSwitchCommonModule:YearRoundRes"
-                  Kind="Details"
-                  Name="YearRoundRes2">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression />
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="PersonalSMS">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
-                Kind="Value"
-                Name="PersonalMobile">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="WorksSMS">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
               </ContentItem>
             </ContentItem>
           </ContentItem>

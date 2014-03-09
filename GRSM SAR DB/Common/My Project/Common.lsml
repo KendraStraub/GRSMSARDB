@@ -823,23 +823,6 @@
       </QueryOperationParameter>
     </QueryOperation>
     <QueryOperation
-      Name="QRYDateFit"
-      ReturnType="Employee*">
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree />
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="Employees" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        IsOptional="True"
-        Name="Year"
-        ParameterType=":Int32?" />
-    </QueryOperation>
-    <QueryOperation
       Name="QRYMaxRank"
       ReturnType="Employee*">
       <QueryOperation.FilterExpression>
