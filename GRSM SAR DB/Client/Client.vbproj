@@ -148,16 +148,6 @@
       <HintPath>$(LightSwitchSDKPath)\Client\Microsoft.Data.Services.Client.SL.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OfficeIntegration.Client">
-      <HintPath>..\_Pvt_Extensions\OfficeIntegration\Client\Reference\OfficeIntegration.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="OfficeIntegration.Client.Design">
-      <HintPath>..\_Pvt_Extensions\OfficeIntegration\ClientGen\DebugOnlyRef\OfficeIntegration.Client.Design.dll</HintPath>
-      <ExtensionReferenceType>DebugOnly</ExtensionReferenceType>
-    </Reference>
-    <Reference Include="OfficeIntegration.Common">
-      <HintPath>..\_Pvt_Extensions\OfficeIntegration\ClientGen\Reference\OfficeIntegration.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
