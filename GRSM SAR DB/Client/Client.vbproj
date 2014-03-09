@@ -235,6 +235,7 @@
     <Compile Include="UserCode\ManageTeamMembers.vb" />
     <Compile Include="UserCode\ManageTechRescueCerts.vb" />
     <Compile Include="UserCode\SearchEmployees.vb" />
+    <Compile Include="UserCode\SearchEmployees1.vb" />
     <Compile Include="UserCode\SendAnEmail.vb" />
   </ItemGroup>
   <ItemGroup>

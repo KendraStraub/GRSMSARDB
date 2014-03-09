@@ -112,6 +112,13 @@ Namespace LightSwitchApplication
                  Select q
             End If
         End Sub
+
+
+        Private Sub QRYZone_PreprocessQuery(ZoneID As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.ResponseZones))
+            query = From q In query
+            Where q.xref_EmployeeZonesCollection.Any(Function(s) s.ResponseZones.Id = ZoneID)
+            Select q
+        End Sub
     End Class
 
 End Namespace

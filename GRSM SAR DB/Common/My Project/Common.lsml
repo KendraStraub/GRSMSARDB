@@ -708,22 +708,7 @@
       Name="QRYZone"
       ReturnType="ResponseZones*">
       <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ConstantExpression
-                ResultType=":Int32"
-                Value="0" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
+        <QueryFilterExpressionTree />
       </QueryOperation.FilterExpression>
       <QueryOperation.Source>
         <QuerySourceExpressionTree>
@@ -821,23 +806,6 @@
             Value="The value of the 'Id' key property of the entity to retrieve." />
         </QueryOperationParameter.Attributes>
       </QueryOperationParameter>
-    </QueryOperation>
-    <QueryOperation
-      Name="QRYMaxRank"
-      ReturnType="Employee*">
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree />
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="Employees" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        IsOptional="True"
-        Name="MaxRank"
-        ParameterType=":Int32?" />
     </QueryOperation>
     <QueryOperation
       Name="QRYParameters"
