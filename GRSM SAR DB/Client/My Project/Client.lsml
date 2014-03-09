@@ -5,7 +5,8 @@
     Name="LightSwitchApplication"
     Shell="Microsoft.LightSwitch.Cosmopolitan:CosmopolitanShell"
     Theme="Microsoft.LightSwitch.Cosmopolitan:CosmopolitanTheme"
-    Version="1.0.0.0">
+    Version="1.0.0.0"
+    TargetPlatform="RichClient">
     <Application.Attributes>
       <ModuleNamespace
         Namespace="LightSwitchApplication" />
@@ -195,12 +196,185 @@
       Name="ScreenCommandShowSearchEmployees1"
       Target="!module/Methods[ShowSearchEmployees1]" />
   </Application>
+  <EntityContainerGroup
+    Name="DataWorkspace">
+    <EntityContainerGroupProperty
+      EntityContainer="Microsoft.LightSwitch.Security:SecurityData"
+      Name="SecurityData">
+      <EntityContainerGroupProperty.Attributes>
+        <Generated />
+        <DisplayName
+          Value="Security Data" />
+        <Description
+          Value="Service that provides access to security-related data." />
+      </EntityContainerGroupProperty.Attributes>
+    </EntityContainerGroupProperty>
+    <EntityContainerGroupProperty
+      EntityContainer="ApplicationData"
+      Name="ApplicationData" />
+  </EntityContainerGroup>
+  <EntityContainer>
+    <EntityContainer.Attributes>
+      <Proxy
+        Target="ServiceInterface:ApplicationData" />
+    </EntityContainer.Attributes>
+  </EntityContainer>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:Employee" />
+    </EntityType.Attributes>
+    <EntityType.Properties>
+      <EntityProperty>
+        <EntityProperty.Attributes>
+          <Proxy
+            Target="LightSwitchServiceApplication:Employee/Properties[DaysSinceLastFit]" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty>
+        <EntityProperty.Attributes>
+          <Proxy
+            Target="LightSwitchServiceApplication:Employee/Properties[PersonalSMS]" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty>
+        <EntityProperty.Attributes>
+          <Proxy
+            Target="LightSwitchServiceApplication:Employee/Properties[WorksSMS]" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty>
+        <EntityProperty.Attributes>
+          <Proxy
+            Target="LightSwitchServiceApplication:Employee/Properties[Summary]" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:ParkDivision" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:YearRoundRes" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:SMSCarrier" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:ResponseZones" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:xref_EmployeeZones" />
+    </EntityType.Attributes>
+    <EntityType.Properties>
+      <EntityProperty>
+        <EntityProperty.Attributes>
+          <Proxy
+            Target="LightSwitchServiceApplication:xref_EmployeeZones/Properties[Summary]" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:SARCertifications" />
+      <SummaryProperty
+        Property="SARCertifications/Properties[Certification]" />
+    </EntityType.Attributes>
+  </EntityType>
+  <EntityType>
+    <EntityType.Attributes>
+      <Proxy
+        Target="ServiceInterface:ProxyEmail" />
+    </EntityType.Attributes>
+  </EntityType>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:ParkDivision_Employee" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:YearRoundRes_Employee" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:SMSCarrier_Employee" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:SMSCarrier_Employee1" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:xref_EmployeeZones_ResponseZones" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:xref_EmployeeZones_Employee" />
+    </Association.Attributes>
+  </Association>
+  <Association>
+    <Association.Attributes>
+      <Proxy
+        Target="ServiceInterface:Employee_SARCertifications" />
+    </Association.Attributes>
+  </Association>
+  <Permission>
+    <Permission.Attributes>
+      <Proxy
+        Target="ServiceInterface:Administration" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission>
+    <Permission.Attributes>
+      <Proxy
+        Target="ServiceInterface:Editing" />
+    </Permission.Attributes>
+  </Permission>
+  <Permission>
+    <Permission.Attributes>
+      <Proxy
+        Target="ServiceInterface:Viewer" />
+    </Permission.Attributes>
+  </Permission>
+  <GlobalAttributeGroup>
+    <GlobalAttributeGroup.Attributes>
+      <Proxy
+        Target="ServiceInterface:LightSwitchServiceApplicationGroup" />
+    </GlobalAttributeGroup.Attributes>
+  </GlobalAttributeGroup>
   <Screen
     LaunchMode="Multiple"
     Name="CreateNewTeamMember">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -235,18 +409,18 @@
     <Screen.Properties>
       <ScreenProperty
         Name="EmployeeProperty"
-        PropertyType="LightSwitchCommonModule:Employee" />
+        PropertyType="Employee" />
       <ScreenCollectionProperty
         DisablePaging="True"
         DisableSearch="True"
         DisableSorting="True"
         Name="xref_EmployeeZonesCollection"
         PageSize="15"
-        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeZones">
+        PropertyType="CollectionView$xref_EmployeeZones">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="xref_EmployeeZonesCollectionQuery"
-            ReturnType="LightSwitchCommonModule:xref_EmployeeZones*">
+            ReturnType="xref_EmployeeZones*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
@@ -305,7 +479,7 @@
           Name="ScreenLayout">
           <ContentItem.PropertySources>
             <ControlPropertySource
-              Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+              Property="Microsoft.LightSwitch.RichClient:ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
               <ScreenExpressionTree>
                 <ChainExpression>
                   <ConstantExpression
@@ -316,10 +490,10 @@
             </ControlPropertySource>
           </ContentItem.PropertySources>
           <ContentItem
-            DataType="LightSwitchCommonModule:Employee"
+            DataType="Employee"
             Kind="Details"
             Name="details"
-            View="Microsoft.LightSwitch:ColumnsLayout">
+            View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
             <ContentItem.DataSource>
               <ScreenExpressionTree>
                 <ChainExpression>
@@ -330,7 +504,7 @@
             </ContentItem.DataSource>
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":RootControl/Properties[VerticalAlignment]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -355,7 +529,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[FirstName]" />
+                        Member="Employee/Properties[FirstName]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -372,7 +546,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[LastName]" />
+                        Member="Employee/Properties[LastName]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -389,7 +563,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkEmail]" />
+                        Member="Employee/Properties[WorkEmail]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -406,7 +580,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[HomeEmail]" />
+                        Member="Employee/Properties[HomeEmail]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -423,7 +597,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkPhone]" />
+                        Member="Employee/Properties[WorkPhone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -440,7 +614,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[HomePhone]" />
+                        Member="Employee/Properties[HomePhone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -457,7 +631,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[DateFit]" />
+                        Member="Employee/Properties[DateFit]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -474,13 +648,13 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[DaysSinceLastFit]" />
+                        Member="Employee/Properties[DaysSinceLastFit]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:ParkDivision"
+                DataType="ParkDivision"
                 Kind="Details"
                 Name="ParkDivision">
                 <ContentItem.Attributes>
@@ -491,12 +665,12 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[ParkDivision]" />
+                        Member="Employee/Properties[ParkDivision]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:ParkDivision"
+                  DataType="ParkDivision"
                   Kind="Details"
                   Name="RowTemplate">
                   <ContentItem.DataSource>
@@ -507,7 +681,7 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:YearRoundRes"
+                DataType="YearRoundRes"
                 Kind="Details"
                 Name="YearRoundRes">
                 <ContentItem.Attributes>
@@ -518,12 +692,12 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[YearRoundRes]" />
+                        Member="Employee/Properties[YearRoundRes]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:YearRoundRes"
+                  DataType="YearRoundRes"
                   Kind="Details"
                   Name="RowTemplate1">
                   <ContentItem.DataSource>
@@ -534,7 +708,7 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SARCertifications"
+                DataType="SARCertifications"
                 Kind="Details"
                 Name="SARCertificationsSetItem">
                 <ContentItem.Attributes>
@@ -545,12 +719,12 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[SARCertifications]" />
+                        Member="Employee/Properties[SARCertifications]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SARCertifications"
+                  DataType="SARCertifications"
                   Kind="Details"
                   Name="SARCertificationsSetItem1">
                   <ContentItem.DataSource>
@@ -576,7 +750,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
+                        Member="Employee/Properties[CLEO]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -593,7 +767,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
+                        Member="Employee/Properties[MEDIC]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -610,7 +784,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[TechRescue]" />
+                        Member="Employee/Properties[TechRescue]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -627,7 +801,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Tracker]" />
+                        Member="Employee/Properties[Tracker]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -646,13 +820,13 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
+                        Member="Employee/Properties[WorkMobile]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SMSCarrier"
+                DataType="SMSCarrier"
                 Kind="Details"
                 Name="WorkSMSCarriers">
                 <ContentItem.Attributes>
@@ -665,12 +839,12 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkSMSCarriers]" />
+                        Member="Employee/Properties[WorkSMSCarriers]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  DataType="SMSCarrier"
                   Kind="Details"
                   Name="RowTemplate2">
                   <ContentItem.DataSource>
@@ -694,7 +868,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
+                        Member="Employee/Properties[WorksSMS]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -713,13 +887,13 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
+                        Member="Employee/Properties[PersonalMobile]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SMSCarrier"
+                DataType="SMSCarrier"
                 Kind="Details"
                 Name="PersonalSMSCarriers">
                 <ContentItem.Attributes>
@@ -732,12 +906,12 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMSCarriers]" />
+                        Member="Employee/Properties[PersonalSMSCarriers]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  DataType="SMSCarrier"
                   Kind="Details"
                   Name="RowTemplate3">
                   <ContentItem.DataSource>
@@ -761,7 +935,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
+                        Member="Employee/Properties[PersonalSMS]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -778,7 +952,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
+                        Member="Employee/Properties[Summary]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -788,10 +962,10 @@
           <ContentItem
             Kind="Group"
             Name="children"
-            View="Microsoft.LightSwitch:TabsLayout">
+            View="Microsoft.LightSwitch.RichClient:TabsLayout">
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":RootControl/Properties[VerticalAlignment]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -802,7 +976,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeZones"
+              DataType="CollectionView$xref_EmployeeZones"
               Kind="Collection"
               Name="xref_EmployeeZonesCollection">
               <ContentItem.Attributes>
@@ -874,7 +1048,7 @@
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
-                DataType="LightSwitchCommonModule:xref_EmployeeZones"
+                DataType="xref_EmployeeZones"
                 Kind="Details"
                 Name="RowTemplate4">
                 <ContentItem.Attributes>
@@ -887,19 +1061,19 @@
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:ResponseZones"
+                  DataType="ResponseZones"
                   Kind="Details"
                   Name="ResponseZones">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:xref_EmployeeZones/Properties[ResponseZones]" />
+                          Member="xref_EmployeeZones/Properties[ResponseZones]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:ResponseZones"
+                    DataType="ResponseZones"
                     Kind="Details"
                     Name="RowTemplate5">
                     <ContentItem.DataSource>
@@ -920,7 +1094,7 @@
     Name="ManageDivisions">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -959,18 +1133,18 @@
         DisableSorting="True"
         Name="ParkDivisions"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$ParkDivision">
+        PropertyType="CollectionView$ParkDivision">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="ParkDivisionsQuery"
-            ReturnType="LightSwitchCommonModule:ParkDivision*">
+            ReturnType="ParkDivision*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[ParkDivisions]" />
+                  Member="ApplicationData/Members[ParkDivisions]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -1017,7 +1191,7 @@
           Kind="Group"
           Name="ScreenLayout">
           <ContentItem
-            DataType="LightSwitchCommonModule:CollectionView$ParkDivision"
+            DataType="CollectionView$ParkDivision"
             Kind="Collection"
             Name="grid">
             <ContentItem.CommandItems>
@@ -1060,7 +1234,7 @@
             </ContentItem.DataSource>
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":RootControl/Properties[VerticalAlignment]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1070,7 +1244,7 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
               <ControlPropertySource
-                Property=":RootControl/Properties[AttachedLabelPosition]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1081,7 +1255,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:ParkDivision"
+              DataType="ParkDivision"
               Kind="Details"
               Name="RowTemplate">
               <ContentItem.DataSource>
@@ -1097,7 +1271,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:ParkDivision/Properties[Division]" />
+                        Member="ParkDivision/Properties[Division]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -1114,7 +1288,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:ParkDivision/Properties[DivisionAbbr]" />
+                        Member="ParkDivision/Properties[DivisionAbbr]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -1129,7 +1303,7 @@
     Name="ManageSARCertifications">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
       <DisplayName
         Value="Manage SAR Certifications" />
     </Screen.Attributes>
@@ -1170,18 +1344,18 @@
         DisableSorting="True"
         Name="CertificationsSet"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$SARCertifications">
+        PropertyType="CollectionView$SARCertifications">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="CertificationsSetQuery"
-            ReturnType="LightSwitchCommonModule:SARCertifications*">
+            ReturnType="SARCertifications*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[SARCertificationsSet]" />
+                  Member="ApplicationData/Members[SARCertificationsSet]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -1228,7 +1402,7 @@
           Kind="Group"
           Name="ScreenLayout">
           <ContentItem
-            DataType="LightSwitchCommonModule:CollectionView$SARCertifications"
+            DataType="CollectionView$SARCertifications"
             Kind="Collection"
             Name="grid">
             <ContentItem.Attributes>
@@ -1289,7 +1463,7 @@
             </ContentItem.DataSource>
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":RootControl/Properties[VerticalAlignment]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1299,7 +1473,7 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
               <ControlPropertySource
-                Property=":RootControl/Properties[AttachedLabelPosition]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1310,7 +1484,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:SARCertifications"
+              DataType="SARCertifications"
               Kind="Details"
               Name="RowTemplate">
               <ContentItem.DataSource>
@@ -1326,7 +1500,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:SARCertifications/Properties[Certification]" />
+                        Member="SARCertifications/Properties[Certification]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -1339,7 +1513,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:SARCertifications/Properties[Rank]" />
+                        Member="SARCertifications/Properties[Rank]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -1354,7 +1528,7 @@
     Name="ManageResponseZones">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -1393,18 +1567,18 @@
         DisableSorting="True"
         Name="ResponseZonesSet"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$ResponseZones">
+        PropertyType="CollectionView$ResponseZones">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="ResponseZonesSetQuery"
-            ReturnType="LightSwitchCommonModule:ResponseZones*">
+            ReturnType="ResponseZones*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[ResponseZonesSet]" />
+                  Member="ApplicationData/Members[ResponseZonesSet]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -1451,7 +1625,7 @@
           Kind="Group"
           Name="ScreenLayout">
           <ContentItem
-            DataType="LightSwitchCommonModule:CollectionView$ResponseZones"
+            DataType="CollectionView$ResponseZones"
             Kind="Collection"
             Name="grid">
             <ContentItem.Attributes>
@@ -1512,7 +1686,7 @@
             </ContentItem.DataSource>
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":RootControl/Properties[VerticalAlignment]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1522,7 +1696,7 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
               <ControlPropertySource
-                Property=":RootControl/Properties[AttachedLabelPosition]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1533,7 +1707,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:ResponseZones"
+              DataType="ResponseZones"
               Kind="Details"
               Name="RowTemplate">
               <ContentItem.DataSource>
@@ -1549,7 +1723,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:ResponseZones/Properties[ResponseZone]" />
+                        Member="ResponseZones/Properties[ResponseZone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -1562,7 +1736,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:ResponseZones/Properties[ZoneCode]" />
+                        Member="ResponseZones/Properties[ZoneCode]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -1577,7 +1751,7 @@
     Name="ManageSMSCarriers">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
       <DisplayName
         Value="Manage SMS Carriers" />
     </Screen.Attributes>
@@ -1618,18 +1792,18 @@
         DisableSorting="True"
         Name="SMSCarriers"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$SMSCarrier">
+        PropertyType="CollectionView$SMSCarrier">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="SMSCarriersQuery"
-            ReturnType="LightSwitchCommonModule:SMSCarrier*">
+            ReturnType="SMSCarrier*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[SMSCarriers]" />
+                  Member="ApplicationData/Members[SMSCarriers]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -1676,7 +1850,7 @@
           Kind="Group"
           Name="ScreenLayout">
           <ContentItem
-            DataType="LightSwitchCommonModule:CollectionView$SMSCarrier"
+            DataType="CollectionView$SMSCarrier"
             Kind="Collection"
             Name="grid">
             <ContentItem.Attributes>
@@ -1737,7 +1911,7 @@
             </ContentItem.DataSource>
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":RootControl/Properties[VerticalAlignment]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1747,7 +1921,7 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
               <ControlPropertySource
-                Property=":RootControl/Properties[AttachedLabelPosition]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1758,7 +1932,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:SMSCarrier"
+              DataType="SMSCarrier"
               Kind="Details"
               Name="RowTemplate">
               <ContentItem.DataSource>
@@ -1774,7 +1948,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:SMSCarrier/Properties[MobileCarrier]" />
+                        Member="SMSCarrier/Properties[MobileCarrier]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -1791,7 +1965,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:SMSCarrier/Properties[SMSGateway]" />
+                        Member="SMSCarrier/Properties[SMSGateway]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -1806,7 +1980,7 @@
     Name="ManageResidency">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -1845,18 +2019,18 @@
         DisableSorting="True"
         Name="YearRoundResSet"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$YearRoundRes">
+        PropertyType="CollectionView$YearRoundRes">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="YearRoundResSetQuery"
-            ReturnType="LightSwitchCommonModule:YearRoundRes*">
+            ReturnType="YearRoundRes*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[YearRoundResSet]" />
+                  Member="ApplicationData/Members[YearRoundResSet]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -1903,7 +2077,7 @@
           Kind="Group"
           Name="ScreenLayout">
           <ContentItem
-            DataType="LightSwitchCommonModule:CollectionView$YearRoundRes"
+            DataType="CollectionView$YearRoundRes"
             Kind="Collection"
             Name="grid">
             <ContentItem.Attributes>
@@ -1964,7 +2138,7 @@
             </ContentItem.DataSource>
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":RootControl/Properties[VerticalAlignment]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1974,7 +2148,7 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
               <ControlPropertySource
-                Property=":RootControl/Properties[AttachedLabelPosition]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -1985,7 +2159,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:YearRoundRes"
+              DataType="YearRoundRes"
               Kind="Details"
               Name="RowTemplate">
               <ContentItem.DataSource>
@@ -2001,7 +2175,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:YearRoundRes/Properties[Residency]" />
+                        Member="YearRoundRes/Properties[Residency]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2018,7 +2192,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:YearRoundRes/Properties[Code]" />
+                        Member="YearRoundRes/Properties[Code]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2033,7 +2207,7 @@
     Name="ManageTeamMembers">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -2094,18 +2268,18 @@
       <ScreenCollectionProperty
         Name="Employees"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$Employee">
+        PropertyType="CollectionView$Employee">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="EmployeesQuery"
-            ReturnType="LightSwitchCommonModule:Employee*">
+            ReturnType="Employee*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[Employees]" />
+                  Member="ApplicationData/Members[Employees]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -2123,11 +2297,11 @@
         DisableSorting="True"
         Name="xref_EmployeeZonesCollection"
         PageSize="15"
-        PropertyType="LightSwitchCommonModule:CollectionView$xref_EmployeeZones">
+        PropertyType="CollectionView$xref_EmployeeZones">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="xref_EmployeeZonesCollectionQuery"
-            ReturnType="LightSwitchCommonModule:xref_EmployeeZones*">
+            ReturnType="xref_EmployeeZones*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
@@ -2158,18 +2332,18 @@
         DisableSorting="True"
         Name="AllResponseZones"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$ResponseZones">
+        PropertyType="CollectionView$ResponseZones">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="AllResponseZonesQuery"
-            ReturnType="LightSwitchCommonModule:ResponseZones*">
+            ReturnType="ResponseZones*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[ResponseZonesSet]" />
+                  Member="ApplicationData/Members[ResponseZonesSet]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -2227,13 +2401,13 @@
         <ContentItem
           Kind="Group"
           Name="ScreenLayout"
-          View="Microsoft.LightSwitch:ColumnsLayout">
+          View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
           <ContentItem
             Kind="Group"
             Name="ListColumn">
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                Property="Microsoft.LightSwitch.RichClient:ColumnsLayout/Properties[WeightedColumnWidth]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -2244,10 +2418,10 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:CollectionView$Employee"
+              DataType="CollectionView$Employee"
               Kind="Collection"
               Name="EmployeeList"
-              View="Microsoft.LightSwitch:List">
+              View="Microsoft.LightSwitch.RichClient:List">
               <ContentItem.CommandItems>
                 <ContentItem
                   Kind="Command"
@@ -2304,7 +2478,7 @@
               </ContentItem.DataSource>
               <ContentItem.PropertySources>
                 <ControlPropertySource
-                  Property=":RootControl/Properties[AttachedLabelPosition]">
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <ConstantExpression
@@ -2314,7 +2488,7 @@
                   </ScreenExpressionTree>
                 </ControlPropertySource>
                 <ControlPropertySource
-                  Property=":RootControl/Properties[VerticalAlignment]">
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <ConstantExpression
@@ -2325,7 +2499,7 @@
                 </ControlPropertySource>
               </ContentItem.PropertySources>
               <ContentItem
-                DataType="LightSwitchCommonModule:Employee"
+                DataType="Employee"
                 Kind="Details"
                 Name="RowTemplate">
                 <ContentItem.DataSource>
@@ -2341,7 +2515,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[FirstName]" />
+                          Member="Employee/Properties[FirstName]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2354,7 +2528,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[LastName]" />
+                          Member="Employee/Properties[LastName]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2367,7 +2541,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[WorkEmail]" />
+                          Member="Employee/Properties[WorkEmail]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2380,7 +2554,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[HomeEmail]" />
+                          Member="Employee/Properties[HomeEmail]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2393,7 +2567,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[WorkPhone]" />
+                          Member="Employee/Properties[WorkPhone]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2406,7 +2580,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[HomePhone]" />
+                          Member="Employee/Properties[HomePhone]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2419,7 +2593,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
+                          Member="Employee/Properties[WorkMobile]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2432,7 +2606,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[DateFit]" />
+                          Member="Employee/Properties[DateFit]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2445,25 +2619,25 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[DaysSinceLastFit]" />
+                          Member="Employee/Properties[DaysSinceLastFit]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:ParkDivision"
+                  DataType="ParkDivision"
                   Kind="Details"
                   Name="ParkDivision">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[ParkDivision]" />
+                          Member="Employee/Properties[ParkDivision]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:ParkDivision"
+                    DataType="ParkDivision"
                     Kind="Details"
                     Name="RowTemplate1">
                     <ContentItem.DataSource>
@@ -2474,19 +2648,19 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:YearRoundRes"
+                  DataType="YearRoundRes"
                   Kind="Details"
                   Name="YearRoundRes">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[YearRoundRes]" />
+                          Member="Employee/Properties[YearRoundRes]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:YearRoundRes"
+                    DataType="YearRoundRes"
                     Kind="Details"
                     Name="RowTemplate2">
                     <ContentItem.DataSource>
@@ -2497,19 +2671,19 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  DataType="SMSCarrier"
                   Kind="Details"
                   Name="WorkSMSCarriers">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[WorkSMSCarriers]" />
+                          Member="Employee/Properties[WorkSMSCarriers]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:SMSCarrier"
+                    DataType="SMSCarrier"
                     Kind="Details"
                     Name="RowTemplate3">
                     <ContentItem.DataSource>
@@ -2520,19 +2694,19 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  DataType="SMSCarrier"
                   Kind="Details"
                   Name="PersonalSMSCarriers">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[PersonalSMSCarriers]" />
+                          Member="Employee/Properties[PersonalSMSCarriers]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:SMSCarrier"
+                    DataType="SMSCarrier"
                     Kind="Details"
                     Name="RowTemplate4">
                     <ContentItem.DataSource>
@@ -2550,7 +2724,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
+                          Member="Employee/Properties[PersonalSMS]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2563,7 +2737,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
+                          Member="Employee/Properties[PersonalMobile]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2576,7 +2750,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
+                          Member="Employee/Properties[WorksSMS]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2589,7 +2763,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
+                          Member="Employee/Properties[Summary]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2602,7 +2776,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[CreatedTime]" />
+                          Member="Employee/Properties[CreatedTime]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2615,7 +2789,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[CreatedBy]" />
+                          Member="Employee/Properties[CreatedBy]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2628,7 +2802,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[UpdatedTime]" />
+                          Member="Employee/Properties[UpdatedTime]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2641,7 +2815,7 @@
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="LightSwitchCommonModule:Employee/Properties[UpdatedBy]" />
+                          Member="Employee/Properties[UpdatedBy]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
@@ -2654,7 +2828,7 @@
             Name="DetailsColumn">
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+                Property="Microsoft.LightSwitch.RichClient:ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -2664,7 +2838,7 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
               <ControlPropertySource
-                Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                Property="Microsoft.LightSwitch.RichClient:ColumnsLayout/Properties[WeightedColumnWidth]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -2675,7 +2849,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:Employee"
+              DataType="Employee"
               Kind="Details"
               Name="EmployeeDetails">
               <ContentItem.Attributes>
@@ -2694,7 +2868,7 @@
               </ContentItem.DataSource>
               <ContentItem.PropertySources>
                 <ControlPropertySource
-                  Property=":RootControl/Properties[VerticalAlignment]">
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <ConstantExpression
@@ -2712,7 +2886,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
+                        Member="Employee/Properties[Summary]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2725,7 +2899,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[FirstName]" />
+                        Member="Employee/Properties[FirstName]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2738,7 +2912,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[LastName]" />
+                        Member="Employee/Properties[LastName]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2751,7 +2925,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkEmail]" />
+                        Member="Employee/Properties[WorkEmail]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2764,7 +2938,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[HomeEmail]" />
+                        Member="Employee/Properties[HomeEmail]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2777,7 +2951,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkPhone]" />
+                        Member="Employee/Properties[WorkPhone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2790,7 +2964,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[HomePhone]" />
+                        Member="Employee/Properties[HomePhone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2803,25 +2977,25 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
+                        Member="Employee/Properties[WorkMobile]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SMSCarrier"
+                DataType="SMSCarrier"
                 Kind="Details"
                 Name="WorkSMSCarriers1">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkSMSCarriers]" />
+                        Member="Employee/Properties[WorkSMSCarriers]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  DataType="SMSCarrier"
                   Kind="Details"
                   Name="RowTemplate7">
                   <ContentItem.DataSource>
@@ -2839,7 +3013,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
+                        Member="Employee/Properties[WorksSMS]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2852,25 +3026,25 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
+                        Member="Employee/Properties[PersonalMobile]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SMSCarrier"
+                DataType="SMSCarrier"
                 Kind="Details"
                 Name="PersonalSMSCarriers1">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMSCarriers]" />
+                        Member="Employee/Properties[PersonalSMSCarriers]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  DataType="SMSCarrier"
                   Kind="Details"
                   Name="RowTemplate8">
                   <ContentItem.DataSource>
@@ -2888,7 +3062,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
+                        Member="Employee/Properties[PersonalSMS]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2901,7 +3075,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[DateFit]" />
+                        Member="Employee/Properties[DateFit]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -2914,13 +3088,13 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[DaysSinceLastFit]" />
+                        Member="Employee/Properties[DaysSinceLastFit]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SARCertifications"
+                DataType="SARCertifications"
                 Kind="Details"
                 Name="SARCertificationsSetItem">
                 <ContentItem.Attributes>
@@ -2931,12 +3105,12 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[SARCertifications]" />
+                        Member="Employee/Properties[SARCertifications]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SARCertifications"
+                  DataType="SARCertifications"
                   Kind="Details"
                   Name="SARCertificationsSetItem1">
                   <ContentItem.DataSource>
@@ -2947,19 +3121,19 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:ParkDivision"
+                DataType="ParkDivision"
                 Kind="Details"
                 Name="ParkDivision1">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[ParkDivision]" />
+                        Member="Employee/Properties[ParkDivision]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:ParkDivision"
+                  DataType="ParkDivision"
                   Kind="Details"
                   Name="RowTemplate5">
                   <ContentItem.DataSource>
@@ -2970,19 +3144,19 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:YearRoundRes"
+                DataType="YearRoundRes"
                 Kind="Details"
                 Name="YearRoundRes1">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[YearRoundRes]" />
+                        Member="Employee/Properties[YearRoundRes]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:YearRoundRes"
+                  DataType="YearRoundRes"
                   Kind="Details"
                   Name="RowTemplate6">
                   <ContentItem.DataSource>
@@ -3004,7 +3178,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
+                        Member="Employee/Properties[CLEO]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -3021,7 +3195,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
+                        Member="Employee/Properties[MEDIC]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -3038,7 +3212,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[TechRescue]" />
+                        Member="Employee/Properties[TechRescue]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -3051,7 +3225,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Tracker]" />
+                        Member="Employee/Properties[Tracker]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -3060,10 +3234,10 @@
             <ContentItem
               Kind="Group"
               Name="ChildCollectionTabs"
-              View="Microsoft.LightSwitch:TabsLayout">
+              View="Microsoft.LightSwitch.RichClient:TabsLayout">
               <ContentItem.PropertySources>
                 <ControlPropertySource
-                  Property=":RootControl/Properties[VerticalAlignment]">
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <ConstantExpression
@@ -3076,16 +3250,16 @@
               <ContentItem
                 Kind="Group"
                 Name="ZoneGroup"
-                View=":ColumnsLayout">
+                View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="Response Zones Group" />
                 </ContentItem.Attributes>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:CollectionView$xref_EmployeeZones"
+                  DataType="CollectionView$xref_EmployeeZones"
                   Kind="Collection"
                   Name="xref_EmployeeZonesCollection"
-                  View=":List">
+                  View="Microsoft.LightSwitch.RichClient:List">
                   <ContentItem.Attributes>
                     <DisplayName
                       Value="Response Zones Assigned" />
@@ -3116,7 +3290,7 @@
                   </ContentItem.DataSource>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      Property="Microsoft.LightSwitch.RichClient:ColumnsLayout/Properties[IsColumnResizable]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":Boolean"
@@ -3125,7 +3299,7 @@
                     </ControlPropertySource>
                   </ContentItem.PropertySources>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:xref_EmployeeZones"
+                    DataType="xref_EmployeeZones"
                     Kind="Details"
                     Name="RowTemplate9">
                     <ContentItem.Attributes>
@@ -3138,19 +3312,19 @@
                       </ScreenExpressionTree>
                     </ContentItem.DataSource>
                     <ContentItem
-                      DataType="LightSwitchCommonModule:ResponseZones"
+                      DataType="ResponseZones"
                       Kind="Details"
                       Name="ResponseZones">
                       <ContentItem.DataSource>
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="LightSwitchCommonModule:xref_EmployeeZones/Properties[ResponseZones]" />
+                              Member="xref_EmployeeZones/Properties[ResponseZones]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
                       <ContentItem
-                        DataType="LightSwitchCommonModule:ResponseZones"
+                        DataType="ResponseZones"
                         Kind="Details"
                         Name="RowTemplate10">
                         <ContentItem.DataSource>
@@ -3168,7 +3342,7 @@
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="LightSwitchCommonModule:xref_EmployeeZones/Properties[Summary]" />
+                              Member="xref_EmployeeZones/Properties[Summary]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
@@ -3184,7 +3358,7 @@
                   </ContentItem.Attributes>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":String"
@@ -3192,7 +3366,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":String"
@@ -3200,7 +3374,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      Property="Microsoft.LightSwitch.RichClient:ColumnsLayout/Properties[IsColumnResizable]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":Boolean"
@@ -3231,7 +3405,7 @@
                     </ContentItem.CommandItems>
                     <ContentItem.PropertySources>
                       <ControlPropertySource
-                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
                         <ScreenExpressionTree>
                           <ConstantExpression
                             ResultType=":String"
@@ -3263,7 +3437,7 @@
                     </ContentItem.CommandItems>
                     <ContentItem.PropertySources>
                       <ControlPropertySource
-                        Property="Microsoft.LightSwitch:RootControl/Properties[HorizontalAlignment]">
+                        Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
                         <ScreenExpressionTree>
                           <ConstantExpression
                             ResultType=":String"
@@ -3274,10 +3448,10 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:CollectionView$ResponseZones"
+                  DataType="CollectionView$ResponseZones"
                   Kind="Collection"
                   Name="AllResponseZones"
-                  View=":List">
+                  View="Microsoft.LightSwitch.RichClient:List">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -3288,7 +3462,7 @@
                   </ContentItem.DataSource>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:ColumnsLayout/Properties[IsColumnResizable]">
+                      Property="Microsoft.LightSwitch.RichClient:ColumnsLayout/Properties[IsColumnResizable]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":Boolean"
@@ -3297,7 +3471,7 @@
                     </ControlPropertySource>
                   </ContentItem.PropertySources>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:ResponseZones"
+                    DataType="ResponseZones"
                     Kind="Details"
                     Name="AllResponseZonesTemplate">
                     <ContentItem.Attributes>
@@ -3317,7 +3491,7 @@
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="LightSwitchCommonModule:ResponseZones/Properties[ResponseZone]" />
+                              Member="ResponseZones/Properties[ResponseZone]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
@@ -3330,7 +3504,7 @@
                         <ScreenExpressionTree>
                           <ChainExpression>
                             <MemberExpression
-                              Member="LightSwitchCommonModule:ResponseZones/Properties[ZoneCode]" />
+                              Member="ResponseZones/Properties[ZoneCode]" />
                           </ChainExpression>
                         </ScreenExpressionTree>
                       </ContentItem.DataSource>
@@ -3348,7 +3522,7 @@
     Name="ManageTechRescueCerts">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
       <DisplayName
         Value="Manage Tech Rescue Certifications" />
     </Screen.Attributes>
@@ -3422,7 +3596,7 @@
     Name="ManageWaterRescueCerts">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
       <DisplayName
         Value="Manage Swift Water Rescue Certifications" />
     </Screen.Attributes>
@@ -3489,7 +3663,7 @@
         <ContentItem
           Kind="Group"
           Name="ScreenLayout"
-          View="Microsoft.LightSwitch:ColumnsLayout" />
+          View="Microsoft.LightSwitch.RichClient:ColumnsLayout" />
       </ContentItem>
     </Screen.RootContentItem>
   </Screen>
@@ -3497,7 +3671,7 @@
     Name="SearchEmployees">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -3533,11 +3707,11 @@
       <ScreenCollectionProperty
         Name="IRT"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$Employee">
+        PropertyType="CollectionView$Employee">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="IRTQuery"
-            ReturnType="LightSwitchCommonModule:Employee*">
+            ReturnType="Employee*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree>
                 <BinaryExpression
@@ -3560,7 +3734,7 @@
                                       <BinaryExpression.Left>
                                         <ChainExpression>
                                           <MemberExpression
-                                            Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
+                                            Member="Employee/Properties[CLEO]" />
                                         </ChainExpression>
                                       </BinaryExpression.Left>
                                       <BinaryExpression.Right>
@@ -3575,7 +3749,7 @@
                                       <BinaryExpression.Left>
                                         <ChainExpression>
                                           <MemberExpression
-                                            Member="LightSwitchCommonModule:Employee/Properties[TechRescue]" />
+                                            Member="Employee/Properties[TechRescue]" />
                                         </ChainExpression>
                                       </BinaryExpression.Left>
                                       <BinaryExpression.Right>
@@ -3592,7 +3766,7 @@
                                   <BinaryExpression.Left>
                                     <ChainExpression>
                                       <MemberExpression
-                                        Member="LightSwitchCommonModule:Employee/Properties[Tracker]" />
+                                        Member="Employee/Properties[Tracker]" />
                                     </ChainExpression>
                                   </BinaryExpression.Left>
                                   <BinaryExpression.Right>
@@ -3609,7 +3783,7 @@
                               <BinaryExpression.Left>
                                 <ChainExpression>
                                   <MemberExpression
-                                    Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
+                                    Member="Employee/Properties[MEDIC]" />
                                 </ChainExpression>
                               </BinaryExpression.Left>
                               <BinaryExpression.Right>
@@ -3626,7 +3800,7 @@
                           <BinaryExpression.Left>
                             <ChainExpression>
                               <MemberExpression
-                                Member="LightSwitchCommonModule:Employee/Properties[YearRoundRes]" />
+                                Member="Employee/Properties[YearRoundRes]" />
                               <MemberExpression
                                 Member="Id" />
                             </ChainExpression>
@@ -3645,7 +3819,7 @@
                       <BinaryExpression.Left>
                         <ChainExpression>
                           <MemberExpression
-                            Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
+                            Member="Employee/Properties[CLEO]" />
                         </ChainExpression>
                       </BinaryExpression.Left>
                       <BinaryExpression.Right>
@@ -3687,7 +3861,7 @@
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[QRYParameters]" />
+                  Member="ApplicationData/Members[QRYParameters]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -3810,7 +3984,7 @@
       </ScreenProperty>
       <ScreenProperty
         Name="Residency"
-        PropertyType="LightSwitchCommonModule:YearRoundRes" />
+        PropertyType="YearRoundRes" />
       <ScreenProperty
         Name="Year"
         PropertyType=":Int32?">
@@ -3828,22 +4002,22 @@
       </ScreenProperty>
       <ScreenProperty
         Name="AllSARCerts"
-        PropertyType="LightSwitchCommonModule:SARCertifications" />
+        PropertyType="SARCertifications" />
       <ScreenCollectionProperty
         Name="QRYZone"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$ResponseZones">
+        PropertyType="CollectionView$ResponseZones">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="QRYZoneQuery"
-            ReturnType="LightSwitchCommonModule:ResponseZones*">
+            ReturnType="ResponseZones*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[QRYZone]" />
+                  Member="ApplicationData/Members[QRYZone]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -3897,7 +4071,7 @@
           Name="ScreenLayout">
           <ContentItem.PropertySources>
             <ControlPropertySource
-              Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
+              Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
               <ScreenExpressionTree>
                 <ConstantExpression
                   ResultType=":String"
@@ -3906,7 +4080,7 @@
             </ControlPropertySource>
           </ContentItem.PropertySources>
           <ContentItem
-            DataType="LightSwitchCommonModule:CollectionView$ResponseZones"
+            DataType="CollectionView$ResponseZones"
             Kind="Collection"
             Name="QRYZone">
             <ContentItem.CommandItems>
@@ -3962,7 +4136,7 @@
               </ScreenExpressionTree>
             </ContentItem.DataSource>
             <ContentItem
-              DataType="LightSwitchCommonModule:ResponseZones"
+              DataType="ResponseZones"
               Kind="Details"
               Name="QRYZoneTemplate">
               <ContentItem.DataSource>
@@ -3978,7 +4152,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:ResponseZones/Properties[ResponseZone]" />
+                        Member="ResponseZones/Properties[ResponseZone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -3988,10 +4162,10 @@
           <ContentItem
             Kind="ScreenContent"
             Name="Text"
-            View=":StaticLabel">
+            View="Microsoft.LightSwitch.RichClient:StaticLabel">
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property="Microsoft.LightSwitch:StaticLabel/Properties[Text]">
+                Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                 <ScreenExpressionTree>
                   <ConstantExpression
                     ResultType=":String"
@@ -4003,14 +4177,14 @@
           <ContentItem
             Kind="Group"
             Name="Group1"
-            View=":ColumnsLayout">
+            View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
             <ContentItem
               Kind="Group"
               Name="Group"
-              View=":RowsLayout">
+              View="Microsoft.LightSwitch.RichClient:RowsLayout">
               <ContentItem.PropertySources>
                 <ControlPropertySource
-                  Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                   <ScreenExpressionTree>
                     <ConstantExpression
                       ResultType=":String"
@@ -4021,7 +4195,7 @@
               <ContentItem
                 Kind="Group"
                 Name="Group4"
-                View=":GroupBox">
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="Fitness Test" />
@@ -4029,14 +4203,14 @@
                 <ContentItem
                   Kind="ScreenContent"
                   Name="Text1"
-                  View=":StaticLabel">
+                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
                   <ContentItem.Attributes>
                     <DisplayName
                       Value="Fitness_Instructions" />
                   </ContentItem.Attributes>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property=":StaticLabel/Properties[Text]">
+                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
@@ -4046,7 +4220,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property=":RootControl/Properties[MinHeight]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[MinHeight]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":Double"
@@ -4054,7 +4228,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property=":RootControl/Properties[VerticalAlignment]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":String"
@@ -4062,7 +4236,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property=":RootControl/Properties[Height]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Height]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":Double"
@@ -4070,7 +4244,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property=":RootControl/Properties[HeightSizingMode]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":String"
@@ -4078,7 +4252,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property=":Label/Properties[Lines]">
+                      Property="Microsoft.LightSwitch.RichClient:Label/Properties[Lines]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":Int32"
@@ -4110,7 +4284,7 @@
               <ContentItem
                 Kind="Group"
                 Name="Group5"
-                View=":GroupBox">
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="SAR Certification" />
@@ -4118,14 +4292,14 @@
                 <ContentItem
                   Kind="ScreenContent"
                   Name="Text2"
-                  View=":StaticLabel">
+                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
                   <ContentItem.Attributes>
                     <DisplayName
                       Value="SARCERT_Instructions" />
                   </ContentItem.Attributes>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property=":StaticLabel/Properties[Text]">
+                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
@@ -4135,7 +4309,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property=":RootControl/Properties[HeightSizingMode]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":String"
@@ -4143,7 +4317,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property=":Label/Properties[Lines]">
+                      Property="Microsoft.LightSwitch.RichClient:Label/Properties[Lines]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":Int32"
@@ -4153,7 +4327,7 @@
                   </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SARCertifications"
+                  DataType="SARCertifications"
                   Kind="Details"
                   Name="AllSARCerts">
                   <ContentItem.Attributes>
@@ -4171,7 +4345,7 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:SARCertifications"
+                    DataType="SARCertifications"
                     Kind="Details"
                     Name="SARCertifications2">
                     <ContentItem.DataSource>
@@ -4185,7 +4359,7 @@
               <ContentItem
                 Kind="Group"
                 Name="Group6"
-                View=":GroupBox">
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="Technical Rescuer" />
@@ -4193,14 +4367,14 @@
                 <ContentItem
                   Kind="ScreenContent"
                   Name="StaticLabel"
-                  View=":StaticLabel">
+                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
                   <ContentItem.Attributes>
                     <DisplayName
                       Value="TECHRESC_Instructions" />
                   </ContentItem.Attributes>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property=":StaticLabel/Properties[Text]">
+                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
@@ -4210,7 +4384,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property=":RootControl/Properties[HeightSizingMode]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":String"
@@ -4243,10 +4417,10 @@
             <ContentItem
               Kind="Group"
               Name="Group2"
-              View=":RowsLayout">
+              View="Microsoft.LightSwitch.RichClient:RowsLayout">
               <ContentItem.PropertySources>
                 <ControlPropertySource
-                  Property="Microsoft.LightSwitch:RootControl/Properties[VerticalAlignment]">
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                   <ScreenExpressionTree>
                     <ConstantExpression
                       ResultType=":String"
@@ -4257,7 +4431,7 @@
               <ContentItem
                 Kind="Group"
                 Name="Group7"
-                View=":GroupBox">
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="Certified Tracker" />
@@ -4265,10 +4439,10 @@
                 <ContentItem
                   Kind="ScreenContent"
                   Name="TRACK_Instructions"
-                  View=":StaticLabel">
+                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:StaticLabel/Properties[Text]">
+                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
@@ -4278,7 +4452,7 @@
                       </ScreenExpressionTree>
                     </ControlPropertySource>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:RootControl/Properties[HeightSizingMode]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":String"
@@ -4307,7 +4481,7 @@
                   </ContentItem.DataSource>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:RootControl/Properties[WidthSizingMode]">
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[WidthSizingMode]">
                       <ScreenExpressionTree>
                         <ConstantExpression
                           ResultType=":String"
@@ -4320,7 +4494,7 @@
               <ContentItem
                 Kind="Group"
                 Name="Group8"
-                View=":GroupBox">
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="Medic" />
@@ -4328,10 +4502,10 @@
                 <ContentItem
                   Kind="ScreenContent"
                   Name="MEDIC_Instructions"
-                  View=":StaticLabel">
+                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:StaticLabel/Properties[Text]">
+                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
@@ -4365,7 +4539,7 @@
               <ContentItem
                 Kind="Group"
                 Name="Group9"
-                View=":GroupBox">
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="Law Enforcement" />
@@ -4373,10 +4547,10 @@
                 <ContentItem
                   Kind="ScreenContent"
                   Name="LEO_Instructions"
-                  View=":StaticLabel">
+                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property=":StaticLabel/Properties[Text]">
+                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
@@ -4414,7 +4588,7 @@
               <ContentItem
                 Kind="Group"
                 Name="Group10"
-                View=":GroupBox">
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="Residency" />
@@ -4422,10 +4596,10 @@
                 <ContentItem
                   Kind="ScreenContent"
                   Name="Text3"
-                  View=":StaticLabel">
+                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
                   <ContentItem.PropertySources>
                     <ControlPropertySource
-                      Property="Microsoft.LightSwitch:StaticLabel/Properties[Text]">
+                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                       <ScreenExpressionTree>
                         <ChainExpression>
                           <ConstantExpression
@@ -4437,7 +4611,7 @@
                   </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:YearRoundRes"
+                  DataType="YearRoundRes"
                   Kind="Details"
                   Name="Residency">
                   <ContentItem.Attributes>
@@ -4453,7 +4627,7 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    DataType="LightSwitchCommonModule:YearRoundRes"
+                    DataType="YearRoundRes"
                     Kind="Details"
                     Name="YearRoundRes1">
                     <ContentItem.DataSource>
@@ -4467,7 +4641,7 @@
             </ContentItem>
           </ContentItem>
           <ContentItem
-            DataType="LightSwitchCommonModule:CollectionView$Employee"
+            DataType="CollectionView$Employee"
             Kind="Collection"
             Name="IRT">
             <ContentItem.Attributes>
@@ -4484,7 +4658,7 @@
             </ContentItem.DataSource>
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property="Microsoft.LightSwitch:DataGrid/Properties[ShowVirtualRow]">
+                Property="Microsoft.LightSwitch.RichClient:DataGrid/Properties[ShowVirtualRow]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -4495,7 +4669,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:Employee"
+              DataType="Employee"
               Kind="Details"
               Name="IRTTemplate">
               <ContentItem.Attributes>
@@ -4509,7 +4683,7 @@
               </ContentItem.DataSource>
               <ContentItem.PropertySources>
                 <ControlPropertySource
-                  Property="Microsoft.LightSwitch:RootControl/Properties[BrowseOnly]">
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[BrowseOnly]">
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <ConstantExpression
@@ -4527,7 +4701,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
+                        Member="Employee/Properties[Summary]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4540,25 +4714,25 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[DaysSinceLastFit]" />
+                        Member="Employee/Properties[DaysSinceLastFit]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SARCertifications"
+                DataType="SARCertifications"
                 Kind="Details"
                 Name="SARCertifications">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[SARCertifications]" />
+                        Member="Employee/Properties[SARCertifications]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SARCertifications"
+                  DataType="SARCertifications"
                   Kind="Details"
                   Name="SARCertifications1">
                   <ContentItem.DataSource>
@@ -4576,7 +4750,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[TechRescue]" />
+                        Member="Employee/Properties[TechRescue]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4589,7 +4763,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Tracker]" />
+                        Member="Employee/Properties[Tracker]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4602,7 +4776,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
+                        Member="Employee/Properties[MEDIC]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4615,25 +4789,25 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
+                        Member="Employee/Properties[CLEO]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:YearRoundRes"
+                DataType="YearRoundRes"
                 Kind="Details"
                 Name="YearRoundRes">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[YearRoundRes]" />
+                        Member="Employee/Properties[YearRoundRes]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:YearRoundRes"
+                  DataType="YearRoundRes"
                   Kind="Details"
                   Name="YearRoundRes2">
                   <ContentItem.DataSource>
@@ -4651,7 +4825,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
+                        Member="Employee/Properties[WorkMobile]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4664,7 +4838,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
+                        Member="Employee/Properties[WorksSMS]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4677,7 +4851,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
+                        Member="Employee/Properties[PersonalMobile]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4690,7 +4864,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
+                        Member="Employee/Properties[PersonalSMS]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4703,7 +4877,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkEmail]" />
+                        Member="Employee/Properties[WorkEmail]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4716,7 +4890,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[HomeEmail]" />
+                        Member="Employee/Properties[HomeEmail]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4729,7 +4903,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkPhone]" />
+                        Member="Employee/Properties[WorkPhone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4742,25 +4916,25 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[HomePhone]" />
+                        Member="Employee/Properties[HomePhone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:ParkDivision"
+                DataType="ParkDivision"
                 Kind="Details"
                 Name="ParkDivision">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[ParkDivision]" />
+                        Member="Employee/Properties[ParkDivision]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:ParkDivision"
+                  DataType="ParkDivision"
                   Kind="Details"
                   Name="ParkDivision1">
                   <ContentItem.DataSource>
@@ -4867,7 +5041,7 @@
           Name="ScreenLayout">
           <ContentItem.PropertySources>
             <ControlPropertySource
-              Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+              Property="Microsoft.LightSwitch.RichClient:ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
               <ScreenExpressionTree>
                 <ChainExpression>
                   <ConstantExpression
@@ -4885,7 +5059,7 @@
     Name="SearchEmployees1">
     <Screen.Attributes>
       <SaveChangesTo
-        EntityContainer="LightSwitchCommonModule:ApplicationData" />
+        EntityContainer="ApplicationData" />
     </Screen.Attributes>
     <Screen.Methods>
       <ScreenMethod
@@ -4923,18 +5097,18 @@
       <ScreenCollectionProperty
         Name="Employees"
         PageSize="45"
-        PropertyType="LightSwitchCommonModule:CollectionView$Employee">
+        PropertyType="CollectionView$Employee">
         <ScreenCollectionProperty.Query>
           <ScreenQueryDefinition
             Name="EmployeesQuery"
-            ReturnType="LightSwitchCommonModule:Employee*">
+            ReturnType="Employee*">
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree />
             </ScreenQueryDefinition.FilterExpression>
             <ScreenQueryDefinition.Source>
               <QuerySourceExpressionTree>
                 <MemberExpression
-                  Member="LightSwitchCommonModule:ApplicationData/Members[Employees]" />
+                  Member="ApplicationData/Members[Employees]" />
               </QuerySourceExpressionTree>
             </ScreenQueryDefinition.Source>
           </ScreenQueryDefinition>
@@ -4993,7 +5167,7 @@
           Kind="Group"
           Name="ScreenLayout">
           <ContentItem
-            DataType="LightSwitchCommonModule:CollectionView$Employee"
+            DataType="CollectionView$Employee"
             Kind="Collection"
             Name="grid">
             <ContentItem.DataSource>
@@ -5006,7 +5180,7 @@
             </ContentItem.DataSource>
             <ContentItem.PropertySources>
               <ControlPropertySource
-                Property=":DataGrid/Properties[ShowVirtualRow]">
+                Property="Microsoft.LightSwitch.RichClient:DataGrid/Properties[ShowVirtualRow]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -5016,7 +5190,7 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
               <ControlPropertySource
-                Property=":RootControl/Properties[AttachedLabelPosition]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -5026,7 +5200,7 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
               <ControlPropertySource
-                Property=":RootControl/Properties[VerticalAlignment]">
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
                 <ScreenExpressionTree>
                   <ChainExpression>
                     <ConstantExpression
@@ -5037,7 +5211,7 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
             <ContentItem
-              DataType="LightSwitchCommonModule:Employee"
+              DataType="Employee"
               Kind="Details"
               Name="RowTemplate">
               <ContentItem.DataSource>
@@ -5047,7 +5221,7 @@
               </ContentItem.DataSource>
               <ContentItem.PropertySources>
                 <ControlPropertySource
-                  Property=":RootControl/Properties[BrowseOnly]">
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[BrowseOnly]">
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <ConstantExpression
@@ -5065,13 +5239,13 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[FirstName]" />
+                        Member="Employee/Properties[FirstName]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
-                    Property=":RootControl/Properties[ShowAsLink]">
+                    Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[ShowAsLink]">
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <ConstantExpression
@@ -5090,7 +5264,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[LastName]" />
+                        Member="Employee/Properties[LastName]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5103,7 +5277,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkEmail]" />
+                        Member="Employee/Properties[WorkEmail]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5116,7 +5290,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[HomeEmail]" />
+                        Member="Employee/Properties[HomeEmail]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5129,7 +5303,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkPhone]" />
+                        Member="Employee/Properties[WorkPhone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5142,7 +5316,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[HomePhone]" />
+                        Member="Employee/Properties[HomePhone]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5155,7 +5329,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
+                        Member="Employee/Properties[WorkMobile]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5168,7 +5342,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[DateFit]" />
+                        Member="Employee/Properties[DateFit]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5181,25 +5355,25 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[DaysSinceLastFit]" />
+                        Member="Employee/Properties[DaysSinceLastFit]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:ParkDivision"
+                DataType="ParkDivision"
                 Kind="Details"
                 Name="ParkDivision">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[ParkDivision]" />
+                        Member="Employee/Properties[ParkDivision]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:ParkDivision"
+                  DataType="ParkDivision"
                   Kind="Details"
                   Name="RowTemplate1">
                   <ContentItem.DataSource>
@@ -5210,19 +5384,19 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:YearRoundRes"
+                DataType="YearRoundRes"
                 Kind="Details"
                 Name="YearRoundRes">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[YearRoundRes]" />
+                        Member="Employee/Properties[YearRoundRes]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:YearRoundRes"
+                  DataType="YearRoundRes"
                   Kind="Details"
                   Name="RowTemplate2">
                   <ContentItem.DataSource>
@@ -5233,19 +5407,19 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SMSCarrier"
+                DataType="SMSCarrier"
                 Kind="Details"
                 Name="WorkSMSCarriers">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkSMSCarriers]" />
+                        Member="Employee/Properties[WorkSMSCarriers]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  DataType="SMSCarrier"
                   Kind="Details"
                   Name="RowTemplate3">
                   <ContentItem.DataSource>
@@ -5256,19 +5430,19 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SMSCarrier"
+                DataType="SMSCarrier"
                 Kind="Details"
                 Name="PersonalSMSCarriers">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMSCarriers]" />
+                        Member="Employee/Properties[PersonalSMSCarriers]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SMSCarrier"
+                  DataType="SMSCarrier"
                   Kind="Details"
                   Name="RowTemplate4">
                   <ContentItem.DataSource>
@@ -5286,7 +5460,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
+                        Member="Employee/Properties[PersonalSMS]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5299,7 +5473,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
+                        Member="Employee/Properties[PersonalMobile]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5312,7 +5486,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
+                        Member="Employee/Properties[WorksSMS]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5325,7 +5499,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
+                        Member="Employee/Properties[Summary]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5338,7 +5512,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CreatedTime]" />
+                        Member="Employee/Properties[CreatedTime]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5351,7 +5525,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CreatedBy]" />
+                        Member="Employee/Properties[CreatedBy]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5364,7 +5538,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[UpdatedTime]" />
+                        Member="Employee/Properties[UpdatedTime]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5377,7 +5551,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[UpdatedBy]" />
+                        Member="Employee/Properties[UpdatedBy]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5390,7 +5564,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
+                        Member="Employee/Properties[CLEO]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5403,25 +5577,25 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
+                        Member="Employee/Properties[MEDIC]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="LightSwitchCommonModule:SARCertifications"
+                DataType="SARCertifications"
                 Kind="Details"
                 Name="SARCertifications">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[SARCertifications]" />
+                        Member="Employee/Properties[SARCertifications]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  DataType="LightSwitchCommonModule:SARCertifications"
+                  DataType="SARCertifications"
                   Kind="Details"
                   Name="RowTemplate5">
                   <ContentItem.DataSource>
@@ -5439,7 +5613,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[TechRescue]" />
+                        Member="Employee/Properties[TechRescue]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -5452,7 +5626,7 @@
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Tracker]" />
+                        Member="Employee/Properties[Tracker]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>

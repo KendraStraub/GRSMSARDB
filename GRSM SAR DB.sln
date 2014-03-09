@@ -1,7 +1,6 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{ECD6D718-D1CF-4119-97F3-97C25A0DFBF9}") = "GRSM SAR DB", "GRSM SAR DB\GRSM SAR DB.lsproj", "{0F306302-8B51-4643-8A21-030DFF540051}"
+Project("{8A4D642E-824A-4D58-BD56-648CC30C8F17}") = "GRSM SAR DB", "GRSM SAR DB\GRSM SAR DB.ls3proj", "{0F306302-8B51-4643-8A21-030DFF540051}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +12,6 @@ Global
 		{0F306302-8B51-4643-8A21-030DFF540051}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F306302-8B51-4643-8A21-030DFF540051}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F306302-8B51-4643-8A21-030DFF540051}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72100B47-B9E9-4D9C-B337-9A7466963A75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72100B47-B9E9-4D9C-B337-9A7466963A75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72100B47-B9E9-4D9C-B337-9A7466963A75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72100B47-B9E9-4D9C-B337-9A7466963A75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C5E901E1-AA35-40B7-805F-D046459D74F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C5E901E1-AA35-40B7-805F-D046459D74F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5E901E1-AA35-40B7-805F-D046459D74F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
