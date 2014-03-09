@@ -736,22 +736,6 @@
         Name="ZoneID"
         ParameterType=":Int32?" />
     </QueryOperation>
-    <QueryOperation
-      Name="QRYSarCert"
-      ReturnType="Employee*">
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree />
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="Employees" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="MaxRank"
-        ParameterType=":Int32?" />
-    </QueryOperation>
     <EntitySet
       CanDelete="True"
       CanInsert="True"
@@ -850,6 +834,48 @@
             Member="Employees" />
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
+      <QueryOperationParameter
+        IsOptional="True"
+        Name="Year"
+        ParameterType=":Int32?" />
+    </QueryOperation>
+    <QueryOperation
+      Name="QRYMaxRank"
+      ReturnType="Employee*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree />
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Employees" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        IsOptional="True"
+        Name="MaxRank"
+        ParameterType=":Int32?" />
+    </QueryOperation>
+    <QueryOperation
+      Name="QRYParameters"
+      ReturnType="Employee*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree />
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Employees" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        IsOptional="True"
+        Name="Year"
+        ParameterType=":Int32?" />
+      <QueryOperationParameter
+        IsOptional="True"
+        Name="MaxRank"
+        ParameterType=":Int32?" />
     </QueryOperation>
   </EntityContainer>
   <EntityType
@@ -1523,6 +1549,8 @@
     <EntityType.Attributes>
       <DisplayName
         Value="SAR Certification" />
+      <SummaryProperty
+        Property="SARCertifications/Properties[Certification]" />
     </EntityType.Attributes>
     <EntityType.Methods>
       <EntityMethod

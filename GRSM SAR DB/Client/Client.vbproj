@@ -234,6 +234,7 @@
     <Compile Include="UserCode\ManageSMSCarriers.vb" />
     <Compile Include="UserCode\ManageTeamMembers.vb" />
     <Compile Include="UserCode\ManageTechRescueCerts.vb" />
+    <Compile Include="UserCode\SearchEmployees.vb" />
     <Compile Include="UserCode\SendAnEmail.vb" />
   </ItemGroup>
   <ItemGroup>
