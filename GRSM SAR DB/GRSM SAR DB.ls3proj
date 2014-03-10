@@ -12,11 +12,10 @@
     <FileAlignment>512</FileAlignment>
     <WarningLevel>4</WarningLevel>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <LightSwitchVersion>v2.0</LightSwitchVersion>
-    <LightSwitchProjectVersion>v2.1</LightSwitchProjectVersion>
+    <LightSwitchVersion>v3.0</LightSwitchVersion>
+    <LightSwitchProjectVersion>v3.1</LightSwitchProjectVersion>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <Name>GRSM_SAR_DB</Name>
-    <LightSwitchProjectType>LightSwitch</LightSwitchProjectType>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>false</SignManifests>
     <BaseIntermediateOutputPath>bin</BaseIntermediateOutputPath>
@@ -50,6 +49,8 @@
     <SslCertificateThumbprint />
     <PublishServiceOnly>False</PublishServiceOnly>
     <RequireSecureConnection>False</RequireSecureConnection>
+    <LightSwitchProjectTypeV3>LightSwitch</LightSwitchProjectTypeV3>
+    <DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,16 +89,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Silverlight.js">
-      <Visible>false</Visible>
-      <ProjectCritical>true</ProjectCritical>
-    </None>
-    <None Include="default.htm">
-      <Visible>false</Visible>
-      <ProjectCritical>true</ProjectCritical>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ServiceDefinition Include="ServiceDefinition.csdef" />
     <ServiceConfiguration Include="ServiceConfiguration.cscfg" />
   </ItemGroup>
@@ -108,17 +99,8 @@
     <ProjectReference Include="Server\Server.vbproj">
       <Name>Server</Name>
     </ProjectReference>
-    <ProjectReference Include="Common\Common.vbproj">
-      <Name>Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup Condition="'$(BuildingInsideVisualStudio)' == 'true'">
-    <SubProject Include="Common\Common.vbproj">
-      <TypeGuid>{01074E5A-9000-460e-AB81-3A9263818D40}</TypeGuid>
-      <BaseTypeGuid>{F184B08F-C81C-45f6-A57F-5ABD9991F28F}</BaseTypeGuid>
-      <Name>Common</Name>
-      <InstanceGuid>{72100b47-b9e9-4d9c-b337-9a7466963a75}</InstanceGuid>
-    </SubProject>
     <SubProject Include="Client\Client.vbproj">
       <TypeGuid>{01074E5A-9000-460e-AB81-3A9263818D40}</TypeGuid>
       <BaseTypeGuid>{F184B08F-C81C-45f6-A57F-5ABD9991F28F}</BaseTypeGuid>
@@ -134,50 +116,38 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <ItemGroup>
-    <_BuildFile Include="vslshost.exe">
+    <_BuildFile Include="$(LightSwitchSDKPath)\Design\vslshost.exe">
       <SubFolder>
       </SubFolder>
       <PublishType>EntryPoint</PublishType>
     </_BuildFile>
-    <_BuildFile Include="vslshost.exe.config">
+    <_BuildFile Include="$(LightSwitchSDKPath)\Design\vslshost.exe.config">
       <SubFolder>
       </SubFolder>
       <PublishType>Desktop</PublishType>
     </_BuildFile>
-    <_BuildFile Include="vslshost.exe.manifest">
+    <_BuildFile Include="$(LightSwitchSDKPath)\Design\vslshost.exe.manifest">
       <SubFolder>
       </SubFolder>
       <PublishType>Exclude</PublishType>
     </_BuildFile>
-    <_BuildFile Include="$(LightSwitchPath)\LightSwitch\Server\ClientAccessPolicy.xml">
+    <_BuildFile Include="$(LightSwitchSDKPath)\Server\ClientAccessPolicy.xml">
       <SubFolder>
       </SubFolder>
       <PublishType>Exclude</PublishType>
     </_BuildFile>
-    <_BuildFile Include="$(LightSwitchPath)\LightSwitch\Server\Microsoft.LightSwitch.Design.svc">
+    <_BuildFile Include="$(LightSwitchSDKPath)\Server\Microsoft.LightSwitch.Design.svc">
       <SubFolder>
       </SubFolder>
       <PublishType>Exclude</PublishType>
     </_BuildFile>
-    <_BuildFile Include="$(LightSwitchPath)\LightSwitch\Server\Microsoft.LightSwitch.SecurityData.svc">
+    <_BuildFile Include="$(LightSwitchSDKPath)\Server\Microsoft.LightSwitch.SecurityData.svc">
       <SubFolder>
       </SubFolder>
       <PublishType>
       </PublishType>
     </_BuildFile>
     <_BuildFile Include="Server\web.config">
-      <SubFolder>
-      </SubFolder>
-      <PublishType>
-      </PublishType>
-    </_BuildFile>
-    <_BuildFile Include="Silverlight.js">
-      <SubFolder>
-      </SubFolder>
-      <PublishType>
-      </PublishType>
-    </_BuildFile>
-    <_BuildFile Include="default.htm">
       <SubFolder>
       </SubFolder>
       <PublishType>

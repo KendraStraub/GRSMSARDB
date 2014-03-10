@@ -4,9 +4,9 @@ Namespace LightSwitchApplication
     Public Class ManageDivisions
 
 
-        Private Sub ExportToExcel_Execute()
+        Private Sub ImportFromExcel_Execute()
 
-            OfficeIntegration.Excel.Export(Me.ParkDivisions)
+            OfficeIntegration.Excel.Import(Me.ParkDivisions)
 
         End Sub
     End Class

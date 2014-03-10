@@ -43,7 +43,7 @@ Namespace LightSwitchApplication
             End With
 
             Dim smtp As New SmtpClient(_SMTPServer, _SMTPPort)
-            smtp.EnableSsl = True
+            smtp.EnableSsl = False
 
 
             smtp.Send(mail)

@@ -826,6 +826,22 @@
         IsOptional="True"
         ParameterType=":Int32?" />
     </QueryOperation>
+    <QueryOperation
+      Name="QRYEmpZone"
+      ReturnType="Employee*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree />
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="Employees" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        Name="ZoneID"
+        ParameterType=":Int32?" />
+    </QueryOperation>
   </EntityContainer>
   <EntityType
     Name="Employee">
