@@ -11,8 +11,8 @@
   <EntityContainerGroup
     Name="DataWorkspace">
     <EntityContainerGroupProperty
-      EntityContainer="Microsoft.LightSwitch.Security:SecurityData"
-      Name="SecurityData">
+      Name="SecurityData"
+      EntityContainer="Microsoft.LightSwitch.Security:SecurityData">
       <EntityContainerGroupProperty.Attributes>
         <Generated />
         <DisplayName
@@ -22,20 +22,20 @@
       </EntityContainerGroupProperty.Attributes>
     </EntityContainerGroupProperty>
     <EntityContainerGroupProperty
-      EntityContainer="ApplicationData"
-      Name="ApplicationData" />
+      Name="ApplicationData"
+      EntityContainer="ApplicationData" />
   </EntityContainerGroup>
   <EntityContainer
-    IsIntrinsic="True"
-    Name="ApplicationData">
+    Name="ApplicationData"
+    IsIntrinsic="True">
     <SubmitOperation
       Name="SaveChanges" />
     <EntitySet
+      Name="Employees"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="Employee"
-      Name="Employees" />
+      EntityType="Employee" />
     <QueryOperation
       Name="Employees_Single"
       ReturnType="Employee">
@@ -117,11 +117,11 @@
       </QueryOperationParameter>
     </QueryOperation>
     <EntitySet
+      Name="ParkDivisions"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="ParkDivision"
-      Name="ParkDivisions" />
+      EntityType="ParkDivision" />
     <QueryOperation
       Name="ParkDivisions_Single"
       ReturnType="ParkDivision">
@@ -203,21 +203,21 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Association="ParkDivision_Employee"
-      Name="ParkDivision_Employees">
+      Name="ParkDivision_Employees"
+      Association="ParkDivision_Employee">
       <AssociationSetEnd
-        EntitySet="ParkDivisions"
-        Name="ParkDivision" />
+        Name="ParkDivision"
+        EntitySet="ParkDivisions" />
       <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
+        Name="Employee"
+        EntitySet="Employees" />
     </AssociationSet>
     <EntitySet
+      Name="YearRoundResSet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="YearRoundRes"
-      Name="YearRoundResSet" />
+      EntityType="YearRoundRes" />
     <QueryOperation
       Name="YearRoundResSet_Single"
       ReturnType="YearRoundRes">
@@ -299,21 +299,21 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Association="YearRoundRes_Employee"
-      Name="YearRoundRes_Employees">
+      Name="YearRoundRes_Employees"
+      Association="YearRoundRes_Employee">
       <AssociationSetEnd
-        EntitySet="YearRoundResSet"
-        Name="YearRoundRes" />
+        Name="YearRoundRes"
+        EntitySet="YearRoundResSet" />
       <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
+        Name="Employee"
+        EntitySet="Employees" />
     </AssociationSet>
     <EntitySet
+      Name="SMSCarriers"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="SMSCarrier"
-      Name="SMSCarriers" />
+      EntityType="SMSCarrier" />
     <QueryOperation
       Name="SMSCarriers_Single"
       ReturnType="SMSCarrier">
@@ -395,31 +395,31 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Association="SMSCarrier_Employee"
-      Name="SMSCarrier_Employees">
+      Name="SMSCarrier_Employees"
+      Association="SMSCarrier_Employee">
       <AssociationSetEnd
-        EntitySet="SMSCarriers"
-        Name="SMSCarrier" />
+        Name="SMSCarrier"
+        EntitySet="SMSCarriers" />
       <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
+        Name="Employee"
+        EntitySet="Employees" />
     </AssociationSet>
     <AssociationSet
-      Association="SMSCarrier_Employee1"
-      Name="SMSCarrier_Employee1Set">
+      Name="SMSCarrier_Employee1Set"
+      Association="SMSCarrier_Employee1">
       <AssociationSetEnd
-        EntitySet="SMSCarriers"
-        Name="SMSCarrier" />
+        Name="SMSCarrier"
+        EntitySet="SMSCarriers" />
       <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
+        Name="Employee"
+        EntitySet="Employees" />
     </AssociationSet>
     <EntitySet
+      Name="ResponseZonesSet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="ResponseZones"
-      Name="ResponseZonesSet" />
+      EntityType="ResponseZones" />
     <QueryOperation
       Name="ResponseZonesSet_Single"
       ReturnType="ResponseZones">
@@ -501,11 +501,11 @@
       </QueryOperationParameter>
     </QueryOperation>
     <EntitySet
+      Name="xref_EmployeeZonesSet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="xref_EmployeeZones"
-      Name="xref_EmployeeZonesSet" />
+      EntityType="xref_EmployeeZones" />
     <QueryOperation
       Name="xref_EmployeeZonesSet_Single"
       ReturnType="xref_EmployeeZones">
@@ -587,11 +587,11 @@
       </QueryOperationParameter>
     </QueryOperation>
     <EntitySet
+      Name="SARCertificationsSet"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="SARCertifications"
-      Name="SARCertificationsSet" />
+      EntityType="SARCertifications" />
     <QueryOperation
       Name="SARCertificationsSet_Single"
       ReturnType="SARCertifications">
@@ -673,34 +673,34 @@
       </QueryOperationParameter>
     </QueryOperation>
     <AssociationSet
-      Association="xref_EmployeeZones_ResponseZones"
-      Name="xref_EmployeeZones_ResponseZonesSet">
+      Name="xref_EmployeeZones_ResponseZonesSet"
+      Association="xref_EmployeeZones_ResponseZones">
       <AssociationSetEnd
-        EntitySet="xref_EmployeeZonesSet"
-        Name="xref_EmployeeZones" />
+        Name="xref_EmployeeZones"
+        EntitySet="xref_EmployeeZonesSet" />
       <AssociationSetEnd
-        EntitySet="ResponseZonesSet"
-        Name="ResponseZones" />
+        Name="ResponseZones"
+        EntitySet="ResponseZonesSet" />
     </AssociationSet>
     <AssociationSet
-      Association="xref_EmployeeZones_Employee"
-      Name="xref_EmployeeZones_Employees">
+      Name="xref_EmployeeZones_Employees"
+      Association="xref_EmployeeZones_Employee">
       <AssociationSetEnd
-        EntitySet="xref_EmployeeZonesSet"
-        Name="xref_EmployeeZones" />
+        Name="xref_EmployeeZones"
+        EntitySet="xref_EmployeeZonesSet" />
       <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
+        Name="Employee"
+        EntitySet="Employees" />
     </AssociationSet>
     <AssociationSet
-      Association="Employee_SARCertifications"
-      Name="Employee_SARCertificationsSet">
+      Name="Employee_SARCertificationsSet"
+      Association="Employee_SARCertifications">
       <AssociationSetEnd
-        EntitySet="Employees"
-        Name="Employee" />
+        Name="Employee"
+        EntitySet="Employees" />
       <AssociationSetEnd
-        EntitySet="SARCertificationsSet"
-        Name="SARCertifications" />
+        Name="SARCertifications"
+        EntitySet="SARCertificationsSet" />
     </AssociationSet>
     <QueryOperation
       Name="QRYZone"
@@ -715,16 +715,16 @@
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
-        IsOptional="True"
         Name="ZoneID"
+        IsOptional="True"
         ParameterType=":Int32?" />
     </QueryOperation>
     <EntitySet
+      Name="ProxyEmails"
       CanDelete="True"
       CanInsert="True"
       CanUpdate="True"
-      EntityType="ProxyEmail"
-      Name="ProxyEmails" />
+      EntityType="ProxyEmail" />
     <QueryOperation
       Name="ProxyEmails_Single"
       ReturnType="ProxyEmail">
@@ -818,12 +818,12 @@
         </QuerySourceExpressionTree>
       </QueryOperation.Source>
       <QueryOperationParameter
-        IsOptional="True"
         Name="Year"
+        IsOptional="True"
         ParameterType=":Int32?" />
       <QueryOperationParameter
-        IsOptional="True"
         Name="MaxRank"
+        IsOptional="True"
         ParameterType=":Int32?" />
     </QueryOperation>
   </EntityContainer>
@@ -936,14 +936,14 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="ParkDivision"
         Association="ParkDivision_Employee"
         FromEnd="Employee"
-        Name="ParkDivision"
         ToEnd="ParkDivision" />
       <NavigationProperty
+        Name="YearRoundRes"
         Association="YearRoundRes_Employee"
         FromEnd="Employee"
-        Name="YearRoundRes"
         ToEnd="YearRoundRes">
         <NavigationProperty.Attributes>
           <DisplayName
@@ -951,9 +951,9 @@
         </NavigationProperty.Attributes>
       </NavigationProperty>
       <NavigationProperty
+        Name="WorkSMSCarriers"
         Association="SMSCarrier_Employee"
         FromEnd="Employee"
-        Name="WorkSMSCarriers"
         ToEnd="SMSCarrier">
         <NavigationProperty.Attributes>
           <DisplayName
@@ -961,9 +961,9 @@
         </NavigationProperty.Attributes>
       </NavigationProperty>
       <NavigationProperty
+        Name="PersonalSMSCarriers"
         Association="SMSCarrier_Employee1"
         FromEnd="Employee"
-        Name="PersonalSMSCarriers"
         ToEnd="SMSCarrier">
         <NavigationProperty.Attributes>
           <DisplayName
@@ -1003,9 +1003,9 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="xref_EmployeeZonesCollection"
         Association="xref_EmployeeZones_Employee"
         FromEnd="Employee"
-        Name="xref_EmployeeZonesCollection"
         ToEnd="xref_EmployeeZones">
         <NavigationProperty.Attributes>
           <DisplayName
@@ -1086,9 +1086,9 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="SARCertifications"
         Association="Employee_SARCertifications"
         FromEnd="Employee"
-        Name="SARCertifications"
         ToEnd="SARCertifications">
         <NavigationProperty.Attributes>
           <DisplayName
@@ -1178,9 +1178,9 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="Employees"
         Association="ParkDivision_Employee"
         FromEnd="ParkDivision"
-        Name="Employees"
         ToEnd="Employee" />
     </EntityType.Properties>
   </EntityType>
@@ -1236,9 +1236,9 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="Employees"
         Association="YearRoundRes_Employee"
         FromEnd="YearRoundRes"
-        Name="Employees"
         ToEnd="Employee" />
     </EntityType.Properties>
   </EntityType>
@@ -1294,14 +1294,14 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="Employees"
         Association="SMSCarrier_Employee"
         FromEnd="SMSCarrier"
-        Name="Employees"
         ToEnd="Employee" />
       <NavigationProperty
+        Name="Employees1"
         Association="SMSCarrier_Employee1"
         FromEnd="SMSCarrier"
-        Name="Employees1"
         ToEnd="Employee" />
     </EntityType.Properties>
   </EntityType>
@@ -1354,9 +1354,9 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="xref_EmployeeZonesCollection"
         Association="xref_EmployeeZones_ResponseZones"
         FromEnd="ResponseZones"
-        Name="xref_EmployeeZonesCollection"
         ToEnd="xref_EmployeeZones" />
     </EntityType.Properties>
   </EntityType>
@@ -1394,14 +1394,14 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="ResponseZones"
         Association="xref_EmployeeZones_ResponseZones"
         FromEnd="xref_EmployeeZones"
-        Name="ResponseZones"
         ToEnd="ResponseZones" />
       <NavigationProperty
+        Name="Employee"
         Association="xref_EmployeeZones_Employee"
         FromEnd="xref_EmployeeZones"
-        Name="Employee"
         ToEnd="Employee" />
       <EntityProperty
         Name="Summary"
@@ -1465,9 +1465,9 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty
+        Name="Employees"
         Association="Employee_SARCertifications"
         FromEnd="SARCertifications"
-        Name="Employees"
         ToEnd="Employee" />
     </EntityType.Properties>
   </EntityType>
@@ -1541,73 +1541,73 @@
   <Association
     Name="ParkDivision_Employee">
     <AssociationEnd
-      EntityType="ParkDivision"
-      Name="ParkDivision">
+      Name="ParkDivision"
+      EntityType="ParkDivision">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
       </AssociationEnd.Attributes>
     </AssociationEnd>
     <AssociationEnd
-      EntityType="Employee"
+      Name="Employee"
       Multiplicity="Many"
-      Name="Employee" />
+      EntityType="Employee" />
   </Association>
   <Association
     Name="YearRoundRes_Employee">
     <AssociationEnd
-      EntityType="YearRoundRes"
-      Name="YearRoundRes">
+      Name="YearRoundRes"
+      EntityType="YearRoundRes">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
       </AssociationEnd.Attributes>
     </AssociationEnd>
     <AssociationEnd
-      EntityType="Employee"
+      Name="Employee"
       Multiplicity="Many"
-      Name="Employee" />
+      EntityType="Employee" />
   </Association>
   <Association
     Name="SMSCarrier_Employee">
     <AssociationEnd
-      EntityType="SMSCarrier"
-      Name="SMSCarrier">
+      Name="SMSCarrier"
+      EntityType="SMSCarrier">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
       </AssociationEnd.Attributes>
     </AssociationEnd>
     <AssociationEnd
-      EntityType="Employee"
+      Name="Employee"
       Multiplicity="Many"
-      Name="Employee" />
+      EntityType="Employee" />
   </Association>
   <Association
     Name="SMSCarrier_Employee1">
     <AssociationEnd
-      EntityType="SMSCarrier"
-      Name="SMSCarrier">
+      Name="SMSCarrier"
+      EntityType="SMSCarrier">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
       </AssociationEnd.Attributes>
     </AssociationEnd>
     <AssociationEnd
-      EntityType="Employee"
+      Name="Employee"
       Multiplicity="Many"
-      Name="Employee" />
+      EntityType="Employee" />
   </Association>
   <Association
     Name="xref_EmployeeZones_ResponseZones">
     <AssociationEnd
-      EntityType="xref_EmployeeZones"
+      Name="xref_EmployeeZones"
       Multiplicity="Many"
-      Name="xref_EmployeeZones" />
+      EntityType="xref_EmployeeZones" />
     <AssociationEnd
-      EntityType="ResponseZones"
+      Name="ResponseZones"
       Multiplicity="One"
-      Name="ResponseZones">
+      EntityType="ResponseZones">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
@@ -1617,13 +1617,13 @@
   <Association
     Name="xref_EmployeeZones_Employee">
     <AssociationEnd
-      EntityType="xref_EmployeeZones"
+      Name="xref_EmployeeZones"
       Multiplicity="Many"
-      Name="xref_EmployeeZones" />
+      EntityType="xref_EmployeeZones" />
     <AssociationEnd
-      EntityType="Employee"
+      Name="Employee"
       Multiplicity="One"
-      Name="Employee">
+      EntityType="Employee">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
@@ -1633,12 +1633,12 @@
   <Association
     Name="Employee_SARCertifications">
     <AssociationEnd
-      EntityType="Employee"
+      Name="Employee"
       Multiplicity="Many"
-      Name="Employee" />
+      EntityType="Employee" />
     <AssociationEnd
-      EntityType="SARCertifications"
-      Name="SARCertifications">
+      Name="SARCertifications"
+      EntityType="SARCertifications">
       <AssociationEnd.Attributes>
         <DeleteRule
           Action="Restrict" />
@@ -1675,9 +1675,9 @@
     </GlobalAttributeGroup.Attributes>
   </GlobalAttributeGroup>
   <DataService
+    Name="ApplicationDataMapping"
     DataProvider="EntityFrameworkDataProvider"
-    EntityContainer="ApplicationData"
-    Name="ApplicationDataMapping">
+    EntityContainer="ApplicationData">
     <AssociationSetMapping
       AssociationSet="ParkDivision_Employees">
       <AssociationSetMapping.Attributes>

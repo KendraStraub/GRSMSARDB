@@ -27,7 +27,7 @@
     <SilverlightAppEntry>
     </SilverlightAppEntry>
     <OutOfBrowserSettingsFile>My Project\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
-	<InBrowserSettingsFile>My Project\InBrowserSettings.xml</InBrowserSettingsFile>
+    <InBrowserSettingsFile>My Project\InBrowserSettings.xml</InBrowserSettingsFile>
     <EnableOutOfBrowser>False</EnableOutOfBrowser>
     <TestPageFileName>default.htm</TestPageFileName>
     <CreateTestPage>false</CreateTestPage>
@@ -235,14 +235,12 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="UserCode\Application.vb" />
     <Compile Include="UserCode\CreateNewTeamMember.vb" />
+    <Compile Include="UserCode\EmpoyeeDetail.vb" />
     <Compile Include="UserCode\ManageDivisions.vb" />
     <Compile Include="UserCode\ManageResidency.vb" />
     <Compile Include="UserCode\ManageSMSCarriers.vb" />
     <Compile Include="UserCode\ManageTeamMembers.vb" />
-    <Compile Include="UserCode\ManageTechRescueCerts.vb" />
     <Compile Include="UserCode\SearchEmployees.vb" />
-    <Compile Include="UserCode\SearchEmployees1.vb" />
-    <Compile Include="UserCode\SearchEmployees2.vb" />
     <Compile Include="UserCode\SendAnEmail.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +261,9 @@
   </ItemGroup>
   <ItemGroup>
     <_ClientBuildFile Include="Silverlight.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Folders-Excel-icon32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.VisualBasic.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\$(LightSwitchVersion)\Microsoft.LightSwitch.Build.Tasks.targets" />
