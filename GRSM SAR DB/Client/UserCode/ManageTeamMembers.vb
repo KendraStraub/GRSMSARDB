@@ -29,12 +29,6 @@ Namespace LightSwitchApplication
 
 
 
-        Private Sub ImportFromExcel_Execute()
-            'Use the Office Integration Pack Extension to do a variety of things with MS Office
-            'Download here: http://visualstudiogallery.msdn.microsoft.com/35c4cf2a-5148-4716-afcf-0ccf8899cabf 
-
-            OfficeIntegration.Excel.Import(Me.Employees)
-        End Sub
     End Class
 
 End Namespace

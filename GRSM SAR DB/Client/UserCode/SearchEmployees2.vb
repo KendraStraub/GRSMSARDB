@@ -1,13 +1,10 @@
 ﻿
 Namespace LightSwitchApplication
 
-    Public Class ManageDivisions
-
+    Public Class SearchEmployees2
 
         Private Sub ExportToExcel_Execute()
-
-            OfficeIntegration.Excel.Export(Me.ParkDivisions)
-
+            OfficeIntegration.Excel.Export(Me.Employees)
         End Sub
     End Class
 
