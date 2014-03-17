@@ -196,6 +196,7 @@
     <Compile Include="UserCode\ApplicationDataService.vb" />
     <Compile Include="UserCode\EmailHelper.vb" />
     <Compile Include="UserCode\Shared\Employee.vb" />
+    <Compile Include="UserCode\Shared\ProxyEmail.vb" />
     <Compile Include="UserCode\Shared\xref_EmployeeZones.vb" />
   </ItemGroup>
   <ItemGroup>

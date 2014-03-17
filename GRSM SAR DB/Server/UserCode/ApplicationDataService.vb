@@ -12,42 +12,17 @@ Namespace LightSwitchApplication
 
         Private Sub ProxyEmails_Inserted(entity As ProxyEmail)
             Dim sSubject = "Test Email."
-            Dim carRtn = Environment.NewLine & Environment.NewLine
-
-            Dim sMessage = "The following email has come from a button on LightSwitch..." & carRtn
-            sMessage += "Testing 1, 2, 3!!"
-            Dim mailHelper As New EMailHelper(entity.SenderEmailAddress, _
-                                             entity.RecipientName, _
-                                             entity.RecipientEmailAddress, _
-                                             entity.RecipientName, _
-                                             sSubject, _
-                                             sMessage)
+            Dim mailHelper As New EMailHelper(
+                entity.SenderEmailAddress, _
+                entity.SenderName, _
+                entity.RecipientEmailAddress, _
+                entity.RecipientName, _
+                sSubject, _
+                entity.Message)
             mailHelper.SendMail()
         End Sub
 
-        'Private Sub QRYDateFit_PreprocessQuery(Year As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.Employee))
-        ' If Year.HasValue Then
-        '  Dim lastYear = DateAndTime.Now.AddYears(-Year.ToString)
-        '  query = From q In query
-        '        Where q.DateFit > lastYear
-        '  Select q
-        ' Else
-        '  Dim lastYear = DateAndTime.Now.AddYears(-1)
-        '  query = From q In query
-        '          Where q.DateFit > lastYear
-        '      Select q
-        '  End If
-        'End Sub
-        ' Private Sub QRYMaxRank_PreprocessQuery(MaxRank As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.Employee))
-        '   If MaxRank.HasValue Then
-        '      query = From q In query
-        '             Where q.SARCertifications.Rank <= MaxRank
-        '                       Select q
-        '  Else
-        '     query = From q In query
-        '            Select q
-        ' End If
-        ' End Sub
+ 
         Private Sub QRYParameters_PreprocessQuery(Year As System.Nullable(Of Integer), MaxRank As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.Employee))
             If MaxRank.HasValue Then
                 query = From q In query

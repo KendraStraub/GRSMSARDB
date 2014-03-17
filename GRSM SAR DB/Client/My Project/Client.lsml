@@ -33,9 +33,6 @@
       Name="ScreenCommandShowManageTeamMembers"
       Target="!module/Methods[ShowManageTeamMembers]" />
     <ApplicationCommand
-      Name="ScreenCommandShowSearchEmployees"
-      Target="!module/Methods[ShowSearchEmployees]" />
-    <ApplicationCommand
       Name="ScreenCommandShowSendAnEmail"
       Target="!module/Methods[ShowSendAnEmail]" />
     <ApplicationCommand
@@ -44,6 +41,9 @@
     <ApplicationCommand
       Name="ScreenCommandShowSearchQRYZone"
       Target="!module/Methods[ShowSearchQRYZone]" />
+    <ApplicationCommand
+      Name="ScreenCommandShowSearchEmployees"
+      Target="!module/Methods[ShowSearchEmployees]" />
     <Application.Methods>
       <ApplicationMethod
         Name="ShowCreateNewTeamMember">
@@ -159,9 +159,6 @@
           Name="ManageTeamMembers"
           Command="!module/Commands[ScreenCommandShowManageTeamMembers]" />
         <ApplicationNavigationLink
-          Name="SearchEmployees"
-          Command="!module/Commands[ScreenCommandShowSearchEmployees]" />
-        <ApplicationNavigationLink
           Name="SendAnEmail"
           Command="!module/Commands[ScreenCommandShowSendAnEmail]" />
         <ApplicationNavigationLink
@@ -170,6 +167,9 @@
         <ApplicationNavigationLink
           Name="SearchQRYZone"
           Command="!module/Commands[ScreenCommandShowSearchQRYZone]" />
+        <ApplicationNavigationLink
+          Name="SearchEmployees"
+          Command="!module/Commands[ScreenCommandShowSearchEmployees]" />
       </ApplicationNavigationGroup>
       <ApplicationNavigationGroup
         Name="Administration">
@@ -3524,6 +3524,8 @@
     <Screen.Attributes>
       <SaveChangesTo
         EntityContainer="ApplicationData" />
+      <DisplayName
+        Value="Incident Response Team" />
     </Screen.Attributes>
     <Screen.RootContentItem>
       <ContentItem
@@ -3532,6 +3534,101 @@
         <ContentItem
           Name="ScreenLayout"
           Kind="Group">
+          <ContentItem
+            Name="Group11"
+            Kind="Group"
+            View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
+            <ContentItem
+              Name="Group12"
+              Kind="Group">
+              <ContentItem
+                Name="TypeOfIncident"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem
+                  Name="Priority"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[Type]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Name="IncidentPriority"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem
+                  Name="Priority1"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[Priority]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem
+              Name="Group13"
+              Kind="Group">
+              <ContentItem
+                Name="LocationOfIncident"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem
+                  Name="Location"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[Location]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Name="ReportToStagingArea"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem
+                  Name="StagingArea"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[StagingArea]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Top"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
           <ContentItem
             Name="Text"
             Kind="ScreenContent"
@@ -3546,29 +3643,6 @@
                 </ScreenExpressionTree>
               </ControlPropertySource>
             </ContentItem.PropertySources>
-          </ContentItem>
-          <ContentItem
-            Name="Zones"
-            Kind="Details"
-            DataType="xref_EmployeeZones">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="SearchEmployees/Properties[Zones]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-            <ContentItem
-              Name="xref_EmployeeZones"
-              Kind="Details"
-              DataType="xref_EmployeeZones">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression />
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
           </ContentItem>
           <ContentItem
             Name="Group1"
@@ -3587,67 +3661,6 @@
                     Value="Fitness Test" />
                 </ContentItem.Attributes>
                 <ContentItem
-                  Name="Text1"
-                  Kind="ScreenContent"
-                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Fitness_Instructions" />
-                  </ContentItem.Attributes>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Select if the team member took a fitness test within the last year, the last 2 years, or never. Default is last year. "
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[MinHeight]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="15"
-                          ResultType=":Double" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="Stretch"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Height]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="10"
-                          ResultType=":Double" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="Lines"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:Label/Properties[Lines]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="2"
-                          ResultType=":Int32" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
                   Name="Year"
                   Kind="Value"
                   DataType=":Int32?">
@@ -3655,7 +3668,7 @@
                     <DisplayName
                       Value="Took Fitness Test?" />
                     <Description
-                      Value="Select Fitness Test Requirement: Within the last 1 year, 2 years, or everyone." />
+                      Value="Select if the team member took a fitness test within the last year, the last 2 years, or never. Default is last year. " />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -3676,43 +3689,6 @@
                     Value="SAR Certification" />
                 </ContentItem.Attributes>
                 <ContentItem
-                  Name="Text2"
-                  Kind="ScreenContent"
-                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="SARCERT_Instructions" />
-                  </ContentItem.Attributes>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Select the MINIMUM required SAR Certification. The result will be team members that posses the minimum certification. Default is no certification."
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="Lines"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:Label/Properties[Lines]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="3"
-                          ResultType=":Int32" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
                   Name="AllSARCerts"
                   Kind="Details"
                   DataType="SARCertifications">
@@ -3720,7 +3696,7 @@
                     <DisplayName
                       Value="SAR Certification?" />
                     <Description
-                      Value="Select MINIMUM SAR Certification. Results will be everyone meeting that certification OR higher. " />
+                      Value="Select the MINIMUM required SAR Certification. The result will be team members that posses the minimum certification. Default is no certification." />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -3751,35 +3727,6 @@
                     Value="Technical Rescuer" />
                 </ContentItem.Attributes>
                 <ContentItem
-                  Name="StaticLabel"
-                  Kind="ScreenContent"
-                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="TECHRESC_Instructions" />
-                  </ContentItem.Attributes>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Select if a Certified Technical Rescuer is required. Ignored by default. "
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="Lines"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
                   Name="TechCertList1"
                   Kind="Value"
                   DataType=":String?">
@@ -3787,7 +3734,7 @@
                     <DisplayName
                       Value="Technical Rescuer Needed?" />
                     <Description
-                      Value="Select if a Certified Technical Rescuer is needed. " />
+                      Value="Select if a Certified Technical Rescuer is required. Ignored by default. " />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -3799,16 +3746,6 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
-                  <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
               Name="Group2"
@@ -3823,31 +3760,6 @@
                     Value="Certified Tracker" />
                 </ContentItem.Attributes>
                 <ContentItem
-                  Name="TRACK_Instructions"
-                  Kind="ScreenContent"
-                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Select if a Certified Tracker is required. Ignored by default. "
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="Lines"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
                   Name="TrackerList1"
                   Kind="Value"
                   DataType=":String?">
@@ -3855,7 +3767,7 @@
                     <DisplayName
                       Value="Tracker Required?" />
                     <Description
-                      Value="Select if a Certified Tracker is needed. " />
+                      Value="Select if a Certified Tracker is required. Ignored by default. " />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -3886,23 +3798,6 @@
                     Value="Medic" />
                 </ContentItem.Attributes>
                 <ContentItem
-                  Name="MEDIC_Instructions"
-                  Kind="ScreenContent"
-                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Select if a Medic or EMT is required. Ignored by default. "
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
                   Name="MedicList1"
                   Kind="Value"
                   DataType=":String?">
@@ -3910,7 +3805,7 @@
                     <DisplayName
                       Value="Medic Required?" />
                     <Description
-                      Value="Select if a Medic/EMT is needed. " />
+                      Value="Select if a Medic or EMT is required. Ignored by default. " />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -3931,23 +3826,6 @@
                     Value="Law Enforcement" />
                 </ContentItem.Attributes>
                 <ContentItem
-                  Name="LEO_Instructions"
-                  Kind="ScreenContent"
-                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Select if a Commissioned Law Enforcement Officer is required. Ignored by default. "
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
                   Name="CLEOList1"
                   Kind="Value"
                   DataType=":String?">
@@ -3955,7 +3833,7 @@
                     <DisplayName
                       Value="Commissioned Law Enforcement Officer Needed?" />
                     <Description
-                      Value="Select if a Commissioned Law Enforcement Officer is needed. " />
+                      Value="Select if a Commissioned Law Enforcement Officer is required. Ignored by default. " />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -3967,16 +3845,6 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
-                  <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="Top"
-                      ResultType=":String" />
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem
               Name="Group3"
@@ -3990,29 +3858,12 @@
                     Value="Residency" />
                 </ContentItem.Attributes>
                 <ContentItem
-                  Name="Text3"
-                  Kind="ScreenContent"
-                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
-                      <ScreenExpressionTree>
-                        <ChainExpression>
-                          <ConstantExpression
-                            Value="Select if need someone whom lives here year-round or is temporar/seasonal (summer). Ignored by default. "
-                            ResultType=":String" />
-                        </ChainExpression>
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
                   Name="Residency"
                   Kind="Details"
                   DataType="YearRoundRes">
                   <ContentItem.Attributes>
                     <Description
-                      Value="Select if they need to live here year-round or not." />
+                      Value="Select if need someone whom lives here year-round or is temporar/seasonal (summer). Ignored by default. " />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -4376,6 +4227,30 @@
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Auto"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[MinHeight]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="250"
+                    ResultType=":Double" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[WidthSizingMode]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Auto"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
             </ContentItem.PropertySources>
           </ContentItem>
           <ContentItem.PropertySources>
@@ -4383,7 +4258,7 @@
               Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
               <ScreenExpressionTree>
                 <ConstantExpression
-                  Value="Top"
+                  Value="Center"
                   ResultType=":String" />
               </ScreenExpressionTree>
             </ControlPropertySource>
@@ -4410,6 +4285,42 @@
                 <ChainExpression>
                   <CallExpression
                     Target="SearchEmployees/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Name="NotifyTheTeam"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="SearchEmployees/Methods[EmailBlast]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Name="OrderIsFilled"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="SearchEmployees/Methods[OrderIsFilled]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Name="OrderIsCancelled"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="SearchEmployees/Methods[OrderIsCancelled]" />
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>
@@ -4448,6 +4359,12 @@
       </ScreenMethod>
       <ScreenMethod
         Name="ExportToExcel" />
+      <ScreenMethod
+        Name="EmailBlast" />
+      <ScreenMethod
+        Name="OrderIsFilled" />
+      <ScreenMethod
+        Name="OrderIsCancelled" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
@@ -4733,6 +4650,48 @@
       <ScreenProperty
         Name="Zones"
         PropertyType="xref_EmployeeZones" />
+      <ScreenProperty
+        Name="Type"
+        PropertyType=":String?">
+        <ScreenProperty.Attributes>
+          <SupportedValue
+            DisplayName="Carry-out"
+            Value="Carry-out" />
+          <SupportedValue
+            DisplayName="Search"
+            Value="Search" />
+          <SupportedValue
+            DisplayName="ALS"
+            Value="ALS" />
+          <SupportedValue
+            DisplayName="Technical Rescue"
+            Value="Tech. Rescue" />
+          <SupportedValue
+            DisplayName="Law Enforcement Incident"
+            Value="LE Incident" />
+          <SupportedValue
+            DisplayName="Tactical Tracking"
+            Value="TAC Tracking" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="Location"
+        PropertyType=":String?" />
+      <ScreenProperty
+        Name="Priority"
+        PropertyType=":String?">
+        <ScreenProperty.Attributes>
+          <SupportedValue
+            DisplayName="Life Threatening"
+            Value="1" />
+          <SupportedValue
+            DisplayName="Non-Life Threatening"
+            Value="2" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="StagingArea"
+        PropertyType=":String?" />
     </Screen.Properties>
   </Screen>
   <Screen

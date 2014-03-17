@@ -229,6 +229,9 @@
     <Compile Include="..\Server\UserCode\Shared\Employee.vb">
       <Link>UserCode\Shared\Employee.vb</Link>
     </Compile>
+    <Compile Include="..\Server\UserCode\Shared\ProxyEmail.vb">
+      <Link>UserCode\Shared\ProxyEmail.vb</Link>
+    </Compile>
     <Compile Include="..\Server\UserCode\Shared\xref_EmployeeZones.vb">
       <Link>UserCode\Shared\xref_EmployeeZones.vb</Link>
     </Compile>
