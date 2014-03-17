@@ -11,20 +11,17 @@ Namespace LightSwitchApplication
         Private Property MailFromName As String
         Private Property MailTo As String
         Private Property MailToName As String
-        Private Property MailSubject As String
         Private Property MailBody As String
 
         Sub New(ByVal SendFrom As String,
                 ByVal SendFromName As String, _
                 ByVal SendTo As String, _
                 ByVal SendToName As String, _
-                ByVal Subject As String, _
                 ByVal Body As String)
             _MailFrom = SendFrom
             _MailFromName = SendFromName
             _MailTo = SendTo
             _MailToName = SendToName
-            _MailSubject = Subject
             _MailBody = Body
         End Sub
 
@@ -38,7 +35,6 @@ Namespace LightSwitchApplication
             With mail
                 .From = mailFrom
                 .To.Add(mailTo)
-                .Subject = _MailSubject
                 .Body = _MailBody
             End With
 

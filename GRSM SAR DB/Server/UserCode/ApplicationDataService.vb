@@ -11,13 +11,12 @@ Namespace LightSwitchApplication
 
 
         Private Sub ProxyEmails_Inserted(entity As ProxyEmail)
-            Dim sSubject = "Test Email."
+
             Dim mailHelper As New EMailHelper(
                 entity.SenderEmailAddress, _
                 entity.SenderName, _
                 entity.RecipientEmailAddress, _
                 entity.RecipientName, _
-                sSubject, _
                 entity.Message)
             mailHelper.SendMail()
         End Sub
