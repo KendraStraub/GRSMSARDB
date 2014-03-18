@@ -142,7 +142,7 @@
     <Application.NavigationItems>
       <ApplicationNavigationGroup
         Name="Tasks"
-        DefaultItem="!module/NavigationItems[Tasks]/Children[SearchEmployees]">
+        DefaultItem="!module/NavigationItems[Tasks]/Children[Home]">
         <ApplicationNavigationGroup.Attributes>
           <DisplayName
             Value="Tasks" />
@@ -5600,28 +5600,11 @@
         <ContentItem
           Name="ScreenLayout"
           Kind="Group"
-          View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
+          View="Microsoft.LightSwitch.RichClient:RowsLayout">
           <ContentItem
             Name="Group"
             Kind="Group"
             View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
-            <ContentItem
-              Name="Image"
-              Kind="ScreenContent"
-              View="Microsoft.LightSwitch.RichClient:StaticImage">
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Image]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="Microsoft.LightSwitch.UserImageResources::Resources\Pumpkin-icon.png"
-                        ResultType=":String" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
-            </ContentItem>
             <ContentItem
               Name="Group1"
               Kind="Group" />
@@ -5652,50 +5635,341 @@
               Kind="Group"
               View="Microsoft.LightSwitch.RichClient:TableLayout">
               <ContentItem
-                Name="Group4"
+                Name="Group6"
                 Kind="Group">
                 <ContentItem
-                  Name="Text_SAR_Certifications"
-                  Kind="Value"
-                  DataType=":String"
-                  View="Microsoft.LightSwitch.RichClient:Label">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Home/Properties[Text_SAR_Certifications]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
+                  Name="Image1"
+                  Kind="ScreenContent"
+                  View="Microsoft.LightSwitch.RichClient:StaticImage">
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Image]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Microsoft.LightSwitch.UserImageResources::Resources\NEW.jpg"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[WidthSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Pixels"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Pixels"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Height]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="50"
+                            ResultType=":Double" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Width]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="50"
+                            ResultType=":Double" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="None"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
-                  Name="Text_Divisions"
-                  Kind="Value"
-                  DataType=":String"
-                  View="Microsoft.LightSwitch.RichClient:Label">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Home/Properties[Text_Divisions]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
+                  Name="Image"
+                  Kind="ScreenContent"
+                  View="Microsoft.LightSwitch.RichClient:StaticImage">
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Image]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Microsoft.LightSwitch.UserImageResources::Resources\EDIT.jpg"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[WidthSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Pixels"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Width]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="50"
+                            ResultType=":Double" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Pixels"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Height]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="50"
+                            ResultType=":Double" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                 </ContentItem>
                 <ContentItem
-                  Name="Text_Response_Zones"
+                  Name="Image2"
+                  Kind="ScreenContent"
+                  View="Microsoft.LightSwitch.RichClient:StaticImage">
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Image]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Microsoft.LightSwitch.UserImageResources::Resources\Untitled-1.jpg"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[WidthSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Pixels"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Width]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="50"
+                            ResultType=":Double" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Pixels"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Height]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="50"
+                            ResultType=":Double" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                    <ScreenExpressionTree>
+                      <ConstantExpression
+                        Value="Left"
+                        ResultType=":String" />
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
+                    <ScreenExpressionTree>
+                      <ConstantExpression
+                        Value="RightAligned"
+                        ResultType=":String" />
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem
+                Name="Group4"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:TableColumnLayout">
+                <ContentItem
+                  Name="ManageResponseZones"
                   Kind="Value"
-                  DataType=":String"
+                  DataType=":String?"
                   View="Microsoft.LightSwitch.RichClient:Label">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
                         <MemberExpression
-                          Member="Home/Properties[Text_Response_Zones]" />
+                          Member="Home/Properties[ManageResponseZones]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="Zones"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.Attributes>
+                        <DisplayName
+                          Value="Response Zones" />
+                      </ContentItem.Attributes>
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[Zones]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="Center"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="RightAligned"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
                 </ContentItem>
+                <ContentItem
+                  Name="Txt_Divisions"
+                  Kind="Value"
+                  DataType=":String?"
+                  View="Microsoft.LightSwitch.RichClient:Label">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Manage Park Divisions" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Home/Properties[Txt_Divisions]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="Divisions"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[Divisions]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
+                </ContentItem>
+                <ContentItem
+                  Name="ManageSARCertifications"
+                  Kind="Value"
+                  DataType=":String?"
+                  View="Microsoft.LightSwitch.RichClient:Label">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Manage SAR Certifications" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Home/Properties[ManageSARCertifications]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="SARCerts"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.Attributes>
+                        <DisplayName
+                          Value="SAR Certifications" />
+                      </ContentItem.Attributes>
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[SARCerts]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
+                </ContentItem>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
+                    <ScreenExpressionTree>
+                      <ConstantExpression
+                        Value="RightAligned"
+                        ResultType=":String" />
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
               </ContentItem>
               <ContentItem
                 Name="Group5"
@@ -5705,6 +5979,10 @@
                   Kind="Value"
                   DataType=":String"
                   View="Microsoft.LightSwitch.RichClient:Label">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="View Employees" />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -5713,12 +5991,41 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="View_Employees"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[View_Employees]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                      <ContentItem.PropertySources>
+                        <ControlPropertySource
+                          Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                          <ScreenExpressionTree>
+                            <ConstantExpression
+                              Value="Right"
+                              ResultType=":String" />
+                          </ScreenExpressionTree>
+                        </ControlPropertySource>
+                      </ContentItem.PropertySources>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
                 </ContentItem>
                 <ContentItem
                   Name="Text_New_Employee"
                   Kind="Value"
                   DataType=":String"
                   View="Microsoft.LightSwitch.RichClient:Label">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="New Employee" />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -5727,12 +6034,41 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="AddEmployee"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[AddEmployee]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                      <ContentItem.PropertySources>
+                        <ControlPropertySource
+                          Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                          <ScreenExpressionTree>
+                            <ConstantExpression
+                              Value="Right"
+                              ResultType=":String" />
+                          </ScreenExpressionTree>
+                        </ControlPropertySource>
+                      </ContentItem.PropertySources>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
                 </ContentItem>
                 <ContentItem
                   Name="Text_Manage_Employee"
                   Kind="Value"
                   DataType=":String"
                   View="Microsoft.LightSwitch.RichClient:Label">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Manage Employees" />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -5741,11 +6077,51 @@
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="EditEmployee"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[EditEmployee]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                      <ContentItem.PropertySources>
+                        <ControlPropertySource
+                          Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                          <ScreenExpressionTree>
+                            <ConstantExpression
+                              Value="Right"
+                              ResultType=":String" />
+                          </ScreenExpressionTree>
+                        </ControlPropertySource>
+                      </ContentItem.PropertySources>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
                 </ContentItem>
               </ContentItem>
-              <ContentItem
-                Name="Group6"
-                Kind="Group" />
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Left"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="RightAligned"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
             </ContentItem>
           </ContentItem>
         </ContentItem>
@@ -5806,6 +6182,18 @@
           <Generated />
         </ScreenMethod.Attributes>
       </ScreenMethod>
+      <ScreenMethod
+        Name="SARCerts" />
+      <ScreenMethod
+        Name="Divisions" />
+      <ScreenMethod
+        Name="Zones" />
+      <ScreenMethod
+        Name="View_Employees" />
+      <ScreenMethod
+        Name="AddEmployee" />
+      <ScreenMethod
+        Name="EditEmployee" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
@@ -5850,6 +6238,18 @@
           <Required />
         </ScreenProperty.Attributes>
       </ScreenProperty>
+      <ScreenProperty
+        Name="Txt_Divisions"
+        PropertyType=":String?" />
+      <ScreenProperty
+        Name="ManageResponseZones"
+        PropertyType=":String?" />
+      <ScreenProperty
+        Name="ManageSARCertifications"
+        PropertyType=":String?" />
+      <ScreenProperty
+        Name="ViewEmployees"
+        PropertyType=":String?" />
     </Screen.Properties>
   </Screen>
 </ModelFragment>

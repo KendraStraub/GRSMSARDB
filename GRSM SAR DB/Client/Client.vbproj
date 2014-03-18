@@ -239,6 +239,7 @@
     <Compile Include="UserCode\Application.vb" />
     <Compile Include="UserCode\CreateNewTeamMember.vb" />
     <Compile Include="UserCode\EmpoyeeDetail.vb" />
+    <Compile Include="UserCode\Home.vb" />
     <Compile Include="UserCode\ManageDivisions.vb" />
     <Compile Include="UserCode\ManageResidency.vb" />
     <Compile Include="UserCode\ManageSMSCarriers.vb" />
@@ -270,6 +271,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Pumpkin-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\group.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\NEW.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\EDIT.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Untitled-1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.VisualBasic.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\LightSwitch\$(LightSwitchVersion)\Microsoft.LightSwitch.Build.Tasks.targets" />
