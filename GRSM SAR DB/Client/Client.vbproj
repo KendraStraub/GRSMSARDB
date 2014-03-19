@@ -242,6 +242,7 @@
     <Compile Include="UserCode\Home.vb" />
     <Compile Include="UserCode\ManageDivisions.vb" />
     <Compile Include="UserCode\ManageResidency.vb" />
+    <Compile Include="UserCode\ManageSARCertifications.vb" />
     <Compile Include="UserCode\ManageSMSCarriers.vb" />
     <Compile Include="UserCode\ManageTeamMembers.vb" />
     <Compile Include="UserCode\SearchEmployees.vb" />
