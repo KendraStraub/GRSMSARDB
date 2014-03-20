@@ -873,6 +873,13 @@
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
+        Name="Summary"
+        PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Computed />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
         Name="FirstName"
         PropertyType=":String">
         <EntityProperty.Attributes>
@@ -1030,13 +1037,6 @@
             Value="Employee Point of Entrance to Park" />
         </NavigationProperty.Attributes>
       </NavigationProperty>
-      <EntityProperty
-        Name="Summary"
-        PropertyType=":String">
-        <EntityProperty.Attributes>
-          <Computed />
-        </EntityProperty.Attributes>
-      </EntityProperty>
       <EntityProperty
         Name="CreatedTime"
         PropertyType=":DateTime?">

@@ -33,14 +33,8 @@
       Name="ScreenCommandShowManageTeamMembers"
       Target="!module/Methods[ShowManageTeamMembers]" />
     <ApplicationCommand
-      Name="ScreenCommandShowSendAnEmail"
-      Target="!module/Methods[ShowSendAnEmail]" />
-    <ApplicationCommand
       Name="ScreenCommandShowEmpoyeeDetail"
       Target="!module/Methods[ShowEmpoyeeDetail]" />
-    <ApplicationCommand
-      Name="ScreenCommandShowSearchQRYZone"
-      Target="!module/Methods[ShowSearchQRYZone]" />
     <ApplicationCommand
       Name="ScreenCommandShowSearchEmployees"
       Target="!module/Methods[ShowSearchEmployees]" />
@@ -105,31 +99,11 @@
         </ApplicationMethod.Attributes>
       </ApplicationMethod>
       <ApplicationMethod
-        Name="ShowSendAnEmail">
-        <ApplicationMethod.Attributes>
-          <ShowScreenMethod
-            TargetScreen="SendAnEmail" />
-        </ApplicationMethod.Attributes>
-        <ApplicationMethodParameter
-          Name="Message"
-          ParameterType=":String?" />
-      </ApplicationMethod>
-      <ApplicationMethod
         Name="ShowEmpoyeeDetail">
         <ApplicationMethod.Attributes>
           <ShowScreenMethod
             TargetScreen="EmpoyeeDetail" />
         </ApplicationMethod.Attributes>
-      </ApplicationMethod>
-      <ApplicationMethod
-        Name="ShowSearchQRYZone">
-        <ApplicationMethod.Attributes>
-          <ShowScreenMethod
-            TargetScreen="SearchQRYZone" />
-        </ApplicationMethod.Attributes>
-        <ApplicationMethodParameter
-          Name="ResponseZonesZoneID"
-          ParameterType=":Int32?" />
       </ApplicationMethod>
       <ApplicationMethod
         Name="ShowHome">
@@ -169,14 +143,8 @@
           Name="ManageTeamMembers"
           Command="!module/Commands[ScreenCommandShowManageTeamMembers]" />
         <ApplicationNavigationLink
-          Name="SendAnEmail"
-          Command="!module/Commands[ScreenCommandShowSendAnEmail]" />
-        <ApplicationNavigationLink
           Name="EmpoyeeDetail"
           Command="!module/Commands[ScreenCommandShowEmpoyeeDetail]" />
-        <ApplicationNavigationLink
-          Name="SearchQRYZone"
-          Command="!module/Commands[ScreenCommandShowSearchQRYZone]" />
         <ApplicationNavigationLink
           Name="SearchEmployees"
           Command="!module/Commands[ScreenCommandShowSearchEmployees]" />
@@ -226,6 +194,8 @@
     <EntityType.Attributes>
       <Proxy
         Target="ServiceInterface:Employee" />
+      <SummaryProperty
+        Property="Employee/Properties[Summary]" />
     </EntityType.Attributes>
     <EntityType.Properties>
       <EntityProperty>
@@ -1237,18 +1207,6 @@
               </ScreenExpressionTree>
             </ContentItem.DataSource>
           </ContentItem>
-          <ContentItem
-            Name="ExportToExcel"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="ManageDivisions/Methods[ImportFromExcel]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
         </ContentItem.CommandItems>
       </ContentItem>
     </Screen.RootContentItem>
@@ -1281,8 +1239,6 @@
           <Generated />
         </ScreenMethod.Attributes>
       </ScreenMethod>
-      <ScreenMethod
-        Name="ImportFromExcel" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
@@ -1473,18 +1429,6 @@
               </ScreenExpressionTree>
             </ContentItem.DataSource>
           </ContentItem>
-          <ContentItem
-            Name="ImportFromExcel"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="ManageSARCertifications/Methods[ImportFromExcel]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
         </ContentItem.CommandItems>
       </ContentItem>
     </Screen.RootContentItem>
@@ -1517,8 +1461,6 @@
           <Generated />
         </ScreenMethod.Attributes>
       </ScreenMethod>
-      <ScreenMethod
-        Name="ImportFromExcel" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
@@ -2249,7 +2191,7 @@
             Name="ListColumn"
             Kind="Group">
             <ContentItem
-              Name="EmployeeList"
+              Name="Employees"
               Kind="Collection"
               DataType="CollectionView$Employee"
               View="Microsoft.LightSwitch.RichClient:List">
@@ -2262,7 +2204,7 @@
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
               <ContentItem
-                Name="RowTemplate"
+                Name="EmployeesTemplate"
                 Kind="Details"
                 DataType="Employee">
                 <ContentItem.DataSource>
@@ -2271,7 +2213,7 @@
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
                 <ContentItem
-                  Name="FirstName"
+                  Name="FirstName2"
                   Kind="Value"
                   DataType=":String">
                   <ContentItem.DataSource>
@@ -2284,7 +2226,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="LastName"
+                  Name="LastName2"
                   Kind="Value"
                   DataType=":String">
                   <ContentItem.DataSource>
@@ -2297,7 +2239,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="WorkEmail"
+                  Name="WorkEmail2"
                   Kind="Value"
                   DataType="Microsoft.LightSwitch.Extensions:EmailAddress?">
                   <ContentItem.DataSource>
@@ -2310,7 +2252,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="HomeEmail"
+                  Name="HomeEmail2"
                   Kind="Value"
                   DataType="Microsoft.LightSwitch.Extensions:EmailAddress?">
                   <ContentItem.DataSource>
@@ -2323,7 +2265,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="WorkPhone"
+                  Name="WorkPhone2"
                   Kind="Value"
                   DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
                   <ContentItem.DataSource>
@@ -2336,7 +2278,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="HomePhone"
+                  Name="HomePhone2"
                   Kind="Value"
                   DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
                   <ContentItem.DataSource>
@@ -2349,7 +2291,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="WorkMobile"
+                  Name="WorkMobile2"
                   Kind="Value"
                   DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
                   <ContentItem.DataSource>
@@ -2362,7 +2304,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="DateFit"
+                  Name="DateFit2"
                   Kind="Value"
                   DataType=":Date?">
                   <ContentItem.DataSource>
@@ -2375,20 +2317,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="DaysSinceLastFit"
-                  Kind="Value"
-                  DataType=":Int32">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Employee/Properties[DaysSinceLastFit]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="ParkDivision"
+                  Name="ParkDivision2"
                   Kind="Details"
                   DataType="ParkDivision">
                   <ContentItem.DataSource>
@@ -2400,7 +2329,7 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="RowTemplate1"
+                    Name="ParkDivision3"
                     Kind="Details"
                     DataType="ParkDivision">
                     <ContentItem.DataSource>
@@ -2411,7 +2340,7 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  Name="YearRoundRes"
+                  Name="YearRoundRes2"
                   Kind="Details"
                   DataType="YearRoundRes">
                   <ContentItem.DataSource>
@@ -2423,7 +2352,7 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="RowTemplate2"
+                    Name="YearRoundRes3"
                     Kind="Details"
                     DataType="YearRoundRes">
                     <ContentItem.DataSource>
@@ -2434,7 +2363,7 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  Name="WorkSMSCarriers"
+                  Name="WorkSMSCarriers2"
                   Kind="Details"
                   DataType="SMSCarrier">
                   <ContentItem.DataSource>
@@ -2446,7 +2375,7 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="RowTemplate3"
+                    Name="SMSCarrier"
                     Kind="Details"
                     DataType="SMSCarrier">
                     <ContentItem.DataSource>
@@ -2457,7 +2386,7 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  Name="PersonalSMSCarriers"
+                  Name="PersonalSMSCarriers2"
                   Kind="Details"
                   DataType="SMSCarrier">
                   <ContentItem.DataSource>
@@ -2469,7 +2398,7 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                   <ContentItem
-                    Name="RowTemplate4"
+                    Name="SMSCarrier1"
                     Kind="Details"
                     DataType="SMSCarrier">
                     <ContentItem.DataSource>
@@ -2480,20 +2409,7 @@
                   </ContentItem>
                 </ContentItem>
                 <ContentItem
-                  Name="PersonalSMS"
-                  Kind="Value"
-                  DataType=":String">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Employee/Properties[PersonalSMS]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="PersonalMobile"
+                  Name="PersonalMobile2"
                   Kind="Value"
                   DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
                   <ContentItem.DataSource>
@@ -2506,33 +2422,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="WorksSMS"
-                  Kind="Value"
-                  DataType=":String">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Employee/Properties[WorksSMS]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="Summary"
-                  Kind="Value"
-                  DataType=":String">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Employee/Properties[Summary]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-                <ContentItem
-                  Name="CreatedTime"
+                  Name="CreatedTime1"
                   Kind="Value"
                   DataType=":DateTime?">
                   <ContentItem.DataSource>
@@ -2545,7 +2435,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="CreatedBy"
+                  Name="CreatedBy1"
                   Kind="Value"
                   DataType=":String?">
                   <ContentItem.DataSource>
@@ -2558,7 +2448,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="UpdatedTime"
+                  Name="UpdatedTime1"
                   Kind="Value"
                   DataType=":DateTime?">
                   <ContentItem.DataSource>
@@ -2571,7 +2461,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="UpdatedBy"
+                  Name="UpdatedBy1"
                   Kind="Value"
                   DataType=":String?">
                   <ContentItem.DataSource>
@@ -2583,26 +2473,151 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
-              </ContentItem>
-              <ContentItem.CommandItems>
                 <ContentItem
-                  Name="EmployeeListAddAndEditNew"
-                  Kind="Command">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Add..." />
-                  </ContentItem.Attributes>
+                  Name="CLEO1"
+                  Kind="Value"
+                  DataType=":String">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
-                        <CallExpression
-                          Target="ManageTeamMembers/Methods[EmployeeListAddAndEditNew]" />
+                        <MemberExpression
+                          Member="Employee/Properties[CLEO]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="Employees_EditSelected"
+                  Name="MEDIC1"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Employee/Properties[MEDIC]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="SARCertifications"
+                  Kind="Details"
+                  DataType="SARCertifications">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Employee/Properties[SARCertifications]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem
+                    Name="SARCertifications1"
+                    Kind="Details"
+                    DataType="SARCertifications">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+                <ContentItem
+                  Name="TechRescue1"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Employee/Properties[TechRescue]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="Tracker1"
+                  Kind="Value"
+                  DataType=":String?">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Employee/Properties[Tracker]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="DaysSinceLastFit2"
+                  Kind="Value"
+                  DataType=":Int32">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Employee/Properties[DaysSinceLastFit]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="PersonalSMS2"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Employee/Properties[PersonalSMS]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="WorksSMS2"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Employee/Properties[WorksSMS]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="Summary3"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Employee/Properties[Summary]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.CommandItems>
+                <ContentItem
+                  Name="Employees_AddAndEditNew"
+                  Kind="Command">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="ManageTeamMembers/Properties[Employees]" />
+                        <CallExpression
+                          Target="AddAndEditNew" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem
+                  Name="Employees_EditSelected1"
                   Kind="Command">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -2616,7 +2631,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  Name="Employees_DeleteSelected"
+                  Name="Employees_DeleteSelected1"
                   Kind="Command">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -2630,28 +2645,6 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem.CommandItems>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="Collapsed"
-                        ResultType=":String" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="Stretch"
-                        ResultType=":String" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
             </ContentItem>
             <ContentItem.PropertySources>
               <ControlPropertySource
@@ -2662,6 +2655,14 @@
                       Value="2"
                       ResultType=":Double" />
                   </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Left"
+                    ResultType=":String" />
                 </ScreenExpressionTree>
               </ControlPropertySource>
             </ContentItem.PropertySources>
@@ -3383,18 +3384,6 @@
               </ScreenExpressionTree>
             </ContentItem.DataSource>
           </ContentItem>
-          <ContentItem
-            Name="ImportFromExcel"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="ManageTeamMembers/Methods[ImportFromExcel]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
         </ContentItem.CommandItems>
       </ContentItem>
     </Screen.RootContentItem>
@@ -3450,8 +3439,6 @@
             MethodName="AddAndEditNew" />
         </ScreenMethod.Attributes>
       </ScreenMethod>
-      <ScreenMethod
-        Name="ImportFromExcel" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
@@ -3562,6 +3549,31 @@
           Name="ScreenLayout"
           Kind="Group">
           <ContentItem
+            Name="Text1"
+            Kind="ScreenContent"
+            View="Microsoft.LightSwitch.RichClient:StaticLabel">
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="This screen allows you to select incident-specific parameters. These parameters are REQUIRED for each call-out notifcation!"
+                      ResultType=":String" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[FontStyle]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Warning"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
+          <ContentItem
             Name="Group11"
             Kind="Group"
             View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
@@ -3666,6 +3678,14 @@
                 <ScreenExpressionTree>
                   <ConstantExpression
                     Value="This screen allows you to define requirements for an Incident Response Team based on parameters supplied by the Incident Commander. By default the list is populated with all responders that have taken a fitness test within the last year. "
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[FontStyle]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Warning"
                     ResultType=":String" />
                 </ScreenExpressionTree>
               </ControlPropertySource>
@@ -4207,32 +4227,6 @@
                 </ControlPropertySource>
               </ContentItem.PropertySources>
             </ContentItem>
-            <ContentItem.CommandItems>
-              <ContentItem
-                Name="ExportToExcel"
-                Kind="Command">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <CallExpression
-                        Target="SearchEmployees/Methods[ExportToExcel]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Image]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="Microsoft.LightSwitch.UserImageResources::Resources\Folders-Excel-icon32.png"
-                          ResultType=":String" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-            </ContentItem.CommandItems>
             <ContentItem.PropertySources>
               <ControlPropertySource
                 Property="Microsoft.LightSwitch.RichClient:DataGrid/Properties[ShowVirtualRow]">
@@ -4280,6 +4274,63 @@
               </ControlPropertySource>
             </ContentItem.PropertySources>
           </ContentItem>
+          <ContentItem
+            Name="Text2"
+            Kind="ScreenContent"
+            View="Microsoft.LightSwitch.RichClient:StaticLabel">
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="Once you have defined a team, press the &quot;Send Order&quot; button below. An email will be sent to work and personal phone and email addresses of the team displayed above. DO NOT close or alter this screen once the &quot;Send Order&quot; has been executed! In order to execute the &quot;Order is Filled&quot; notice or &quot;Order is Cancelled&quot; notice, the SAME list will have to be displayed above, so that the team that got the original resource order will continue to receive notifications. "
+                      ResultType=":String" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Left"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[WidthSizingMode]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Auto"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="None"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Auto"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[FontStyle]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Warning"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
           <ContentItem.PropertySources>
             <ControlPropertySource
               Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
@@ -4292,18 +4343,6 @@
           </ContentItem.PropertySources>
         </ContentItem>
         <ContentItem.CommandItems>
-          <ContentItem
-            Name="Save"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="SearchEmployees/Methods[Save]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
           <ContentItem
             Name="Refresh"
             Kind="Command">
@@ -4384,8 +4423,6 @@
           <Generated />
         </ScreenMethod.Attributes>
       </ScreenMethod>
-      <ScreenMethod
-        Name="ExportToExcel" />
       <ScreenMethod
         Name="EmailBlast" />
       <ScreenMethod
@@ -4719,111 +4756,6 @@
       <ScreenProperty
         Name="StagingArea"
         PropertyType=":String?" />
-    </Screen.Properties>
-  </Screen>
-  <Screen
-    Name="SendAnEmail"
-    LaunchMode="Multiple">
-    <Screen.RootContentItem>
-      <ContentItem
-        Name="RootContentItem"
-        Kind="Screen">
-        <ContentItem
-          Name="ScreenLayout"
-          Kind="Group">
-          <ContentItem.PropertySources>
-            <ControlPropertySource
-              Property="Microsoft.LightSwitch.RichClient:ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <ConstantExpression
-                    Value="True"
-                    ResultType=":Boolean" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ControlPropertySource>
-          </ContentItem.PropertySources>
-        </ContentItem>
-        <ContentItem.CommandItems>
-          <ContentItem
-            Name="SendMyEmailOnCommand"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="SendAnEmail/Methods[SendMyEmailOnCommand]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-          <ContentItem
-            Name="Save"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="SendAnEmail/Methods[Save]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-          <ContentItem
-            Name="Refresh"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="SendAnEmail/Methods[Refresh]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-        </ContentItem.CommandItems>
-      </ContentItem>
-    </Screen.RootContentItem>
-    <Screen.Methods>
-      <ScreenMethod
-        Name="Save">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-          <ImageResource
-            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-      <ScreenMethod
-        Name="Refresh">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-          <ImageResource
-            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-      <ScreenMethod
-        Name="Close">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-      <ScreenMethod
-        Name="SendMyEmailOnCommand" />
-    </Screen.Methods>
-    <Screen.Properties>
-      <ScreenProperty
-        Name="Message"
-        PropertyType=":String?">
-        <ScreenProperty.Attributes>
-          <IsParameter />
-        </ScreenProperty.Attributes>
-      </ScreenProperty>
     </Screen.Properties>
   </Screen>
   <Screen
@@ -5187,18 +5119,6 @@
         </ContentItem>
         <ContentItem.CommandItems>
           <ContentItem
-            Name="Save"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="EmpoyeeDetail/Methods[Save]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-          <ContentItem
             Name="Refresh"
             Kind="Command">
             <ContentItem.DataSource>
@@ -5206,18 +5126,6 @@
                 <ChainExpression>
                   <CallExpression
                     Target="EmpoyeeDetail/Methods[Refresh]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-          <ContentItem
-            Name="ImportFromExcel1"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="EmpoyeeDetail/Methods[ImportFromExcel]" />
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>
@@ -5254,8 +5162,6 @@
           <Generated />
         </ScreenMethod.Attributes>
       </ScreenMethod>
-      <ScreenMethod
-        Name="ImportFromExcel" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
@@ -5281,350 +5187,6 @@
           <ChainExpression>
             <CallExpression
               Target="EmpoyeeDetail/Properties[Employees]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-    </Screen.Properties>
-  </Screen>
-  <Screen
-    Name="SearchQRYZone">
-    <Screen.Attributes>
-      <SaveChangesTo
-        EntityContainer="ApplicationData" />
-    </Screen.Attributes>
-    <Screen.RootContentItem>
-      <ContentItem
-        Name="RootContentItem"
-        Kind="Screen"
-        View="Microsoft.LightSwitch.RichClient:Screen">
-        <ContentItem
-          Name="ScreenLayout"
-          Kind="Group">
-          <ContentItem
-            Name="xref_EmployeeZonesCollection"
-            Kind="Collection"
-            DataType="CollectionView$xref_EmployeeZones">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="SearchQRYZone/Properties[xref_EmployeeZonesCollection]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-            <ContentItem
-              Name="xref_EmployeeZonesCollectionTemplate"
-              Kind="Details"
-              DataType="xref_EmployeeZones">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression />
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem
-                Name="ResponseZones"
-                Kind="Details"
-                DataType="ResponseZones">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="xref_EmployeeZones/Properties[ResponseZones]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  Name="ResponseZones1"
-                  Kind="Details"
-                  DataType="ResponseZones">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression />
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem>
-            </ContentItem>
-            <ContentItem.CommandItems>
-              <ContentItem
-                Name="xref_EmployeeZonesCollection_AddAndEditNew"
-                Kind="Command">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchQRYZone/Properties[xref_EmployeeZonesCollection]" />
-                      <CallExpression
-                        Target="AddAndEditNew" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                Name="xref_EmployeeZonesCollection_EditSelected"
-                Kind="Command">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchQRYZone/Properties[xref_EmployeeZonesCollection]" />
-                      <CallExpression
-                        Target="EditSelected" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                Name="xref_EmployeeZonesCollection_DeleteSelected"
-                Kind="Command">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="SearchQRYZone/Properties[xref_EmployeeZonesCollection]" />
-                      <CallExpression
-                        Target="DeleteSelected" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-            </ContentItem.CommandItems>
-          </ContentItem>
-          <ContentItem
-            Name="grid"
-            Kind="Collection"
-            DataType="CollectionView$ResponseZones">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="SearchQRYZone/Properties[QRYZone]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-            <ContentItem
-              Name="RowTemplate"
-              Kind="Details"
-              DataType="ResponseZones">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression />
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem
-                Name="ResponseZone"
-                Kind="Value"
-                DataType=":String">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="ResponseZones/Properties[ResponseZone]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[ShowAsLink]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          Value="True"
-                          ResultType=":Boolean" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
-              </ContentItem>
-              <ContentItem
-                Name="ZoneCode"
-                Kind="Value"
-                DataType=":String">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="ResponseZones/Properties[ZoneCode]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem.PropertySources>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[BrowseOnly]">
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <ConstantExpression
-                        Value="True"
-                        ResultType=":Boolean" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
-              </ContentItem.PropertySources>
-            </ContentItem>
-            <ContentItem.PropertySources>
-              <ControlPropertySource
-                Property="Microsoft.LightSwitch.RichClient:DataGrid/Properties[ShowVirtualRow]">
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <ConstantExpression
-                      Value="False"
-                      ResultType=":Boolean" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ControlPropertySource>
-              <ControlPropertySource
-                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <ConstantExpression
-                      Value="Collapsed"
-                      ResultType=":String" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ControlPropertySource>
-              <ControlPropertySource
-                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <ConstantExpression
-                      Value="Stretch"
-                      ResultType=":String" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ControlPropertySource>
-            </ContentItem.PropertySources>
-          </ContentItem>
-        </ContentItem>
-        <ContentItem.CommandItems>
-          <ContentItem
-            Name="Save"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="SearchQRYZone/Methods[Save]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-          <ContentItem
-            Name="Refresh"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="SearchQRYZone/Methods[Refresh]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-        </ContentItem.CommandItems>
-      </ContentItem>
-    </Screen.RootContentItem>
-    <Screen.Methods>
-      <ScreenMethod
-        Name="Save">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-          <ImageResource
-            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-      <ScreenMethod
-        Name="Refresh">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-          <ImageResource
-            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-      <ScreenMethod
-        Name="Close">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-    </Screen.Methods>
-    <Screen.Properties>
-      <ScreenCollectionProperty
-        Name="QRYZone"
-        PageSize="45"
-        PropertyType="CollectionView$ResponseZones">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="QRYZoneQuery"
-            ReturnType="ResponseZones*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="ApplicationData/Members[QRYZone]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="SearchQRYZone/Properties[QRYZone]/Query">
-              <ArgumentExpression
-                Parameter="ZoneID">
-                <ChainExpression>
-                  <MemberExpression
-                    Member="SearchQRYZone/Properties[ResponseZonesZoneID]" />
-                </ChainExpression>
-              </ArgumentExpression>
-            </CallExpression>
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-      <ScreenProperty
-        Name="ResponseZonesZoneID"
-        PropertyType=":Int32?">
-        <ScreenProperty.Attributes>
-          <IsParameter />
-        </ScreenProperty.Attributes>
-      </ScreenProperty>
-      <ScreenCollectionProperty
-        Name="xref_EmployeeZonesCollection"
-        PageSize="45"
-        PropertyType="CollectionView$xref_EmployeeZones">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="xref_EmployeeZonesCollectionQuery"
-            ReturnType="xref_EmployeeZones*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="SearchQRYZone/Properties[QRYZone]" />
-                  <MemberExpression
-                    Member="SelectedItem" />
-                  <MemberExpression
-                    Member="xref_EmployeeZonesCollection" />
-                </ChainExpression>
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="SearchQRYZone/Properties[xref_EmployeeZonesCollection]/Query" />
           </ChainExpression>
         </ScreenExpressionTree>
       </ScreenCollectionProperty>
@@ -5663,8 +5225,66 @@
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[FontStyle]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Heading1"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[Width]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="250"
+                      ResultType=":Double" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[WidthSizingMode]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Auto"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Auto"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Left"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
               </ContentItem.PropertySources>
             </ContentItem>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Top"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Center"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
           </ContentItem>
           <ContentItem
             Name="Group2"
@@ -6000,6 +5620,43 @@
                     </ContentItem>
                   </ContentItem.CommandItems>
                 </ContentItem>
+                <ContentItem
+                  Name="EditSMS"
+                  Kind="Value"
+                  DataType=":String"
+                  View="Microsoft.LightSwitch.RichClient:Label">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Manage SMS Carriers" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Home/Properties[EditSMS]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="SMS"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.Attributes>
+                        <DisplayName
+                          Value="Manage SMS Addresses" />
+                      </ContentItem.Attributes>
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[SMS]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
+                </ContentItem>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
                     Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
@@ -6143,6 +5800,43 @@
                     </ContentItem>
                   </ContentItem.CommandItems>
                 </ContentItem>
+                <ContentItem
+                  Name="CreateIRT"
+                  Kind="Value"
+                  DataType=":String?"
+                  View="Microsoft.LightSwitch.RichClient:Label">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Create Response Team" />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Home/Properties[CreateIRT]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="IRT"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.Attributes>
+                        <DisplayName
+                          Value="Create IRT" />
+                      </ContentItem.Attributes>
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[IRT]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
+                </ContentItem>
               </ContentItem>
               <ContentItem.PropertySources>
                 <ControlPropertySource
@@ -6153,31 +5847,11 @@
                       ResultType=":String" />
                   </ScreenExpressionTree>
                 </ControlPropertySource>
-                <ControlPropertySource
-                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                  <ScreenExpressionTree>
-                    <ConstantExpression
-                      Value="RightAligned"
-                      ResultType=":String" />
-                  </ScreenExpressionTree>
-                </ControlPropertySource>
               </ContentItem.PropertySources>
             </ContentItem>
           </ContentItem>
         </ContentItem>
         <ContentItem.CommandItems>
-          <ContentItem
-            Name="Save"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="Home/Methods[Save]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
           <ContentItem
             Name="Refresh"
             Kind="Command">
@@ -6234,6 +5908,10 @@
         Name="AddEmployee" />
       <ScreenMethod
         Name="EditEmployee" />
+      <ScreenMethod
+        Name="SMS" />
+      <ScreenMethod
+        Name="IRT" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
@@ -6289,6 +5967,16 @@
         PropertyType=":String?" />
       <ScreenProperty
         Name="ViewEmployees"
+        PropertyType=":String?" />
+      <ScreenProperty
+        Name="EditSMS"
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="CreateIRT"
         PropertyType=":String?" />
     </Screen.Properties>
   </Screen>

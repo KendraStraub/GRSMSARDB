@@ -4,9 +4,7 @@ Namespace LightSwitchApplication
     Public Class SearchEmployees
 
 
-        Private Sub ExportToExcel_Execute()
-            OfficeIntegration.Excel.Export(Me.IRT)
-        End Sub
+   
 
         Private Sub EmailBlast_Execute()
             'loops through the results of the query
@@ -23,8 +21,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = d.WorksSMS
                     .RecipientName = d.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -38,8 +36,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = e.PersonalSMS
                     .RecipientName = e.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -52,8 +50,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = f.WorkEmail
                     .RecipientName = f.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -66,8 +64,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = g.HomeEmail
                     .RecipientName = g.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -91,8 +89,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = h.WorksSMS
                     .RecipientName = h.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = "SAR resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -105,8 +103,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = i.PersonalSMS
                     .RecipientName = i.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = "SAR resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -119,8 +117,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = j.WorkEmail
                     .RecipientName = j.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = "SAR resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -133,8 +131,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = k.HomeEmail
                     .RecipientName = k.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = "SAR resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -155,8 +153,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = l.WorksSMS
                     .RecipientName = l.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = "SAR Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -169,8 +167,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = m.PersonalSMS
                     .RecipientName = m.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = "SAR Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -183,8 +181,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = n.WorkEmail
                     .RecipientName = n.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = "SAR Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
@@ -197,8 +195,8 @@ Namespace LightSwitchApplication
                 With newEmail
                     .RecipientEmailAddress = o.HomeEmail
                     .RecipientName = o.Summary
-                    .SenderEmailAddress = "big.foot@sasquatch.com"
-                    .SenderName = "Big Foot"
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
                     .Message = "SAR Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                 End With
                 DataWorkspace.ApplicationData.SaveChanges()
