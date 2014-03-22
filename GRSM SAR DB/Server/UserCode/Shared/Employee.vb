@@ -24,8 +24,6 @@ Namespace LightSwitchApplication
             'If PersonalSMSCarriers is null at form initialize, need to handle the null
             'else exception is thrown
             If Me.PersonalSMSCarriers Is Nothing Then
-                'use a bogus sms gateway which the email function will ignore
-                result = "has@nophone.com"
             Else
                 'If a PersonalSMSCarrier is entered then concatonate cell phone number with carrier sms gateway from picklist
                 result = PersonalMobile + PersonalSMSCarriers.SMSGateway
@@ -36,10 +34,8 @@ Namespace LightSwitchApplication
             'If PersonalSMSCarriers is null at form initialize, need to handle the null
             'else exception is thrown
             If Me.WorkSMSCarriers Is Nothing Then
-                'use a bogus sms gateway which the email function will ignore
-                result = "has@nophone.com"
             Else
-                'If a Workarrier is entered then concatonate cell phone number with carrier sms gateway from picklist
+                'If a WorkSMScarrier is entered then concatonate cell phone number with carrier sms gateway from picklist
                 result = WorkMobile + WorkSMSCarriers.SMSGateway
             End If
         End Sub
@@ -54,7 +50,11 @@ Namespace LightSwitchApplication
             Me.MEDIC = "No"
             Me.Tracker = "No"
             Me.TechRescue = "No"
+
+  
         End Sub
+
+
     End Class
 
 End Namespace

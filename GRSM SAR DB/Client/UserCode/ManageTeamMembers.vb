@@ -12,6 +12,7 @@ Namespace LightSwitchApplication
                     If (c.ResponseZones Is AllResponseZones.SelectedItem) Then
                         Exit Sub
                     End If
+
                 Next
                 ' Add the new category to the category list
                 Dim cc As xref_EmployeeZones = xref_EmployeeZonesCollection.AddNew()
@@ -29,6 +30,65 @@ Namespace LightSwitchApplication
 
 
 
+        Private Sub TestEmail_Execute()
+            If Employees.SelectedItem.WorkEmail Is Nothing Then
+            Else
+                Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
+                With newEmail
+                    .RecipientEmailAddress = Employees.SelectedItem.WorkEmail
+                    .RecipientName = Employees.SelectedItem.Summary
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
+                    .Message = "This is a test of the GRSM SAR Notification System."
+                End With
+                DataWorkspace.ApplicationData.SaveChanges()
+                newEmail.Delete()
+                DataWorkspace.ApplicationData.SaveChanges()
+            End If
+            If Employees.SelectedItem.HomeEmail Is Nothing Then
+            Else
+                Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
+                With newEmail
+                    .RecipientEmailAddress = Employees.SelectedItem.HomeEmail
+                    .RecipientName = Employees.SelectedItem.Summary
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
+                    .Message = "This is a test of the GRSM SAR Notification System."
+                End With
+                DataWorkspace.ApplicationData.SaveChanges()
+                newEmail.Delete()
+                DataWorkspace.ApplicationData.SaveChanges()
+            End If
+            If Employees.SelectedItem.WorksSMS Is Nothing Then
+            Else
+                Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
+                With newEmail
+                    .RecipientEmailAddress = Employees.SelectedItem.WorksSMS
+                    .RecipientName = Employees.SelectedItem.Summary
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
+                    .Message = "This is a test of the GRSM SAR Notification System."
+                End With
+                DataWorkspace.ApplicationData.SaveChanges()
+                newEmail.Delete()
+                DataWorkspace.ApplicationData.SaveChanges()
+            End If
+            If Employees.SelectedItem.PersonalSMS Is Nothing Then
+            Else
+                Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
+                With newEmail
+                    .RecipientEmailAddress = Employees.SelectedItem.PersonalSMS
+                    .RecipientName = Employees.SelectedItem.Summary
+                    .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                    .SenderName = "Dispatch"
+                    .Message = "This is a test of the GRSM SAR Notification System."
+                End With
+                DataWorkspace.ApplicationData.SaveChanges()
+                newEmail.Delete()
+                DataWorkspace.ApplicationData.SaveChanges()
+            End If
+
+        End Sub
     End Class
 
 End Namespace

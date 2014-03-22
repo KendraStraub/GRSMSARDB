@@ -21,7 +21,7 @@ Namespace LightSwitchApplication
             mailHelper.SendMail()
         End Sub
 
- 
+        'based on user selection of SAR Certification, will return results where SAR CERT rank is equal to or less than picked CERT
         Private Sub QRYParameters_PreprocessQuery(Year As System.Nullable(Of Integer), MaxRank As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.Employee))
             If MaxRank.HasValue Then
                 query = From q In query
@@ -49,7 +49,109 @@ Namespace LightSwitchApplication
         'End Sub
 
 
+        'allow global viewing to all tables
+        Private Sub Employees_CanRead(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Viewer)
+        End Sub
+        Private Sub ParkDivisions_CanRead(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Viewer)
+        End Sub
+        Private Sub ResponseZonesSet_CanRead(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Viewer)
+        End Sub
+        Private Sub SARCertificationsSet_CanRead(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Viewer)
+        End Sub
+        Private Sub SMSCarriers_CanRead(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Viewer)
+        End Sub
+        Private Sub xref_EmployeeZonesSet_CanRead(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Viewer)
+        End Sub
+        Private Sub YearRoundResSet_CanRead(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Viewer)
+        End Sub
+        Private Sub ProxyEmails_CanRead(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Viewer)
+        End Sub
 
+
+        'allow editors to add new employees and execute email sending
+        Private Sub Employees_CanUpdate(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Editing)
+        End Sub
+        Private Sub Employees_CanDelete(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Editing)
+        End Sub
+        Private Sub Employees_CanInsert(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Editing)
+        End Sub
+        Private Sub ProxyEmails_CanUpdate(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Editing)
+        End Sub
+        Private Sub ProxyEmails_CanInsert(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Editing)
+        End Sub
+        Private Sub ProxyEmails_CanDelete(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Editing)
+        End Sub
+
+
+        'allow admins to edit pick-list tables
+        Private Sub ParkDivisions_CanDelete(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub ParkDivisions_CanUpdate(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub ParkDivisions_CanInsert(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub ResponseZonesSet_CanDelete(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub ResponseZonesSet_CanUpdate(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub ResponseZonesSet_CanInsert(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub SARCertificationsSet_CanDelete(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub SARCertificationsSet_CanUpdate(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub SARCertificationsSet_CanInsert(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub SMSCarriers_CanDelete(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub SMSCarriers_CanUpdate(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub SMSCarriers_CanInsert(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub xref_EmployeeZonesSet_CanDelete(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub xref_EmployeeZonesSet_CanUpdate(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub xref_EmployeeZonesSet_CanInsert(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub YearRoundResSet_CanDelete(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub YearRoundResSet_CanUpdate(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
+        Private Sub YearRoundResSet_CanInsert(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Administration)
+        End Sub
     End Class
 
 
