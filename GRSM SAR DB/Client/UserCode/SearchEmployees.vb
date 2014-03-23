@@ -290,6 +290,45 @@ Namespace LightSwitchApplication
             result = Me.Application.User.HasPermission(Permissions.Editing)
 
         End Sub
+
+        Private Sub ExportToExcel_Execute()
+            OfficeIntegration.Excel.Export(IRT)
+        End Sub
+        Public Function GetIRTCSV() As String
+            Dim csv As New System.Text.StringBuilder()
+            Dim i As Integer = 0
+
+            For Each a In IRT
+                If i = 0 Then
+                    csv.AppendFormat("Summary" & "," & "Summary" & "," & "Summary" & System.Environment.NewLine, a)
+                End If
+                csv.AppendFormat(a.Summary & "," & a.Summary & "," & a.Summary & System.Environment.NewLine, a)
+                i = i + 1
+            Next
+
+            If csv.Length > 0 Then
+                Return csv.ToString(0, csv.Length - 1)
+            Else
+                Return ""
+            End If
+        End Function
+        Private Sub Test_Execute()
+            Dim csv As String = GetIRTCSV()
+            AddHandler Me.FindControl("Test").ControlAvailable, (Function(object1, eventargs1)
+                                                                     Dim btnExport As Button = DirectCast(eventargs1.Control, Button)
+                                                                     AddHandler btnExport.Click,
+                                                                     (Function(object2, eventargs2)
+                                                                          Dim dialog = New SaveFileDialog()
+                                                                          dialog.Filter = "CSV (*.csv)|*.csv"
+                                                                          If dialog.ShowDialog() = True Then
+                                                                              Using stream As New StreamWriter(dialog.OpenFile())
+                                                                                  stream.Write(csv)
+                                                                                  stream.Close()
+                                                                              End Using
+                                                                          End If
+                                                                      End Function)
+                                                                 End Function)
+        End Sub
     End Class
 
 End Namespace

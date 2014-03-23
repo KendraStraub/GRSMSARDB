@@ -4395,6 +4395,30 @@
               </ScreenExpressionTree>
             </ContentItem.DataSource>
           </ContentItem>
+          <ContentItem
+            Name="ExportToExcel"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="SearchEmployees/Methods[ExportToExcel]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Name="Test"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="SearchEmployees/Methods[Test]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
         </ContentItem.CommandItems>
       </ContentItem>
     </Screen.RootContentItem>
@@ -4433,6 +4457,10 @@
         Name="OrderIsFilled" />
       <ScreenMethod
         Name="OrderIsCancelled" />
+      <ScreenMethod
+        Name="ExportToExcel" />
+      <ScreenMethod
+        Name="Test" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
