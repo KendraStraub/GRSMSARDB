@@ -569,6 +569,8 @@
                 <ContentItem.Attributes>
                   <DisplayName
                     Value="SAR Certification" />
+                  <Description
+                    Value="Optional: Select the highest SAR Certification the employee has obtained. " />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -667,7 +669,7 @@
                 DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
                 <ContentItem.Attributes>
                   <Description
-                    Value="Optional: Enter the work cellular phone number of the employee." />
+                    Value="Optional: Enter the work cellular phone number of the employee. If entered, the service provider of the phone MUST ALSO be selected in the next field!" />
                   <DisplayName
                     Value="Work Mobile Cellular Telephone Number" />
                 </ContentItem.Attributes>
@@ -686,7 +688,7 @@
                 DataType="SMSCarrier">
                 <ContentItem.Attributes>
                   <Description
-                    Value="Optional: Enter the work cellular phone service provider of the employee." />
+                    Value="Mandatory if a work cell phone is entered above: Enter the work cellular phone service provider of the employee." />
                   <DisplayName
                     Value="Work Cellular Telephone Service Provider" />
                 </ContentItem.Attributes>
@@ -734,7 +736,7 @@
                 DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?">
                 <ContentItem.Attributes>
                   <Description
-                    Value="Optional: Enter the personal cellular phone number of the employee." />
+                    Value="Optional: Enter the personal cellular phone number of the employee. If entered, the service provider of the phone MUST ALSO be selected in the next field!" />
                   <DisplayName
                     Value="Personal Mobile Cellular Telephone Number" />
                 </ContentItem.Attributes>
@@ -753,7 +755,7 @@
                 DataType="SMSCarrier">
                 <ContentItem.Attributes>
                   <Description
-                    Value="Optional: Enter the home cellular phone service provider of the employee." />
+                    Value="Mandatory if a personal cell phone is entered above: Enter the home cellular phone service provider of the employee." />
                   <DisplayName
                     Value="Personal Cellular Telephone Service Provider" />
                 </ContentItem.Attributes>
@@ -3132,22 +3134,6 @@
                       </ContentItem.DataSource>
                     </ContentItem>
                   </ContentItem>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Name="xref_EmployeeZonesCollection_DeleteSelected"
-                      Kind="Command">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <MemberExpression
-                              Member="ManageTeamMembers/Properties[xref_EmployeeZonesCollection]" />
-                            <CallExpression
-                              Target="DeleteSelected" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
                   <ContentItem.PropertySources>
                     <ControlPropertySource
                       Property="Microsoft.LightSwitch.RichClient:ColumnsLayout/Properties[IsColumnResizable]">
@@ -3387,6 +3373,10 @@
           <ContentItem
             Name="TestEmail"
             Kind="Command">
+            <ContentItem.Attributes>
+              <Description
+                Value="Use this to send a test message to the email addresses and cellular telephone number of the selected employee. You should confirm that the employee has received the messages. If this fails, you will be asked to confirm or discard changes when closing this window. Simply select &quot;Discard&quot;." />
+            </ContentItem.Attributes>
             <ContentItem.DataSource>
               <ScreenExpressionTree>
                 <ChainExpression>
