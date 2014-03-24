@@ -1,10 +1,145 @@
-﻿
+﻿Imports System.Windows.Controls
+Imports System.Text
 Namespace LightSwitchApplication
 
     Public Class SearchEmployees
 
+        'initialize the export button
+        Private Sub SearchEmployees_Created()
+            Dim CSVButton = Me.FindControl("ExportCSV")
+            AddHandler CSVButton.ControlAvailable, AddressOf exportAvailable
+        End Sub
+        'call the export button
+        Private Sub exportAvailable(sender As Object, e As ControlAvailableEventArgs)
+            RemoveHandler Me.FindControl("ExportCSV").ControlAvailable, AddressOf exportAvailable
+            Dim Button = DirectCast(e.Control, Button)
+            AddHandler Button.Click, AddressOf exportClicked
+        End Sub
+        'once export is clicked open dialogue to save csv file
+        Private Sub exportClicked(sender As Object, e As System.Windows.RoutedEventArgs)
+            Dim collectionProperty As Microsoft.LightSwitch.Details.Client.IScreenCollectionProperty = Me.Details.Properties.IRT
+            Dim intPageSize = collectionProperty.PageSize
+            'Get the Current PageSize and store to variable
+            collectionProperty.PageSize = 0
 
-   
+            Dim dialog = New SaveFileDialog()
+            dialog.Filter = "Excel (*.xls)|*.xls"
+            If dialog.ShowDialog() = True Then
+
+                Using stream As New StreamWriter(dialog.OpenFile())
+                    Dim csv As String = GetCSV()
+                    stream.Write(csv)
+                    stream.Close()
+                    Me.ShowMessageBox("Excel File Created Successfully. " & vbCrLf & "NOTE: When you open excel file and if you receive prompt about invalid format then just click yes to continue.", "Excel Export", MessageBoxOption.Ok)
+                End Using
+            End If
+            collectionProperty.PageSize = intPageSize
+            'Reset the Current PageSize
+        End Sub
+
+
+
+        Private Function GetCSV() As String
+            Dim csv As New StringBuilder()
+
+            Dim i As Integer = 0
+            Dim csvarray = From detail In IRT
+            For Each r In csvarray
+                '//HEADER
+                If i = 0 Then
+                    Dim c As Integer = 0
+                    For Each prop In r.Details.Properties.All.OfType(Of Microsoft.LightSwitch.Details.IEntityStorageProperty)()
+                        If c > 0 Then
+                            csv.Append(vbTab)
+                        End If
+                        c = c + 1
+                        csv.Append(prop.DisplayName)
+                    Next
+                End If
+                csv.AppendLine("")
+
+                '//DATA ROWS
+
+                Dim c1 As Integer = 0
+                For Each prop In r.Details.Properties.All().OfType(Of Microsoft.LightSwitch.Details.IEntityStorageProperty)()
+                    If c1 > 0 Then
+                        csv.Append(vbTab)
+                    End If
+                    c1 = c1 + 1
+                    csv.Append(prop.Value)
+                Next
+                i = i + 1
+            Next
+
+            If csv.Length > 0 Then
+                Return csv.ToString(0, csv.Length - 1)
+            Else
+                Return ""
+            End If
+        End Function
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+        'build a csv file by looping through query results
+        Private Function GetTextCSV() As String
+            Dim csv As New StringBuilder()
+            Dim i As Integer = 0
+
+            For Each u In IRT
+                If i = 0 Then
+                    csv.AppendFormat("Summary" & "," & _
+                                        "ParkDivision" & "," & _
+                                        "YearRoundRes" & "," & _
+                                        "DateFit" & "," & _
+                                        "SARCertifications" & "," & _
+                                        "CLEO" & "," & _
+                                        "Medic" & "," & _
+                                        "Tracker" & "," & _
+                                        "TechRescue" & "," & _
+                                        "WorkEmail" & "," & _
+                                        "HomeEmail" & "," & _
+                                        "WorkMobile" & "," & _
+                                        "PersonalMobile" & "," & _
+                                        "WorkSMS" & "," & _
+                                        "PersonalSMS" & _
+                                        System.Environment.NewLine, u)
+                End If
+                csv.AppendFormat(u.Summary & "'," & _
+                                    u.ParkDivision.Division & "," & _
+                                    u.YearRoundRes.Residency & "," & _
+                                    u.DateFit & "," & _
+                                    u.SARCertifications.Certification & "," & _
+                                    u.CLEO & "," & _
+                                    u.MEDIC & "," & _
+                                    u.Tracker & "," & _
+                                    u.TechRescue & "," & _
+                                    u.WorkEmail & "," & _
+                                    u.HomeEmail & "," & _
+                                    u.WorkMobile & "," & _
+                                    u.PersonalMobile & "," & _
+                                    u.WorksSMS & "," & _
+                                    u.PersonalSMS & "," & _
+                                    System.Environment.NewLine, u)
+                i = i + 1
+            Next
+
+            If csv.Length > 0 Then
+                Return csv.ToString(0, csv.Length - 1)
+            Else
+                Return ""
+            End If
+        End Function
 
         Private Sub EmailBlast_Execute()
 
@@ -291,44 +426,8 @@ Namespace LightSwitchApplication
 
         End Sub
 
-        Private Sub ExportToExcel_Execute()
-            OfficeIntegration.Excel.Export(IRT)
-        End Sub
-        Public Function GetIRTCSV() As String
-            Dim csv As New System.Text.StringBuilder()
-            Dim i As Integer = 0
+        
 
-            For Each a In IRT
-                If i = 0 Then
-                    csv.AppendFormat("Summary" & "," & "Summary" & "," & "Summary" & System.Environment.NewLine, a)
-                End If
-                csv.AppendFormat(a.Summary & "," & a.Summary & "," & a.Summary & System.Environment.NewLine, a)
-                i = i + 1
-            Next
-
-            If csv.Length > 0 Then
-                Return csv.ToString(0, csv.Length - 1)
-            Else
-                Return ""
-            End If
-        End Function
-        Private Sub Test_Execute()
-            Dim csv As String = GetIRTCSV()
-            AddHandler Me.FindControl("Test").ControlAvailable, (Function(object1, eventargs1)
-                                                                     Dim btnExport As Button = DirectCast(eventargs1.Control, Button)
-                                                                     AddHandler btnExport.Click,
-                                                                     (Function(object2, eventargs2)
-                                                                          Dim dialog = New SaveFileDialog()
-                                                                          dialog.Filter = "CSV (*.csv)|*.csv"
-                                                                          If dialog.ShowDialog() = True Then
-                                                                              Using stream As New StreamWriter(dialog.OpenFile())
-                                                                                  stream.Write(csv)
-                                                                                  stream.Close()
-                                                                              End Using
-                                                                          End If
-                                                                      End Function)
-                                                                 End Function)
-        End Sub
     End Class
 
 End Namespace

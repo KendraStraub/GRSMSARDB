@@ -4231,6 +4231,32 @@
                 </ControlPropertySource>
               </ContentItem.PropertySources>
             </ContentItem>
+            <ContentItem.CommandItems>
+              <ContentItem
+                Name="Export"
+                Kind="Command">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="SearchEmployees/Methods[Export]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="ExportCSV"
+                Kind="Command">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <CallExpression
+                        Target="SearchEmployees/Methods[ExportCSV]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
             <ContentItem.PropertySources>
               <ControlPropertySource
                 Property="Microsoft.LightSwitch.RichClient:DataGrid/Properties[ShowVirtualRow]">
@@ -4395,30 +4421,6 @@
               </ScreenExpressionTree>
             </ContentItem.DataSource>
           </ContentItem>
-          <ContentItem
-            Name="ExportToExcel"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="SearchEmployees/Methods[ExportToExcel]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-          <ContentItem
-            Name="Test"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="SearchEmployees/Methods[Test]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
         </ContentItem.CommandItems>
       </ContentItem>
     </Screen.RootContentItem>
@@ -4458,9 +4460,9 @@
       <ScreenMethod
         Name="OrderIsCancelled" />
       <ScreenMethod
-        Name="ExportToExcel" />
+        Name="Export" />
       <ScreenMethod
-        Name="Test" />
+        Name="ExportCSV" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
