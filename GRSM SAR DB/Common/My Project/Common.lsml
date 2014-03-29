@@ -896,6 +896,38 @@
         EntitySet="WaterRescueCertsSet"
         Name="WaterRescueCerts" />
     </AssociationSet>
+    <QueryOperation
+      Name="QRYZone"
+      ReturnType="ResponseZones*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression
+            NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression
+                  Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ConstantExpression
+                ResultType=":Int32"
+                Value="0" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression
+            Member="ResponseZonesSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter
+        IsOptional="True"
+        Name="ZoneID"
+        ParameterType=":Int32?" />
+    </QueryOperation>
   </EntityContainer>
   <EntityType
     Name="Employee">
@@ -997,11 +1029,12 @@
       </EntityProperty>
       <EntityProperty
         Name="DaysSinceLastFit"
-        PropertyType=":String">
+        PropertyType=":Int32">
         <EntityProperty.Attributes>
           <Computed />
           <DisplayName
             Value="Days Since Last Fitness Test" />
+          <NotSearchable />
         </EntityProperty.Attributes>
       </EntityProperty>
       <NavigationProperty

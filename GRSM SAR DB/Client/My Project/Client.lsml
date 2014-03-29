@@ -434,7 +434,7 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType=":String"
+                DataType=":Int32"
                 Kind="Value"
                 Name="DaysSinceLastFit">
                 <ContentItem.Attributes>
@@ -2407,7 +2407,7 @@
                   </ContentItem.DataSource>
                 </ContentItem>
                 <ContentItem
-                  DataType=":String"
+                  DataType=":Int32"
                   Kind="Value"
                   Name="DaysSinceLastFit">
                   <ContentItem.DataSource>
@@ -2876,7 +2876,7 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType=":String"
+                DataType=":Int32"
                 Kind="Value"
                 Name="DaysSinceLastFit1">
                 <ContentItem.DataSource>
@@ -3814,34 +3814,97 @@
                   NodeType="And">
                   <BinaryExpression.Left>
                     <BinaryExpression
-                      NodeType="Equal">
+                      NodeType="And">
                       <BinaryExpression.Left>
-                        <ChainExpression>
-                          <MemberExpression
-                            Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
-                        </ChainExpression>
+                        <BinaryExpression
+                          NodeType="And">
+                          <BinaryExpression.Left>
+                            <BinaryExpression
+                              NodeType="And">
+                              <BinaryExpression.Left>
+                                <BinaryExpression
+                                  NodeType="Equal">
+                                  <BinaryExpression.Left>
+                                    <ChainExpression>
+                                      <MemberExpression
+                                        Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
+                                    </ChainExpression>
+                                  </BinaryExpression.Left>
+                                  <BinaryExpression.Right>
+                                    <ParameterExpression
+                                      Parameter="CLEO" />
+                                  </BinaryExpression.Right>
+                                </BinaryExpression>
+                              </BinaryExpression.Left>
+                              <BinaryExpression.Right>
+                                <BinaryExpression
+                                  NodeType="Equal">
+                                  <BinaryExpression.Left>
+                                    <ChainExpression>
+                                      <MemberExpression
+                                        Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
+                                    </ChainExpression>
+                                  </BinaryExpression.Left>
+                                  <BinaryExpression.Right>
+                                    <ParameterExpression
+                                      Parameter="MEDIC" />
+                                  </BinaryExpression.Right>
+                                </BinaryExpression>
+                              </BinaryExpression.Right>
+                            </BinaryExpression>
+                          </BinaryExpression.Left>
+                          <BinaryExpression.Right>
+                            <BinaryExpression
+                              NodeType="Equal">
+                              <BinaryExpression.Left>
+                                <ChainExpression>
+                                  <MemberExpression
+                                    Member="LightSwitchCommonModule:Employee/Properties[SARCertificationsSetItem]" />
+                                  <MemberExpression
+                                    Member="Certification" />
+                                </ChainExpression>
+                              </BinaryExpression.Left>
+                              <BinaryExpression.Right>
+                                <ParameterExpression
+                                  Parameter="SARCERT" />
+                              </BinaryExpression.Right>
+                            </BinaryExpression>
+                          </BinaryExpression.Right>
+                        </BinaryExpression>
                       </BinaryExpression.Left>
                       <BinaryExpression.Right>
-                        <ParameterExpression
-                          Parameter="CLEO" />
+                        <BinaryExpression
+                          NodeType="Equal">
+                          <BinaryExpression.Left>
+                            <ChainExpression>
+                              <MemberExpression
+                                Member="LightSwitchCommonModule:Employee/Properties[TechRescueCerts]" />
+                              <MemberExpression
+                                Member="Certification" />
+                            </ChainExpression>
+                          </BinaryExpression.Left>
+                          <BinaryExpression.Right>
+                            <ParameterExpression
+                              Parameter="TECHCERT" />
+                          </BinaryExpression.Right>
+                        </BinaryExpression>
                       </BinaryExpression.Right>
                     </BinaryExpression>
                   </BinaryExpression.Left>
                   <BinaryExpression.Right>
                     <BinaryExpression
                       NodeType="Equal">
-                      <BinaryExpression.Attributes>
-                        <ExpressionGroup />
-                      </BinaryExpression.Attributes>
                       <BinaryExpression.Left>
                         <ChainExpression>
                           <MemberExpression
-                            Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
+                            Member="LightSwitchCommonModule:Employee/Properties[WaterRescueCerts]" />
+                          <MemberExpression
+                            Member="SWRescueCert" />
                         </ChainExpression>
                       </BinaryExpression.Left>
                       <BinaryExpression.Right>
                         <ParameterExpression
-                          Parameter="MEDIC" />
+                          Parameter="SWRescueCert" />
                       </BinaryExpression.Right>
                     </BinaryExpression>
                   </BinaryExpression.Right>
@@ -3856,6 +3919,23 @@
               <QueryParameter
                 IsOptional="True"
                 Name="MEDIC"
+                ParameterType=":String?" />
+              <QueryParameter
+                IsOptional="True"
+                Name="SARCERT"
+                ParameterType=":String?">
+                <QueryParameter.Attributes>
+                  <DisplayName
+                    Value="SAR Certification" />
+                </QueryParameter.Attributes>
+              </QueryParameter>
+              <QueryParameter
+                IsOptional="True"
+                Name="TECHCERT"
+                ParameterType=":String?" />
+              <QueryParameter
+                IsOptional="True"
+                Name="SWRescueCert"
                 ParameterType=":String?" />
             </ScreenQueryDefinition.Parameters>
             <ScreenQueryDefinition.Source>
@@ -3882,6 +3962,33 @@
                 <ChainExpression>
                   <MemberExpression
                     Member="CreateIRT/Properties[MedList]" />
+                </ChainExpression>
+              </ArgumentExpression>
+              <ArgumentExpression
+                Parameter="SARCERT">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateIRT/Properties[AllSARCerts]" />
+                  <MemberExpression
+                    Member="Certification" />
+                </ChainExpression>
+              </ArgumentExpression>
+              <ArgumentExpression
+                Parameter="TECHCERT">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateIRT/Properties[AllTECHCerts]" />
+                  <MemberExpression
+                    Member="Certification" />
+                </ChainExpression>
+              </ArgumentExpression>
+              <ArgumentExpression
+                Parameter="SWRescueCert">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateIRT/Properties[AllSWaterCerts]" />
+                  <MemberExpression
+                    Member="SWRescueCert" />
                 </ChainExpression>
               </ArgumentExpression>
             </CallExpression>
@@ -3912,6 +4019,15 @@
             Value="No" />
         </ScreenProperty.Attributes>
       </ScreenProperty>
+      <ScreenProperty
+        Name="AllSARCerts"
+        PropertyType="LightSwitchCommonModule:SARCertificationsSetItem" />
+      <ScreenProperty
+        Name="AllTECHCerts"
+        PropertyType="LightSwitchCommonModule:TechRescueCerts" />
+      <ScreenProperty
+        Name="AllSWaterCerts"
+        PropertyType="LightSwitchCommonModule:WaterRescueCerts" />
     </Screen.Properties>
     <Screen.RootContentItem>
       <ContentItem
@@ -3981,6 +4097,91 @@
             </ContentItem.DataSource>
           </ContentItem>
           <ContentItem
+            DataType="LightSwitchCommonModule:SARCertificationsSetItem"
+            Kind="Details"
+            Name="AllSARCerts">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Optional: Select a SAR Certification" />
+            </ContentItem.Attributes>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateIRT/Properties[AllSARCerts]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem
+              DataType="LightSwitchCommonModule:SARCertificationsSetItem"
+              Kind="Details"
+              Name="SARCertificationsSetItem">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="SAR Certification" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+            </ContentItem>
+          </ContentItem>
+          <ContentItem
+            DataType="LightSwitchCommonModule:TechRescueCerts"
+            Kind="Details"
+            Name="AllTECHCerts">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Optional: Select a Technical Certification" />
+            </ContentItem.Attributes>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateIRT/Properties[AllTECHCerts]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem
+              DataType="LightSwitchCommonModule:TechRescueCerts"
+              Kind="Details"
+              Name="TechRescueCerts">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+            </ContentItem>
+          </ContentItem>
+          <ContentItem
+            DataType="LightSwitchCommonModule:WaterRescueCerts"
+            Kind="Details"
+            Name="AllSWaterCerts">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Optional: Add Swift Water Rescue Certification" />
+            </ContentItem.Attributes>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="CreateIRT/Properties[AllSWaterCerts]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem
+              DataType="LightSwitchCommonModule:WaterRescueCerts"
+              Kind="Details"
+              Name="WaterRescueCerts">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+            </ContentItem>
+          </ContentItem>
+          <ContentItem
             DataType="LightSwitchCommonModule:CollectionView$Employee"
             Kind="Collection"
             Name="grid">
@@ -4048,37 +4249,77 @@
               <ContentItem
                 DataType=":String"
                 Kind="Value"
-                Name="FirstName">
+                Name="Summary">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[FirstName]" />
+                        Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
-                <ContentItem.PropertySources>
-                  <ControlPropertySource
-                    Property=":RootControl/Properties[ShowAsLink]">
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <ConstantExpression
-                          ResultType=":Boolean"
-                          Value="True" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ControlPropertySource>
-                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem
+                DataType="LightSwitchCommonModule:SARCertificationsSetItem"
+                Kind="Details"
+                Name="SARCertificationsSetItem1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[SARCertificationsSetItem]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType="LightSwitchCommonModule:TechRescueCerts"
+                Kind="Details"
+                Name="TechRescueCerts1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[TechRescueCerts]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType="LightSwitchCommonModule:WaterRescueCerts"
+                Kind="Details"
+                Name="WaterRescueCerts1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WaterRescueCerts]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
                 DataType=":String"
                 Kind="Value"
-                Name="LastName">
+                Name="CLEO">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
                       <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[LastName]" />
+                        Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType=":String"
+                Kind="Value"
+                Name="MEDIC">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4136,19 +4377,6 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
-                Kind="Value"
-                Name="WorkMobile">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
                 DataType=":Date?"
                 Kind="Value"
                 Name="DateFit">
@@ -4162,7 +4390,7 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
-                DataType=":String"
+                DataType=":Int32"
                 Kind="Value"
                 Name="DaysSinceLastFit">
                 <ContentItem.DataSource>
@@ -4221,6 +4449,32 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                Kind="Value"
+                Name="WorkMobile">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WorkMobile]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                DataType=":String"
+                Kind="Value"
+                Name="WorksSMS">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
                 DataType="LightSwitchCommonModule:SMSCarrier"
                 Kind="Details"
                 Name="WorkSMSCarriers">
@@ -4242,6 +4496,19 @@
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
                 </ContentItem>
+              </ContentItem>
+              <ContentItem
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                Kind="Value"
+                Name="PersonalMobile">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
                 DataType="LightSwitchCommonModule:SMSCarrier"
@@ -4275,123 +4542,6 @@
                     <ChainExpression>
                       <MemberExpression
                         Member="LightSwitchCommonModule:Employee/Properties[PersonalSMS]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
-                Kind="Value"
-                Name="PersonalMobile">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[PersonalMobile]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="WorksSMS">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[WorksSMS]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="Summary">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[Summary]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":DateTime?"
-                Kind="Value"
-                Name="CreatedTime">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CreatedTime]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String?"
-                Kind="Value"
-                Name="CreatedBy">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CreatedBy]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":DateTime?"
-                Kind="Value"
-                Name="UpdatedTime">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[UpdatedTime]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String?"
-                Kind="Value"
-                Name="UpdatedBy">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[UpdatedBy]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="CLEO">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[CLEO]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                DataType=":String"
-                Kind="Value"
-                Name="MEDIC">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="LightSwitchCommonModule:Employee/Properties[MEDIC]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
