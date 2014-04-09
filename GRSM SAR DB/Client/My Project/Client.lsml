@@ -492,6 +492,19 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
+                Name="FitnessLevel"
+                Kind="Value"
+                DataType=":Int32?">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[FitnessLevel]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
                 Name="DaysSinceLastFit"
                 Kind="Value"
                 DataType=":Int32">
@@ -618,7 +631,7 @@
                 DataType=":String">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Park Medic/EMT?" />
+                    Value="Park Medic?" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -652,7 +665,7 @@
                 DataType=":String?">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Technical Tracker?" />
+                    Value="Tactical Tracker?" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -2893,6 +2906,19 @@
                 </ContentItem.DataSource>
               </ContentItem>
               <ContentItem
+                Name="FitnessLevel"
+                Kind="Value"
+                DataType=":Int32?">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[FitnessLevel]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
                 Name="DaysSinceLastFit1"
                 Kind="Value"
                 DataType=":Int32">
@@ -3001,7 +3027,7 @@
                 DataType=":String">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Park Medic/EMT?" />
+                    Value="Park Medic?" />
                 </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
@@ -3033,6 +3059,10 @@
                 Name="Tracker"
                 Kind="Value"
                 DataType=":String?">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Tactical Tracker?" />
+                </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
@@ -3386,6 +3416,18 @@
               </ScreenExpressionTree>
             </ContentItem.DataSource>
           </ContentItem>
+          <ContentItem
+            Name="NotifyEmployee"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="ManageTeamMembers/Methods[NotifyEmployee]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
         </ContentItem.CommandItems>
       </ContentItem>
     </Screen.RootContentItem>
@@ -3443,6 +3485,8 @@
       </ScreenMethod>
       <ScreenMethod
         Name="TestEmail" />
+      <ScreenMethod
+        Name="NotifyEmployee" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty
@@ -3670,6 +3714,22 @@
                     ResultType=":String" />
                 </ScreenExpressionTree>
               </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:ScrollableControl/Properties[IsHorizontalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="True"
+                    ResultType=":Boolean" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="True"
+                    ResultType=":Boolean" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
             </ContentItem.PropertySources>
           </ContentItem>
           <ContentItem
@@ -3732,6 +3792,28 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
+                Name="Group14"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Fitness Level" />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="MaxFitList"
+                  Kind="Value"
+                  DataType=":Int32">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[MaxFitList]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
                 Name="Group5"
                 Kind="Group"
                 View="Microsoft.LightSwitch.RichClient:GroupBox">
@@ -3769,6 +3851,11 @@
                   </ContentItem>
                 </ContentItem>
               </ContentItem>
+            </ContentItem>
+            <ContentItem
+              Name="Group2"
+              Kind="Group"
+              View="Microsoft.LightSwitch.RichClient:RowsLayout">
               <ContentItem
                 Name="Group6"
                 Kind="Group"
@@ -3797,18 +3884,13 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
-            </ContentItem>
-            <ContentItem
-              Name="Group2"
-              Kind="Group"
-              View="Microsoft.LightSwitch.RichClient:RowsLayout">
               <ContentItem
                 Name="Group7"
                 Kind="Group"
                 View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <DisplayName
-                    Value="Certified Tracker" />
+                    Value="Tactical Tracker" />
                 </ContentItem.Attributes>
                 <ContentItem
                   Name="TrackerList1"
@@ -3818,7 +3900,7 @@
                     <DisplayName
                       Value="Tracker Required?" />
                     <Description
-                      Value="Select if a Certified Tracker is required. Ignored by default. " />
+                      Value="Select if a Tactical Tracker is required. Ignored by default. " />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -3868,6 +3950,10 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
+            </ContentItem>
+            <ContentItem
+              Name="Group3"
+              Kind="Group">
               <ContentItem
                 Name="Group9"
                 Kind="Group"
@@ -3896,10 +3982,6 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
-            </ContentItem>
-            <ContentItem
-              Name="Group3"
-              Kind="Group">
               <ContentItem
                 Name="Group10"
                 Kind="Group"
@@ -3937,6 +4019,24 @@
                 </ContentItem>
               </ContentItem>
             </ContentItem>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="True"
+                    ResultType=":Boolean" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:ScrollableControl/Properties[IsHorizontalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="True"
+                    ResultType=":Boolean" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
           </ContentItem>
           <ContentItem
             Name="IRT"
@@ -3976,6 +4076,19 @@
                     <ChainExpression>
                       <MemberExpression
                         Member="Employee/Properties[Summary]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="FitnessLevel"
+                Kind="Value"
+                DataType=":Int32?">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[FitnessLevel]" />
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
@@ -4672,6 +4785,13 @@
                     Member="Id" />
                 </ChainExpression>
               </ArgumentExpression>
+              <ArgumentExpression
+                Parameter="MaxFit">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="SearchEmployees/Properties[MaxFitList]" />
+                </ChainExpression>
+              </ArgumentExpression>
             </CallExpression>
           </ChainExpression>
         </ScreenExpressionTree>
@@ -4790,6 +4910,19 @@
       <ScreenProperty
         Name="StagingArea"
         PropertyType=":String?" />
+      <ScreenProperty
+        Name="MaxFitList"
+        PropertyType=":Int32">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName="Regular"
+            Value="0" />
+          <SupportedValue
+            DisplayName="Arduous "
+            Value="1" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
     </Screen.Properties>
   </Screen>
   <Screen
@@ -4890,6 +5023,19 @@
                 </ContentItem>
               </ContentItem>
               <ContentItem
+                Name="FitnessLevel"
+                Kind="Value"
+                DataType=":Int32?">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[FitnessLevel]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
                 Name="DaysSinceLastFit"
                 Kind="Value"
                 DataType=":Int32">
@@ -4919,6 +5065,10 @@
                 Name="MEDIC"
                 Kind="Value"
                 DataType=":String">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Park Medic" />
+                </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
@@ -4945,6 +5095,10 @@
                 Name="Tracker"
                 Kind="Value"
                 DataType=":String?">
+                <ContentItem.Attributes>
+                  <DisplayName
+                    Value="Tactical Tracker" />
+                </ContentItem.Attributes>
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
@@ -5334,246 +5488,8 @@
               View="Microsoft.LightSwitch.RichClient:TableLayout">
               <ContentItem.Attributes>
                 <DisplayName
-                  Value="Tasks" />
+                  Value="Incindent Command Menu" />
               </ContentItem.Attributes>
-              <ContentItem
-                Name="Group4"
-                Kind="Group"
-                View="Microsoft.LightSwitch.RichClient:TableColumnLayout">
-                <ContentItem
-                  Name="ManageResponseZones"
-                  Kind="Value"
-                  DataType=":String?"
-                  View="Microsoft.LightSwitch.RichClient:Label">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Manage Response Zones" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Home/Properties[ManageResponseZones]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Name="Zones"
-                      Kind="Command"
-                      View="Microsoft.LightSwitch.RichClient:Link">
-                      <ContentItem.Attributes>
-                        <DisplayName
-                          Value="Response Zones " />
-                      </ContentItem.Attributes>
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <CallExpression
-                              Target="Home/Methods[Zones]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="Center"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="LeftAligned"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="ManageSARCertifications"
-                  Kind="Value"
-                  DataType=":String?"
-                  View="Microsoft.LightSwitch.RichClient:Label">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Manage SAR Certifications" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Home/Properties[ManageSARCertifications]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Name="SARCerts"
-                      Kind="Command"
-                      View="Microsoft.LightSwitch.RichClient:Link">
-                      <ContentItem.Attributes>
-                        <DisplayName
-                          Value="SAR Certifications" />
-                      </ContentItem.Attributes>
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <CallExpression
-                              Target="Home/Methods[SARCerts]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="LeftAligned"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="EditSMS"
-                  Kind="Value"
-                  DataType=":String"
-                  View="Microsoft.LightSwitch.RichClient:Label">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Manage SMS Carriers" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Home/Properties[EditSMS]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Name="SMS"
-                      Kind="Command"
-                      View="Microsoft.LightSwitch.RichClient:Link">
-                      <ContentItem.Attributes>
-                        <DisplayName
-                          Value="Manage SMS Addresses" />
-                      </ContentItem.Attributes>
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <CallExpression
-                              Target="Home/Methods[SMS]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="Left"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="LeftAligned"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="Txt_Divisions"
-                  Kind="Value"
-                  DataType=":String?"
-                  View="Microsoft.LightSwitch.RichClient:Label">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Manage Park Divisions" />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Home/Properties[Txt_Divisions]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Name="Divisions"
-                      Kind="Command"
-                      View="Microsoft.LightSwitch.RichClient:Link">
-                      <ContentItem.Attributes>
-                        <DisplayName
-                          Value="Divisions " />
-                      </ContentItem.Attributes>
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <CallExpression
-                              Target="Home/Methods[Divisions]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
-                  <ContentItem.PropertySources>
-                    <ControlPropertySource
-                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
-                      <ScreenExpressionTree>
-                        <ConstantExpression
-                          Value="Left"
-                          ResultType=":String" />
-                      </ScreenExpressionTree>
-                    </ControlPropertySource>
-                  </ContentItem.PropertySources>
-                </ContentItem>
-                <ContentItem
-                  Name="ManageResidency"
-                  Kind="Value"
-                  DataType=":String?"
-                  View="Microsoft.LightSwitch.RichClient:Label">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Home/Properties[ManageResidency]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem.CommandItems>
-                    <ContentItem
-                      Name="Residency"
-                      Kind="Command"
-                      View="Microsoft.LightSwitch.RichClient:Link">
-                      <ContentItem.DataSource>
-                        <ScreenExpressionTree>
-                          <ChainExpression>
-                            <CallExpression
-                              Target="Home/Methods[Residency]" />
-                          </ChainExpression>
-                        </ScreenExpressionTree>
-                      </ContentItem.DataSource>
-                    </ContentItem>
-                  </ContentItem.CommandItems>
-                </ContentItem>
-              </ContentItem>
               <ContentItem
                 Name="Group5"
                 Kind="Group">

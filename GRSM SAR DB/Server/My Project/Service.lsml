@@ -825,6 +825,10 @@
         Name="MaxRank"
         IsOptional="True"
         ParameterType=":Int32?" />
+      <QueryOperationParameter
+        Name="MaxFit"
+        IsOptional="True"
+        ParameterType=":Int32?" />
     </QueryOperation>
     <QueryOperation
       Name="QRYEmpZone"
@@ -1141,6 +1145,19 @@
           <SupportedValue
             DisplayName="No"
             Value="No" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty
+        Name="FitnessLevel"
+        PropertyType=":Int32?">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <SupportedValue
+            DisplayName="Regular"
+            Value="0" />
+          <SupportedValue
+            DisplayName="Arduous "
+            Value="1" />
         </EntityProperty.Attributes>
       </EntityProperty>
     </EntityType.Properties>

@@ -22,7 +22,7 @@ Namespace LightSwitchApplication
         End Sub
 
         'based on user selection of SAR Certification, will return results where SAR CERT rank is equal to or less than picked CERT
-        Private Sub QRYParameters_PreprocessQuery(Year As System.Nullable(Of Integer), MaxRank As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.Employee))
+        Private Sub QRYParameters_PreprocessQuery(Year As System.Nullable(Of Integer), MaxRank As System.Nullable(Of Integer), MaxFit As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.Employee))
             If MaxRank.HasValue Then
                 query = From q In query
                         Where q.SARCertifications.Rank <= MaxRank
@@ -42,6 +42,16 @@ Namespace LightSwitchApplication
                         Where q.DateFit > lastYear
                  Select q
             End If
+            If MaxFit.HasValue Then
+                query = From q In query
+                        Where q.FitnessLevel >= MaxFit
+                                            Select q
+            Else
+                query = From q In query
+                        Select q
+            End If
+
+
         End Sub
         'Private Sub QRYZone_PreprocessQuery(ZoneID As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.ResponseZones))
         ' query = From q In query
