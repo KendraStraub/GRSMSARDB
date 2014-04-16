@@ -941,6 +941,12 @@
             Value="255" />
           <Description
             Value="Work Mobile Phone Number" />
+          <Attribute
+            Class="Microsoft.LightSwitch.Extensions:@PhoneNumberValidation">
+            <Property
+              Name="Formats"
+              Value="AAANNNNNNN" />
+          </Attribute>
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
@@ -1016,6 +1022,12 @@
             Value="255" />
           <Description
             Value="Personal Mobile Phone Number" />
+          <Attribute
+            Class="Microsoft.LightSwitch.Extensions:@PhoneNumberValidation">
+            <Property
+              Name="Formats"
+              Value="AAANNNNNNN" />
+          </Attribute>
         </EntityProperty.Attributes>
       </EntityProperty>
       <EntityProperty
