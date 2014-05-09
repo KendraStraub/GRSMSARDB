@@ -27,9 +27,6 @@
       Name="ScreenCommandShowManageSMSCarriers"
       Target="!module/Methods[ShowManageSMSCarriers]" />
     <ApplicationCommand
-      Name="ScreenCommandShowManageResidency"
-      Target="!module/Methods[ShowManageResidency]" />
-    <ApplicationCommand
       Name="ScreenCommandShowManageTeamMembers"
       Target="!module/Methods[ShowManageTeamMembers]" />
     <ApplicationCommand
@@ -75,13 +72,6 @@
         <ApplicationMethod.Attributes>
           <ShowScreenMethod
             TargetScreen="ManageSMSCarriers" />
-        </ApplicationMethod.Attributes>
-      </ApplicationMethod>
-      <ApplicationMethod
-        Name="ShowManageResidency">
-        <ApplicationMethod.Attributes>
-          <ShowScreenMethod
-            TargetScreen="ManageResidency" />
         </ApplicationMethod.Attributes>
       </ApplicationMethod>
       <ApplicationMethod
@@ -136,9 +126,6 @@
         <ApplicationNavigationLink
           Name="ManageSMSCarriers"
           Command="!module/Commands[ScreenCommandShowManageSMSCarriers]" />
-        <ApplicationNavigationLink
-          Name="ManageResidency"
-          Command="!module/Commands[ScreenCommandShowManageResidency]" />
         <ApplicationNavigationLink
           Name="ManageTeamMembers"
           Command="!module/Commands[ScreenCommandShowManageTeamMembers]" />
@@ -233,12 +220,6 @@
   <EntityType>
     <EntityType.Attributes>
       <Proxy
-        Target="ServiceInterface:YearRoundRes" />
-    </EntityType.Attributes>
-  </EntityType>
-  <EntityType>
-    <EntityType.Attributes>
-      <Proxy
         Target="ServiceInterface:SMSCarrier" />
     </EntityType.Attributes>
   </EntityType>
@@ -280,12 +261,6 @@
     <Association.Attributes>
       <Proxy
         Target="ServiceInterface:ParkDivision_Employee" />
-    </Association.Attributes>
-  </Association>
-  <Association>
-    <Association.Attributes>
-      <Proxy
-        Target="ServiceInterface:YearRoundRes_Employee" />
     </Association.Attributes>
   </Association>
   <Association>
@@ -541,33 +516,6 @@
                   Name="RowTemplate"
                   Kind="Details"
                   DataType="ParkDivision">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression />
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem>
-              <ContentItem
-                Name="YearRoundRes"
-                Kind="Details"
-                DataType="YearRoundRes">
-                <ContentItem.Attributes>
-                  <Description
-                    Value="Optional: Enter the residency of the employee." />
-                </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="Employee/Properties[YearRoundRes]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  Name="RowTemplate1"
-                  Kind="Details"
-                  DataType="YearRoundRes">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression />
@@ -1962,233 +1910,6 @@
     </Screen.Properties>
   </Screen>
   <Screen
-    Name="ManageResidency">
-    <Screen.Attributes>
-      <SaveChangesTo
-        EntityContainer="ApplicationData" />
-    </Screen.Attributes>
-    <Screen.RootContentItem>
-      <ContentItem
-        Name="RootContentItem"
-        Kind="Screen">
-        <ContentItem
-          Name="ScreenLayout"
-          Kind="Group">
-          <ContentItem
-            Name="grid"
-            Kind="Collection"
-            DataType="CollectionView$YearRoundRes">
-            <ContentItem.Attributes>
-              <DisplayName
-                Value="Residency" />
-            </ContentItem.Attributes>
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <MemberExpression
-                    Member="ManageResidency/Properties[YearRoundResSet]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-            <ContentItem
-              Name="RowTemplate"
-              Kind="Details"
-              DataType="YearRoundRes">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression />
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-              <ContentItem
-                Name="Residency"
-                Kind="Value"
-                DataType=":String">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="YearRoundRes/Properties[Residency]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                Name="Code"
-                Kind="Value"
-                DataType=":String">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Residency Code" />
-                </ContentItem.Attributes>
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="YearRoundRes/Properties[Code]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-            </ContentItem>
-            <ContentItem.CommandItems>
-              <ContentItem
-                Name="YearRoundResSet_AddAndEditNew"
-                Kind="Command">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="ManageResidency/Properties[YearRoundResSet]" />
-                      <CallExpression
-                        Target="AddAndEditNew" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                Name="YearRoundResSet_EditSelected"
-                Kind="Command">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="ManageResidency/Properties[YearRoundResSet]" />
-                      <CallExpression
-                        Target="EditSelected" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                Name="YearRoundResSet_DeleteSelected"
-                Kind="Command">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="ManageResidency/Properties[YearRoundResSet]" />
-                      <CallExpression
-                        Target="DeleteSelected" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-              </ContentItem>
-            </ContentItem.CommandItems>
-            <ContentItem.PropertySources>
-              <ControlPropertySource
-                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <ConstantExpression
-                      Value="Stretch"
-                      ResultType=":String" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ControlPropertySource>
-              <ControlPropertySource
-                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[AttachedLabelPosition]">
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <ConstantExpression
-                      Value="Collapsed"
-                      ResultType=":String" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ControlPropertySource>
-            </ContentItem.PropertySources>
-          </ContentItem>
-        </ContentItem>
-        <ContentItem.CommandItems>
-          <ContentItem
-            Name="Save"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="ManageResidency/Methods[Save]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-          <ContentItem
-            Name="Refresh"
-            Kind="Command">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <CallExpression
-                    Target="ManageResidency/Methods[Refresh]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
-          </ContentItem>
-        </ContentItem.CommandItems>
-      </ContentItem>
-    </Screen.RootContentItem>
-    <Screen.Methods>
-      <ScreenMethod
-        Name="Save">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-          <ImageResource
-            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-      <ScreenMethod
-        Name="Refresh">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-          <ImageResource
-            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-      <ScreenMethod
-        Name="Close">
-        <ScreenMethod.Attributes>
-          <DisplayMethodByDefault
-            Display="True" />
-          <Generated />
-        </ScreenMethod.Attributes>
-      </ScreenMethod>
-    </Screen.Methods>
-    <Screen.Properties>
-      <ScreenCollectionProperty
-        Name="YearRoundResSet"
-        DisablePaging="True"
-        DisableSearch="True"
-        DisableSorting="True"
-        PageSize="45"
-        PropertyType="CollectionView$YearRoundRes">
-        <ScreenCollectionProperty.Query>
-          <ScreenQueryDefinition
-            Name="YearRoundResSetQuery"
-            ReturnType="YearRoundRes*">
-            <ScreenQueryDefinition.FilterExpression>
-              <QueryFilterExpressionTree />
-            </ScreenQueryDefinition.FilterExpression>
-            <ScreenQueryDefinition.Source>
-              <QuerySourceExpressionTree>
-                <MemberExpression
-                  Member="ApplicationData/Members[YearRoundResSet]" />
-              </QuerySourceExpressionTree>
-            </ScreenQueryDefinition.Source>
-          </ScreenQueryDefinition>
-        </ScreenCollectionProperty.Query>
-        <ScreenExpressionTree>
-          <ChainExpression>
-            <CallExpression
-              Target="ManageResidency/Properties[YearRoundResSet]/Query" />
-          </ChainExpression>
-        </ScreenExpressionTree>
-      </ScreenCollectionProperty>
-    </Screen.Properties>
-  </Screen>
-  <Screen
     Name="ManageTeamMembers">
     <Screen.Attributes>
       <SaveChangesTo
@@ -2347,29 +2068,6 @@
                     Name="ParkDivision3"
                     Kind="Details"
                     DataType="ParkDivision">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-                <ContentItem
-                  Name="YearRoundRes2"
-                  Kind="Details"
-                  DataType="YearRoundRes">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="Employee/Properties[YearRoundRes]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="YearRoundRes3"
-                    Kind="Details"
-                    DataType="YearRoundRes">
                     <ContentItem.DataSource>
                       <ScreenExpressionTree>
                         <ChainExpression />
@@ -2974,29 +2672,6 @@
                   Name="RowTemplate5"
                   Kind="Details"
                   DataType="ParkDivision">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression />
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem>
-              <ContentItem
-                Name="YearRoundRes1"
-                Kind="Details"
-                DataType="YearRoundRes">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="Employee/Properties[YearRoundRes]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  Name="RowTemplate6"
-                  Kind="Details"
-                  DataType="YearRoundRes">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression />
@@ -3771,25 +3446,6 @@
                   <DisplayName
                     Value="Fitness Test" />
                 </ContentItem.Attributes>
-                <ContentItem
-                  Name="Year"
-                  Kind="Value"
-                  DataType=":Int32?">
-                  <ContentItem.Attributes>
-                    <DisplayName
-                      Value="Took Fitness Test?" />
-                    <Description
-                      Value="Select if the team member took a fitness test within the last year, the last 2 years, or never. Default is last year. " />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="SearchEmployees/Properties[Year]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
               </ContentItem>
               <ContentItem
                 Name="Group14"
@@ -3803,6 +3459,10 @@
                   Name="MaxFitList"
                   Kind="Value"
                   DataType=":Int32">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Certification" />
+                  </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression>
@@ -3982,42 +3642,6 @@
                   </ContentItem.DataSource>
                 </ContentItem>
               </ContentItem>
-              <ContentItem
-                Name="Group10"
-                Kind="Group"
-                View="Microsoft.LightSwitch.RichClient:GroupBox">
-                <ContentItem.Attributes>
-                  <DisplayName
-                    Value="Residency" />
-                </ContentItem.Attributes>
-                <ContentItem
-                  Name="Residency"
-                  Kind="Details"
-                  DataType="YearRoundRes">
-                  <ContentItem.Attributes>
-                    <Description
-                      Value="Select if need someone whom lives here year-round or is temporar/seasonal (summer). Ignored by default. " />
-                  </ContentItem.Attributes>
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression>
-                        <MemberExpression
-                          Member="SearchEmployees/Properties[Residency]" />
-                      </ChainExpression>
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                  <ContentItem
-                    Name="YearRoundRes1"
-                    Kind="Details"
-                    DataType="YearRoundRes">
-                    <ContentItem.DataSource>
-                      <ScreenExpressionTree>
-                        <ChainExpression />
-                      </ScreenExpressionTree>
-                    </ContentItem.DataSource>
-                  </ContentItem>
-                </ContentItem>
-              </ContentItem>
             </ContentItem>
             <ContentItem.PropertySources>
               <ControlPropertySource
@@ -4180,29 +3804,6 @@
                     </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
-              </ContentItem>
-              <ContentItem
-                Name="YearRoundRes"
-                Kind="Details"
-                DataType="YearRoundRes">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="Employee/Properties[YearRoundRes]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  Name="YearRoundRes2"
-                  Kind="Details"
-                  DataType="YearRoundRes">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression />
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
               </ContentItem>
               <ContentItem
                 Name="WorkMobile"
@@ -4505,7 +4106,7 @@
               <ScreenExpressionTree>
                 <ChainExpression>
                   <CallExpression
-                    Target="SearchEmployees/Methods[EmailBlast]" />
+                    Target="SearchEmployees/Methods[SendOrder]" />
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>
@@ -4567,7 +4168,7 @@
         </ScreenMethod.Attributes>
       </ScreenMethod>
       <ScreenMethod
-        Name="EmailBlast" />
+        Name="SendOrder" />
       <ScreenMethod
         Name="OrderIsFilled" />
       <ScreenMethod
@@ -4598,36 +4199,16 @@
                           NodeType="Or">
                           <BinaryExpression.Left>
                             <BinaryExpression
-                              NodeType="Or">
+                              NodeType="Equal">
                               <BinaryExpression.Left>
-                                <BinaryExpression
-                                  NodeType="Equal">
-                                  <BinaryExpression.Left>
-                                    <ChainExpression>
-                                      <MemberExpression
-                                        Member="Employee/Properties[CLEO]" />
-                                    </ChainExpression>
-                                  </BinaryExpression.Left>
-                                  <BinaryExpression.Right>
-                                    <ParameterExpression
-                                      Parameter="CLEO" />
-                                  </BinaryExpression.Right>
-                                </BinaryExpression>
+                                <ChainExpression>
+                                  <MemberExpression
+                                    Member="Employee/Properties[CLEO]" />
+                                </ChainExpression>
                               </BinaryExpression.Left>
                               <BinaryExpression.Right>
-                                <BinaryExpression
-                                  NodeType="Equal">
-                                  <BinaryExpression.Left>
-                                    <ChainExpression>
-                                      <MemberExpression
-                                        Member="Employee/Properties[TechRescue]" />
-                                    </ChainExpression>
-                                  </BinaryExpression.Left>
-                                  <BinaryExpression.Right>
-                                    <ParameterExpression
-                                      Parameter="TechRescue" />
-                                  </BinaryExpression.Right>
-                                </BinaryExpression>
+                                <ParameterExpression
+                                  Parameter="CLEO" />
                               </BinaryExpression.Right>
                             </BinaryExpression>
                           </BinaryExpression.Left>
@@ -4637,12 +4218,12 @@
                               <BinaryExpression.Left>
                                 <ChainExpression>
                                   <MemberExpression
-                                    Member="Employee/Properties[Tracker]" />
+                                    Member="Employee/Properties[TechRescue]" />
                                 </ChainExpression>
                               </BinaryExpression.Left>
                               <BinaryExpression.Right>
                                 <ParameterExpression
-                                  Parameter="Tracker" />
+                                  Parameter="TechRescue" />
                               </BinaryExpression.Right>
                             </BinaryExpression>
                           </BinaryExpression.Right>
@@ -4654,12 +4235,12 @@
                           <BinaryExpression.Left>
                             <ChainExpression>
                               <MemberExpression
-                                Member="Employee/Properties[MEDIC]" />
+                                Member="Employee/Properties[Tracker]" />
                             </ChainExpression>
                           </BinaryExpression.Left>
                           <BinaryExpression.Right>
                             <ParameterExpression
-                              Parameter="MEDIC" />
+                              Parameter="Tracker" />
                           </BinaryExpression.Right>
                         </BinaryExpression>
                       </BinaryExpression.Right>
@@ -4671,14 +4252,12 @@
                       <BinaryExpression.Left>
                         <ChainExpression>
                           <MemberExpression
-                            Member="Employee/Properties[YearRoundRes]" />
-                          <MemberExpression
-                            Member="Id" />
+                            Member="Employee/Properties[MEDIC]" />
                         </ChainExpression>
                       </BinaryExpression.Left>
                       <BinaryExpression.Right>
                         <ParameterExpression
-                          Parameter="Residency" />
+                          Parameter="MEDIC" />
                       </BinaryExpression.Right>
                     </BinaryExpression>
                   </BinaryExpression.Right>
@@ -4709,10 +4288,6 @@
                 IsOptional="True"
                 ParameterType=":String?" />
               <QueryParameter
-                Name="Residency"
-                IsOptional="True"
-                ParameterType=":Int32?" />
-              <QueryParameter
                 Name="Zone"
                 IsOptional="True"
                 ParameterType=":Int32?" />
@@ -4724,12 +4299,7 @@
             <CallExpression
               Target="SearchEmployees/Properties[IRT]/Query">
               <ArgumentExpression
-                Parameter="Year">
-                <ChainExpression>
-                  <MemberExpression
-                    Member="SearchEmployees/Properties[Year]" />
-                </ChainExpression>
-              </ArgumentExpression>
+                Parameter="Year" />
               <ArgumentExpression
                 Parameter="MaxRank">
                 <ChainExpression>
@@ -4765,15 +4335,6 @@
                 <ChainExpression>
                   <MemberExpression
                     Member="SearchEmployees/Properties[MedicList]" />
-                </ChainExpression>
-              </ArgumentExpression>
-              <ArgumentExpression
-                Parameter="Residency">
-                <ChainExpression>
-                  <MemberExpression
-                    Member="SearchEmployees/Properties[Residency]" />
-                  <MemberExpression
-                    Member="Id" />
                 </ChainExpression>
               </ArgumentExpression>
               <ArgumentExpression
@@ -4845,24 +4406,6 @@
         </ScreenProperty.Attributes>
       </ScreenProperty>
       <ScreenProperty
-        Name="Residency"
-        PropertyType="YearRoundRes" />
-      <ScreenProperty
-        Name="Year"
-        PropertyType=":Int32?">
-        <ScreenProperty.Attributes>
-          <SupportedValue
-            DisplayName="Current (Fitness test &lt; 1 year)"
-            Value="1" />
-          <SupportedValue
-            DisplayName="Recently Expired (Fitness test &lt; 2 years) "
-            Value="2" />
-          <SupportedValue
-            DisplayName="We'll Take Anyone"
-            Value="10" />
-        </ScreenProperty.Attributes>
-      </ScreenProperty>
-      <ScreenProperty
         Name="AllSARCerts"
         PropertyType="SARCertifications" />
       <ScreenProperty
@@ -4916,7 +4459,7 @@
         <ScreenProperty.Attributes>
           <Required />
           <SupportedValue
-            DisplayName="Regular"
+            DisplayName="Moderate"
             Value="0" />
           <SupportedValue
             DisplayName="Arduous "
@@ -5228,29 +4771,6 @@
                   Name="RowTemplate1"
                   Kind="Details"
                   DataType="ParkDivision">
-                  <ContentItem.DataSource>
-                    <ScreenExpressionTree>
-                      <ChainExpression />
-                    </ScreenExpressionTree>
-                  </ContentItem.DataSource>
-                </ContentItem>
-              </ContentItem>
-              <ContentItem
-                Name="YearRoundRes"
-                Kind="Details"
-                DataType="YearRoundRes">
-                <ContentItem.DataSource>
-                  <ScreenExpressionTree>
-                    <ChainExpression>
-                      <MemberExpression
-                        Member="Employee/Properties[YearRoundRes]" />
-                    </ChainExpression>
-                  </ScreenExpressionTree>
-                </ContentItem.DataSource>
-                <ContentItem
-                  Name="RowTemplate2"
-                  Kind="Details"
-                  DataType="YearRoundRes">
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
                       <ChainExpression />

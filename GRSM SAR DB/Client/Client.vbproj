@@ -230,7 +230,6 @@
     <Compile Include="UserCode\EmpoyeeDetail.vb" />
     <Compile Include="UserCode\Home.vb" />
     <Compile Include="UserCode\ManageDivisions.vb" />
-    <Compile Include="UserCode\ManageResidency.vb" />
     <Compile Include="UserCode\ManageSARCertifications.vb" />
     <Compile Include="UserCode\ManageSMSCarriers.vb" />
     <Compile Include="UserCode\ManageTeamMembers.vb" />
@@ -239,6 +238,7 @@
   <ItemGroup>
     <LightSwitchModel Include="My Project\Client.lsml">
       <ProjectCritical>true</ProjectCritical>
+      <SubType>Designer</SubType>
     </LightSwitchModel>
     <None Include="My Project\AppManifest.xml" />
     <None Include="My Project\OutOfBrowserSettings.xml" />

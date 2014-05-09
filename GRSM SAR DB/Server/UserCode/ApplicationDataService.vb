@@ -25,7 +25,7 @@ Namespace LightSwitchApplication
         Private Sub QRYParameters_PreprocessQuery(Year As System.Nullable(Of Integer), MaxRank As System.Nullable(Of Integer), MaxFit As System.Nullable(Of Integer), ByRef query As System.Linq.IQueryable(Of LightSwitchApplication.Employee))
             If MaxRank.HasValue Then
                 query = From q In query
-                        Where q.SARCertifications.Rank <= MaxRank
+                        Where q.SARCertifications.Rank >= MaxRank
                                             Select q
             Else
                 query = From q In query

@@ -213,102 +213,6 @@
         EntitySet="Employees" />
     </AssociationSet>
     <EntitySet
-      Name="YearRoundResSet"
-      CanDelete="True"
-      CanInsert="True"
-      CanUpdate="True"
-      EntityType="YearRoundRes" />
-    <QueryOperation
-      Name="YearRoundResSet_Single"
-      ReturnType="YearRoundRes">
-      <QueryOperation.Attributes>
-        <Generated />
-        <Description
-          Value="Returns the entity whose identity is specified by the parameter(s)." />
-      </QueryOperation.Attributes>
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ParameterExpression
-                Parameter="Id" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="YearRoundResSet" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="Id"
-        ParameterType=":Int32?">
-        <QueryOperationParameter.Attributes>
-          <Description
-            Value="The value of the 'Id' key property of the entity to retrieve." />
-        </QueryOperationParameter.Attributes>
-      </QueryOperationParameter>
-    </QueryOperation>
-    <QueryOperation
-      Name="YearRoundResSet_SingleOrDefault"
-      ReturnType="YearRoundRes">
-      <QueryOperation.Attributes>
-        <Generated />
-        <Description
-          Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
-      </QueryOperation.Attributes>
-      <QueryOperation.FilterExpression>
-        <QueryFilterExpressionTree>
-          <BinaryExpression
-            NodeType="Equal">
-            <BinaryExpression.Left>
-              <ChainExpression>
-                <MemberExpression
-                  Member="Id" />
-              </ChainExpression>
-            </BinaryExpression.Left>
-            <BinaryExpression.Right>
-              <ParameterExpression
-                Parameter="Id" />
-            </BinaryExpression.Right>
-          </BinaryExpression>
-        </QueryFilterExpressionTree>
-      </QueryOperation.FilterExpression>
-      <QueryOperation.Source>
-        <QuerySourceExpressionTree>
-          <MemberExpression
-            Member="YearRoundResSet" />
-        </QuerySourceExpressionTree>
-      </QueryOperation.Source>
-      <QueryOperationParameter
-        Name="Id"
-        ParameterType=":Int32?">
-        <QueryOperationParameter.Attributes>
-          <Description
-            Value="The value of the 'Id' key property of the entity to retrieve." />
-        </QueryOperationParameter.Attributes>
-      </QueryOperationParameter>
-    </QueryOperation>
-    <AssociationSet
-      Name="YearRoundRes_Employees"
-      Association="YearRoundRes_Employee">
-      <AssociationSetEnd
-        Name="YearRoundRes"
-        EntitySet="YearRoundResSet" />
-      <AssociationSetEnd
-        Name="Employee"
-        EntitySet="Employees" />
-    </AssociationSet>
-    <EntitySet
       Name="SMSCarriers"
       CanDelete="True"
       CanInsert="True"
@@ -974,16 +878,6 @@
         FromEnd="Employee"
         ToEnd="ParkDivision" />
       <NavigationProperty
-        Name="YearRoundRes"
-        Association="YearRoundRes_Employee"
-        FromEnd="Employee"
-        ToEnd="YearRoundRes">
-        <NavigationProperty.Attributes>
-          <DisplayName
-            Value="Residency" />
-        </NavigationProperty.Attributes>
-      </NavigationProperty>
-      <NavigationProperty
         Name="WorkSMSCarriers"
         Association="SMSCarrier_Employee"
         FromEnd="Employee"
@@ -1226,64 +1120,6 @@
         Name="Employees"
         Association="ParkDivision_Employee"
         FromEnd="ParkDivision"
-        ToEnd="Employee" />
-    </EntityType.Properties>
-  </EntityType>
-  <EntityType
-    Name="YearRoundRes">
-    <EntityType.Attributes>
-      <DisplayName
-        Value="Residency" />
-    </EntityType.Attributes>
-    <EntityType.Methods>
-      <EntityMethod
-        Name="Delete">
-        <EntityMethod.Attributes>
-          <Generated />
-        </EntityMethod.Attributes>
-      </EntityMethod>
-    </EntityType.Methods>
-    <EntityType.Properties>
-      <KeyProperty
-        Name="Id"
-        PropertyType=":Int32">
-        <KeyProperty.Attributes>
-          <Required />
-          <NotSearchable />
-        </KeyProperty.Attributes>
-      </KeyProperty>
-      <EntityProperty
-        Name="RowVersion"
-        PropertyType=":RowVersion">
-        <EntityProperty.Attributes>
-          <UseForConcurrency />
-          <Generated />
-          <Hidden />
-          <NotSearchable />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Residency"
-        PropertyType=":String">
-        <EntityProperty.Attributes>
-          <Required />
-          <MaxLength
-            Value="100" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <EntityProperty
-        Name="Code"
-        PropertyType=":String">
-        <EntityProperty.Attributes>
-          <Required />
-          <MaxLength
-            Value="6" />
-        </EntityProperty.Attributes>
-      </EntityProperty>
-      <NavigationProperty
-        Name="Employees"
-        Association="YearRoundRes_Employee"
-        FromEnd="YearRoundRes"
         ToEnd="Employee" />
     </EntityType.Properties>
   </EntityType>
@@ -1608,21 +1444,6 @@
       EntityType="Employee" />
   </Association>
   <Association
-    Name="YearRoundRes_Employee">
-    <AssociationEnd
-      Name="YearRoundRes"
-      EntityType="YearRoundRes">
-      <AssociationEnd.Attributes>
-        <DeleteRule
-          Action="Restrict" />
-      </AssociationEnd.Attributes>
-    </AssociationEnd>
-    <AssociationEnd
-      Name="Employee"
-      Multiplicity="Many"
-      EntityType="Employee" />
-  </Association>
-  <Association
     Name="SMSCarrier_Employee">
     <AssociationEnd
       Name="SMSCarrier"
@@ -1778,27 +1599,6 @@
           Type="int" />
       </EntitySetMapping.Attributes>
     </EntitySetMapping>
-    <AssociationSetMapping
-      AssociationSet="YearRoundRes_Employees">
-      <AssociationSetMapping.Attributes>
-        <SsdlAssociationSet
-          Name="YearRoundRes_Employees" />
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[YearRoundRes_Employees]/Members[YearRoundRes]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="Id" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-        <SsdlAssociationSetEnd
-          End="ApplicationData/Members[YearRoundRes_Employees]/Members[Employee]">
-          <SsdlAssociationSetEnd.Attributes>
-            <SsdlPropertyRef
-              Name="YearRoundRes_Employee" />
-          </SsdlAssociationSetEnd.Attributes>
-        </SsdlAssociationSetEnd>
-      </AssociationSetMapping.Attributes>
-    </AssociationSetMapping>
     <AssociationSetMapping
       AssociationSet="SMSCarrier_Employees">
       <AssociationSetMapping.Attributes>

@@ -37,10 +37,7 @@ Namespace LightSwitchApplication
 
         End Sub
 
-        Private Sub Residency_Execute()
-            Application.ShowManageResidency()
 
-        End Sub
 
         Private Sub TestTheSystem_Execute()
             If EmailAddress Is Nothing Then
