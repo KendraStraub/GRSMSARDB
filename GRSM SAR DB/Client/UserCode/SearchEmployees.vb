@@ -9,6 +9,7 @@ Namespace LightSwitchApplication
             MaxFitList = "0"
             Type = "Carry-out"
             Priority = "2"
+            Year = "1"
 
         End Sub
 

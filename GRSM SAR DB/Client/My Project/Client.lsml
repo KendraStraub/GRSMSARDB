@@ -3459,6 +3459,19 @@
                   <DisplayName
                     Value="Fitness Test" />
                 </ContentItem.Attributes>
+                <ContentItem
+                  Name="Year"
+                  Kind="Value"
+                  DataType=":Int32">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="SearchEmployees/Properties[Year]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
               </ContentItem>
               <ContentItem
                 Name="Group14"
@@ -4312,7 +4325,12 @@
             <CallExpression
               Target="SearchEmployees/Properties[IRT]/Query">
               <ArgumentExpression
-                Parameter="Year" />
+                Parameter="Year">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="SearchEmployees/Properties[Year]" />
+                </ChainExpression>
+              </ArgumentExpression>
               <ArgumentExpression
                 Parameter="MaxRank">
                 <ChainExpression>
@@ -4477,6 +4495,19 @@
           <SupportedValue
             DisplayName="Arduous "
             Value="1" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="Year"
+        PropertyType=":Int32">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName="Within Last Year"
+            Value="1" />
+          <SupportedValue
+            DisplayName="Within Last Two Years"
+            Value="2" />
         </ScreenProperty.Attributes>
       </ScreenProperty>
     </Screen.Properties>
@@ -5573,7 +5604,7 @@
               Name="Group4"
               Kind="Group">
               <ContentItem
-                Name="LocaitonOfIncident"
+                Name="LocationOfIncident"
                 Kind="Group"
                 View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem
@@ -5653,7 +5684,21 @@
               <ContentItem
                 Name="FitnessTest"
                 Kind="Group"
-                View="Microsoft.LightSwitch.RichClient:GroupBox" />
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem
+                  Name="Year"
+                  Kind="Value"
+                  DataType=":Int32">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="MedicIRT/Properties[Year]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
               <ContentItem
                 Name="Group10"
                 Kind="Group"
@@ -6176,7 +6221,7 @@
                 Parameter="Year">
                 <ChainExpression>
                   <MemberExpression
-                    Member="MedicIRT/Properties[EmployeeYear]" />
+                    Member="MedicIRT/Properties[Year]" />
                 </ChainExpression>
               </ArgumentExpression>
               <ArgumentExpression
@@ -6283,6 +6328,19 @@
       <ScreenProperty
         Name="AllSARCerts"
         PropertyType="SARCertifications" />
+      <ScreenProperty
+        Name="Year"
+        PropertyType=":Int32">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName="Within Last Year"
+            Value="1" />
+          <SupportedValue
+            DisplayName="Within Last Two Years"
+            Value="2" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
     </Screen.Properties>
   </Screen>
 </ModelFragment>
