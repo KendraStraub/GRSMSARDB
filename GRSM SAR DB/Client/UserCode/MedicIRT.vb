@@ -7,6 +7,7 @@ Namespace LightSwitchApplication
             Type = "ALS"
             Priority = "2"
             MedicList = "Yes"
+            Year = "1"
 
         End Sub
         Private Sub SendOrder_CanExecute(ByRef result As Boolean)
@@ -26,7 +27,9 @@ Namespace LightSwitchApplication
                             Where detail.Id = detail.Id
                             Select detail
             'send email to each employee work cell phone
-
+            '17 + 1 + N + 10 + 26 + 12 + N + 21
+            'Mandatory characters is 104
+            'Location and Staging can be 56 characters
             For Each d In sendarray
                 If d.WorksSMS Is Nothing Then
                 Else
@@ -36,6 +39,7 @@ Namespace LightSwitchApplication
                         .RecipientName = d.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
+                        '14 + 17 + 1 + N + 10 + 26 + 12 + N + 21
                         .Message = "Medic Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()

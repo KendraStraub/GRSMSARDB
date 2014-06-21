@@ -25,7 +25,9 @@ Namespace LightSwitchApplication
                             Where detail.Id = detail.Id
                             Select detail
             'send email to each employee work cell phone
-
+            '17 + 1 + N + 10 + 26 + 12 + N + 21
+            'Mandatory characters is 90
+            'Location and Staging can be 70 characters
             For Each d In sendarray
                 If d.WorksSMS Is Nothing Then
                 Else
