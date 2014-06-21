@@ -1059,7 +1059,7 @@
         <EntityProperty.Attributes>
           <NotSearchable />
           <SupportedValue
-            DisplayName="Regular"
+            DisplayName="Moderate"
             Value="0" />
           <SupportedValue
             DisplayName="Arduous "

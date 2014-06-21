@@ -56,6 +56,11 @@ Namespace LightSwitchApplication
             End If
 
         End Sub
+
+        Private Sub MIRT_Execute()
+            Application.ShowMedicIRT()
+
+        End Sub
     End Class
 
 End Namespace

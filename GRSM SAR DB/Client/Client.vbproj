@@ -233,6 +233,7 @@
     <Compile Include="UserCode\ManageSARCertifications.vb" />
     <Compile Include="UserCode\ManageSMSCarriers.vb" />
     <Compile Include="UserCode\ManageTeamMembers.vb" />
+    <Compile Include="UserCode\MedicIRT.vb" />
     <Compile Include="UserCode\SearchEmployees.vb" />
   </ItemGroup>
   <ItemGroup>
