@@ -162,6 +162,8 @@ Namespace LightSwitchApplication
         Private Sub YearRoundResSet_CanInsert(ByRef result As Boolean)
             result = Me.Application.User.HasPermission(Permissions.Administration)
         End Sub
+
+ 
     End Class
 
 
