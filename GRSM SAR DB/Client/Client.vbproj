@@ -229,6 +229,7 @@
     <Compile Include="UserCode\CreateNewTeamMember.vb" />
     <Compile Include="UserCode\EmpoyeeDetail.vb" />
     <Compile Include="UserCode\Home.vb" />
+    <Compile Include="UserCode\LEO_IRT.vb" />
     <Compile Include="UserCode\ManageDivisions.vb" />
     <Compile Include="UserCode\ManageSARCertifications.vb" />
     <Compile Include="UserCode\ManageSMSCarriers.vb" />

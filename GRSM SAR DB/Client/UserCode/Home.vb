@@ -61,6 +61,11 @@ Namespace LightSwitchApplication
             Application.ShowMedicIRT()
 
         End Sub
+
+        Private Sub LEOIRT_Execute()
+            Application.ShowLEO_IRT()
+
+        End Sub
     End Class
 
 End Namespace

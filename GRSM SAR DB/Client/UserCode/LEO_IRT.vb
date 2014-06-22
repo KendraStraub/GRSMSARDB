@@ -1,12 +1,12 @@
 ﻿
 Namespace LightSwitchApplication
 
-    Public Class MedicIRT
-        Private Sub MedicIRT_Created()
+    Public Class LEO_IRT
+        Private Sub LEO_IRT_Created()
             MaxFitList = "0"
-            Type = "ALS"
-            Priority = "1"
-            MedicList = "Yes"
+            Type = "LE Incident"
+            Priority = "2"
+            CopList = "Yes"
             Year = "1"
 
         End Sub
@@ -23,7 +23,7 @@ Namespace LightSwitchApplication
             'then loops through the array 4 times
             'to send an email to up to 4 addresses
             'an employee can have
-            Dim sendarray = From detail In MIRT
+            Dim sendarray = From detail In LawEnfIRT
                             Where detail.Id = detail.Id
                             Select detail
             'send email to each employee work cell phone
@@ -40,7 +40,7 @@ Namespace LightSwitchApplication
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
                         '14 + 17 + 1 + N + 10 + 26 + 12 + N + 21
-                        .Message = "Medic Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
+                        .Message = "LEO Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -60,7 +60,7 @@ Namespace LightSwitchApplication
                         .RecipientName = e.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = "Medic Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
+                        .Message = "LEO Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -80,7 +80,7 @@ Namespace LightSwitchApplication
                         .RecipientName = f.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = "Medic Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
+                        .Message = "LEO Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -100,7 +100,7 @@ Namespace LightSwitchApplication
                         .RecipientName = g.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = "Medic Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
+                        .Message = "LEO Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -115,7 +115,7 @@ Namespace LightSwitchApplication
         Private Sub OrderIsCancelled_Execute()
             'loops through the results of the query
             'using unique employee ID as a limiter
-            Dim sendarray = From detail In MIRT
+            Dim sendarray = From detail In LawEnfIRT
                             Where detail.Id = detail.Id
                             Select detail
             'send email to each employee work cell phone
@@ -206,7 +206,7 @@ Namespace LightSwitchApplication
         Private Sub OrderIsFilled_Execute()
             'loops through the results of the query
             'using unique employee ID as a limiter
-            Dim sendarray = From detail In MIRT
+            Dim sendarray = From detail In LawEnfIRT
                             Where detail.Id = detail.Id
                             Select detail
             'send email to each employee work cell phone
