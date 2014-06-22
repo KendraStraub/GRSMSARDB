@@ -66,6 +66,11 @@ Namespace LightSwitchApplication
             Application.ShowLEO_IRT()
 
         End Sub
+
+        Private Sub TrackerIRT_Execute()
+            Application.ShowTracker_IRT()
+
+        End Sub
     End Class
 
 End Namespace
