@@ -13,6 +13,7 @@ Namespace LightSwitchApplication
         Private Sub SendOrder_CanExecute(ByRef result As Boolean)
             result = Me.Application.User.HasPermission(Permissions.Editing)
 
+
         End Sub
 
         Private Sub SendOrder_Execute()
