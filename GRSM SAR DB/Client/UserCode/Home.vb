@@ -71,6 +71,11 @@ Namespace LightSwitchApplication
             Application.ShowTracker_IRT()
 
         End Sub
+
+        Private Sub RESCIRT_Execute()
+            Application.ShowRescue_IRT()
+
+        End Sub
     End Class
 
 End Namespace

@@ -1,15 +1,18 @@
-﻿Imports System.Windows.Controls
-Imports System.Text
+﻿
 Namespace LightSwitchApplication
 
-    Public Class SearchEmployees
+    Public Class Rescue_IRT
 
-        'initialize the export button
-        Private Sub SearchEmployees_Created()
+        Private Sub Rescue_IRT_Created()
             MaxFitList = "0"
-            Type = "Carry-out"
+            Type = "Tech. Rescue"
             Priority = "2"
+            RescueList = "Yes"
             Year = "1"
+
+        End Sub
+        Private Sub SendOrder_CanExecute(ByRef result As Boolean)
+            result = Me.Application.User.HasPermission(Permissions.Editing)
 
         End Sub
 
@@ -21,13 +24,13 @@ Namespace LightSwitchApplication
             'then loops through the array 4 times
             'to send an email to up to 4 addresses
             'an employee can have
-            Dim sendarray = From detail In IRT
+            Dim sendarray = From detail In RescueIRT
                             Where detail.Id = detail.Id
                             Select detail
             'send email to each employee work cell phone
             '17 + 1 + N + 10 + 26 + 12 + N + 21
-            'Mandatory characters is 90
-            'Location and Staging can be 70 characters
+            'Mandatory characters is 104
+            'Location and Staging can be 56 characters
             For Each d In sendarray
                 If d.WorksSMS Is Nothing Then
                 Else
@@ -37,7 +40,8 @@ Namespace LightSwitchApplication
                         .RecipientName = d.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
+                        '14 + 17 + 1 + N + 10 + 26 + 12 + N + 21
+                        .Message = "Rescuer Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -57,7 +61,7 @@ Namespace LightSwitchApplication
                         .RecipientName = e.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
+                        .Message = "Rescuer Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -77,7 +81,7 @@ Namespace LightSwitchApplication
                         .RecipientName = f.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
+                        .Message = "Rescuer Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -97,7 +101,7 @@ Namespace LightSwitchApplication
                         .RecipientName = g.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
+                        .Message = "Rescuer Needed: " + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea + ". Call (865)436-1230."
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -105,96 +109,6 @@ Namespace LightSwitchApplication
                 End If
             Next
 
-
-
-        End Sub
-
- 
-
-        Private Sub OrderIsFilled_Execute()
-            'loops through the results of the query
-            'using unique employee ID as a limiter
-            Dim sendarray = From detail In IRT
-                            Where detail.Id = detail.Id
-                            Select detail
-            'send email to each employee work cell phone
-            For Each h In sendarray
-                If h.WorksSMS Is Nothing Then
-                Else
-
-                    Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
-                    With newEmail
-                        .RecipientEmailAddress = h.WorksSMS
-                        .RecipientName = h.Summary
-                        .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
-                        .SenderName = "Dispatch"
-                        .Message = "SAR resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
-                    End With
-                    DataWorkspace.ApplicationData.SaveChanges()
-                    newEmail.Delete()
-                    DataWorkspace.ApplicationData.SaveChanges()
-                End If
-            Next
-
-
-            'send email to each employee personal cell phone
-            For Each i In sendarray
-                If i.PersonalSMS Is Nothing Then
-                Else
-
-                    Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
-                    With newEmail
-                        .RecipientEmailAddress = i.PersonalSMS
-                        .RecipientName = i.Summary
-                        .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
-                        .SenderName = "Dispatch"
-                        .Message = "SAR resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
-                    End With
-                    DataWorkspace.ApplicationData.SaveChanges()
-                    newEmail.Delete()
-                    DataWorkspace.ApplicationData.SaveChanges()
-                End If
-            Next
-
-
-            'send email to each employee work email 
-            For Each j In sendarray
-                If j.WorkEmail Is Nothing Then
-                Else
-
-                    Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
-                    With newEmail
-                        .RecipientEmailAddress = j.WorkEmail
-                        .RecipientName = j.Summary
-                        .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
-                        .SenderName = "Dispatch"
-                        .Message = "SAR resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
-                    End With
-                    DataWorkspace.ApplicationData.SaveChanges()
-                    newEmail.Delete()
-                    DataWorkspace.ApplicationData.SaveChanges()
-                End If
-            Next
-
-
-            'send email to each employee home email
-            For Each k In sendarray
-                If k.HomeEmail Is Nothing Then
-                Else
-
-                    Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
-                    With newEmail
-                        .RecipientEmailAddress = k.HomeEmail
-                        .RecipientName = k.Summary
-                        .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
-                        .SenderName = "Dispatch"
-                        .Message = "SAR resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
-                    End With
-                    DataWorkspace.ApplicationData.SaveChanges()
-                    newEmail.Delete()
-                    DataWorkspace.ApplicationData.SaveChanges()
-                End If
-            Next
 
 
         End Sub
@@ -202,7 +116,7 @@ Namespace LightSwitchApplication
         Private Sub OrderIsCancelled_Execute()
             'loops through the results of the query
             'using unique employee ID as a limiter
-            Dim sendarray = From detail In IRT
+            Dim sendarray = From detail In RescueIRT
                             Where detail.Id = detail.Id
                             Select detail
             'send email to each employee work cell phone
@@ -216,7 +130,7 @@ Namespace LightSwitchApplication
                         .RecipientName = l.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = "SAR Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
+                        .Message = "Medic Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -236,7 +150,7 @@ Namespace LightSwitchApplication
                         .RecipientName = m.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = "SAR Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
+                        .Message = "Medic Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -256,7 +170,7 @@ Namespace LightSwitchApplication
                         .RecipientName = n.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = "SAR Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
+                        .Message = "Medic Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -276,7 +190,7 @@ Namespace LightSwitchApplication
                         .RecipientName = o.Summary
                         .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
                         .SenderName = "Dispatch"
-                        .Message = "SAR Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
+                        .Message = "Medic Resource order CANCELLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
                     End With
                     DataWorkspace.ApplicationData.SaveChanges()
                     newEmail.Delete()
@@ -285,29 +199,103 @@ Namespace LightSwitchApplication
             Next
         End Sub
 
-        Private Sub SendOrder_CanExecute(ByRef result As Boolean)
+        Private Sub OrderIsFilled_CanExecute(ByRef result As Boolean)
             result = Me.Application.User.HasPermission(Permissions.Editing)
-            result = Me.Application.User.HasPermission(Permissions.Administration)
-            result = Me.Application.User.HasPermission(Permissions.SecurityAdministration)
+
+        End Sub
+
+        Private Sub OrderIsFilled_Execute()
+            'loops through the results of the query
+            'using unique employee ID as a limiter
+            Dim sendarray = From detail In RescueIRT
+                            Where detail.Id = detail.Id
+                            Select detail
+            'send email to each employee work cell phone
+            For Each h In sendarray
+                If h.WorksSMS Is Nothing Then
+                Else
+
+                    Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
+                    With newEmail
+                        .RecipientEmailAddress = h.WorksSMS
+                        .RecipientName = h.Summary
+                        .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                        .SenderName = "Dispatch"
+                        .Message = "Medic resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
+                    End With
+                    DataWorkspace.ApplicationData.SaveChanges()
+                    newEmail.Delete()
+                    DataWorkspace.ApplicationData.SaveChanges()
+                End If
+            Next
+
+
+            'send email to each employee personal cell phone
+            For Each i In sendarray
+                If i.PersonalSMS Is Nothing Then
+                Else
+
+                    Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
+                    With newEmail
+                        .RecipientEmailAddress = i.PersonalSMS
+                        .RecipientName = i.Summary
+                        .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                        .SenderName = "Dispatch"
+                        .Message = "Medic resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
+                    End With
+                    DataWorkspace.ApplicationData.SaveChanges()
+                    newEmail.Delete()
+                    DataWorkspace.ApplicationData.SaveChanges()
+                End If
+            Next
+
+
+            'send email to each employee work email 
+            For Each j In sendarray
+                If j.WorkEmail Is Nothing Then
+                Else
+
+                    Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
+                    With newEmail
+                        .RecipientEmailAddress = j.WorkEmail
+                        .RecipientName = j.Summary
+                        .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                        .SenderName = "Dispatch"
+                        .Message = "Medic resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
+                    End With
+                    DataWorkspace.ApplicationData.SaveChanges()
+                    newEmail.Delete()
+                    DataWorkspace.ApplicationData.SaveChanges()
+                End If
+            Next
+
+
+            'send email to each employee home email
+            For Each k In sendarray
+                If k.HomeEmail Is Nothing Then
+                Else
+
+                    Dim newEmail = DataWorkspace.ApplicationData.ProxyEmails.AddNew()
+                    With newEmail
+                        .RecipientEmailAddress = k.HomeEmail
+                        .RecipientName = k.Summary
+                        .SenderEmailAddress = "GRSM_EMERGENCY_CALLOUT@NPS.GOV"
+                        .SenderName = "Dispatch"
+                        .Message = "Medic resource order has been FILLED!!!" + Type + " " + Location + " " + "Priority: " + Priority + " Staging at " + StagingArea
+                    End With
+                    DataWorkspace.ApplicationData.SaveChanges()
+                    newEmail.Delete()
+                    DataWorkspace.ApplicationData.SaveChanges()
+                End If
+            Next
+
 
         End Sub
 
         Private Sub OrderIsCancelled_CanExecute(ByRef result As Boolean)
             result = Me.Application.User.HasPermission(Permissions.Editing)
-            result = Me.Application.User.HasPermission(Permissions.Administration)
-            result = Me.Application.User.HasPermission(Permissions.SecurityAdministration)
 
         End Sub
-
-        Private Sub OrderIsFilled_CanExecute(ByRef result As Boolean)
-            result = Me.Application.User.HasPermission(Permissions.Editing)
-            result = Me.Application.User.HasPermission(Permissions.Administration)
-            result = Me.Application.User.HasPermission(Permissions.SecurityAdministration)
-
-        End Sub
-
-        
-
     End Class
 
 End Namespace

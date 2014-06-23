@@ -235,6 +235,7 @@
     <Compile Include="UserCode\ManageSMSCarriers.vb" />
     <Compile Include="UserCode\ManageTeamMembers.vb" />
     <Compile Include="UserCode\MedicIRT.vb" />
+    <Compile Include="UserCode\Rescue_IRT.vb" />
     <Compile Include="UserCode\SearchEmployees.vb" />
     <Compile Include="UserCode\Tracker_IRT.vb" />
   </ItemGroup>

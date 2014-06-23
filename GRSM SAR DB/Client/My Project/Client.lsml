@@ -47,6 +47,9 @@
     <ApplicationCommand
       Name="ScreenCommandShowTracker_IRT"
       Target="!module/Methods[ShowTracker_IRT]" />
+    <ApplicationCommand
+      Name="ScreenCommandShowRescue_IRT"
+      Target="!module/Methods[ShowRescue_IRT]" />
     <Application.Methods>
       <ApplicationMethod
         Name="ShowCreateNewTeamMember">
@@ -132,6 +135,13 @@
             TargetScreen="Tracker_IRT" />
         </ApplicationMethod.Attributes>
       </ApplicationMethod>
+      <ApplicationMethod
+        Name="ShowRescue_IRT">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod
+            TargetScreen="Rescue_IRT" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
     </Application.Methods>
     <Application.NavigationItems>
       <ApplicationNavigationGroup
@@ -174,6 +184,9 @@
         <ApplicationNavigationLink
           Name="Tracker_IRT"
           Command="!module/Commands[ScreenCommandShowTracker_IRT]" />
+        <ApplicationNavigationLink
+          Name="Rescue_IRT"
+          Command="!module/Commands[ScreenCommandShowRescue_IRT]" />
         <ApplicationNavigationLink
           Name="Home"
           Command="!module/Commands[ScreenCommandShowHome]" />
@@ -3640,7 +3653,7 @@
                 View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <Description
-                    Value="Enter the location of the incident (e.g. Alum Cave Trail)." />
+                    Value="40 Characters: Enter the location of the incident (e.g. Alum Cave Trail)." />
                 </ContentItem.Attributes>
                 <ContentItem
                   Name="Location"
@@ -3649,7 +3662,7 @@
                   View="Microsoft.LightSwitch.RichClient:TextBox">
                   <ContentItem.Attributes>
                     <Description
-                      Value="Enter the location of the incident (e.g. Alum Cave Trail)." />
+                      Value="40 Characters: Enter the location of the incident (e.g. Alum Cave Trail)." />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -3717,7 +3730,7 @@
                 View="Microsoft.LightSwitch.RichClient:GroupBox">
                 <ContentItem.Attributes>
                   <Description
-                    Value="Enter the location of the staging area (e.g. Ranger Station)." />
+                    Value="40 Characters: Enter the location of the staging area (e.g. Ranger Station)." />
                 </ContentItem.Attributes>
                 <ContentItem
                   Name="StagingArea"
@@ -3725,7 +3738,7 @@
                   DataType=":String">
                   <ContentItem.Attributes>
                     <Description
-                      Value="Enter the location of the staging area (e.g. Ranger Station)." />
+                      Value="40 Characters: Enter the location of the staging area (e.g. Ranger Station)." />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -4029,7 +4042,7 @@
                   <DisplayName
                     Value="EMS Advanced Life Support" />
                   <Description
-                    Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                    Value="Selecting yes or no will enforce yes or no on the resulting list. To remove yes or no from the filter, you must press the &quot;Refresh&quot; button below." />
                 </ContentItem.Attributes>
                 <ContentItem
                   Name="Text6"
@@ -4064,7 +4077,7 @@
                     <DisplayName
                       Value="Order Medic?" />
                     <Description
-                      Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                      Value="Selecting yes or no will enforce yes or no on the resulting list. To remove yes or no from the filter, you must press the &quot;Refresh&quot; button below." />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -4135,7 +4148,7 @@
                   <DisplayName
                     Value="Technical Rescuer Team" />
                   <Description
-                    Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                    Value="Selecting yes or no will enforce yes or no on the resulting list. To remove yes or no from the filter, you must press the &quot;Refresh&quot; button below." />
                 </ContentItem.Attributes>
                 <ContentItem
                   Name="Text7"
@@ -4170,7 +4183,7 @@
                     <DisplayName
                       Value="Order Team?" />
                     <Description
-                      Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                      Value="Selecting yes or no will enforce yes or no on the resulting list. To remove yes or no from the filter, you must press the &quot;Refresh&quot; button below." />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -4210,7 +4223,7 @@
                   <DisplayName
                     Value="Tactical Tracker Team" />
                   <Description
-                    Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                    Value="Selecting yes or no will enforce yes or no on the resulting list. To remove yes or no from the filter, you must press the &quot;Refresh&quot; button below." />
                 </ContentItem.Attributes>
                 <ContentItem
                   Name="Text8"
@@ -4245,7 +4258,7 @@
                     <DisplayName
                       Value="Order Team?" />
                     <Description
-                      Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                      Value="Selecting yes or no will enforce yes or no on the resulting list. To remove yes or no from the filter, you must press the &quot;Refresh&quot; button below." />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -4315,7 +4328,7 @@
                   <DisplayName
                     Value="Law Enforcement Officer" />
                   <Description
-                    Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                    Value="Selecting yes or no will enforce yes or no on the resulting list. To remove yes or no from the filter, you must press the &quot;Refresh&quot; button below." />
                 </ContentItem.Attributes>
                 <ContentItem
                   Name="Text9"
@@ -4350,7 +4363,7 @@
                     <DisplayName
                       Value="Call Out All LEO's?" />
                     <Description
-                      Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                      Value="Selecting yes or no will enforce yes or no on the resulting list. To remove yes or no from the filter, you must press the &quot;Refresh&quot; button below." />
                   </ContentItem.Attributes>
                   <ContentItem.DataSource>
                     <ScreenExpressionTree>
@@ -4980,13 +4993,13 @@
             <ScreenQueryDefinition.FilterExpression>
               <QueryFilterExpressionTree>
                 <BinaryExpression
-                  NodeType="Or">
+                  NodeType="And">
                   <BinaryExpression.Left>
                     <BinaryExpression
-                      NodeType="Or">
+                      NodeType="And">
                       <BinaryExpression.Left>
                         <BinaryExpression
-                          NodeType="Or">
+                          NodeType="And">
                           <BinaryExpression.Left>
                             <BinaryExpression
                               NodeType="Equal">
@@ -5248,7 +5261,7 @@
         PropertyType=":String">
         <ScreenProperty.Attributes>
           <MaxLength
-            Value="30" />
+            Value="40" />
           <Required />
         </ScreenProperty.Attributes>
       </ScreenProperty>
@@ -5270,7 +5283,7 @@
         <ScreenProperty.Attributes>
           <Required />
           <MaxLength
-            Value="30" />
+            Value="40" />
           <DisplayName
             Value="Staging Area" />
         </ScreenProperty.Attributes>
@@ -6182,6 +6195,46 @@
                     </ControlPropertySource>
                   </ContentItem.PropertySources>
                 </ContentItem>
+                <ContentItem
+                  Name="Text3"
+                  Kind="ScreenContent"
+                  View="Microsoft.LightSwitch.RichClient:StaticLabel">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Create Technical Rescue Response Team" />
+                  </ContentItem.Attributes>
+                  <ContentItem.CommandItems>
+                    <ContentItem
+                      Name="TRACIRT"
+                      Kind="Command"
+                      View="Microsoft.LightSwitch.RichClient:Link">
+                      <ContentItem.Attributes>
+                        <DisplayName
+                          Value="Create RESC IRT" />
+                      </ContentItem.Attributes>
+                      <ContentItem.DataSource>
+                        <ScreenExpressionTree>
+                          <ChainExpression>
+                            <CallExpression
+                              Target="Home/Methods[RESCIRT]" />
+                          </ChainExpression>
+                        </ScreenExpressionTree>
+                      </ContentItem.DataSource>
+                    </ContentItem>
+                  </ContentItem.CommandItems>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <ConstantExpression
+                            Value="Create Technical Rescue Response Team"
+                            ResultType=":String" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
                 <ContentItem.PropertySources>
                   <ControlPropertySource
                     Property="Microsoft.LightSwitch.RichClient:GroupBox/Properties[ShowDisplayName]">
@@ -6455,6 +6508,8 @@
         Name="LEOIRT" />
       <ScreenMethod
         Name="TrackerIRT" />
+      <ScreenMethod
+        Name="RESCIRT" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenProperty
@@ -6586,7 +6641,7 @@
                 <ContentItem
                   Name="Type"
                   Kind="Value"
-                  DataType=":String?">
+                  DataType=":String">
                   <ContentItem.Attributes>
                     <Description
                       Value="Pick from the list of incident types." />
@@ -6622,7 +6677,7 @@
                 <ContentItem
                   Name="Priority"
                   Kind="Value"
-                  DataType=":String?">
+                  DataType=":String">
                   <ContentItem.Attributes>
                     <Description
                       Value="Pick from the list of incident priorities. Select Urgent/Life-Threatening if Priority 2 resources cannot meet the order needs. " />
@@ -6762,7 +6817,7 @@
                 <ContentItem
                   Name="Location"
                   Kind="Value"
-                  DataType=":String?">
+                  DataType=":String">
                   <ContentItem.Attributes>
                     <Description
                       Value="Enter the location of the incident (e.g. Alum Cave Trail)." />
@@ -6798,7 +6853,7 @@
                 <ContentItem
                   Name="StagingArea"
                   Kind="Value"
-                  DataType=":String?">
+                  DataType=":String">
                   <ContentItem.Attributes>
                     <Description
                       Value="Enter the location of the staging area (e.g. Ranger Station)." />
@@ -7037,9 +7092,11 @@
               <ControlPropertySource
                 Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                 <ScreenExpressionTree>
-                  <ConstantExpression
-                    Value="Once you have defined a team, press the &quot;Send Order&quot; button below. An email will be sent to work and personal phone and email addresses of the team displayed above. \n\rDO NOT close or alter this screen once the &quot;Send Order&quot; has been executed! In order to execute the &quot;Order is Filled&quot; notice or &quot;Order is Cancelled&quot; notice, the SAME list \n\rwill have to be displayed above, so that the team that got the original resource order will continue to receive notifications. "
-                    ResultType=":String" />
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="Once you have defined a team, press the &quot;Send Order&quot; button below. An email will be sent to work and personal phone and email addresses of the team displayed below. \n\rDO NOT close or alter this screen once the &quot;Send Order&quot; has been executed! In order to execute the &quot;Order is Filled&quot; notice or &quot;Order is Cancelled&quot; notice, the SAME list \n\rwill have to be displayed above, so that the team that got the original resource order will continue to receive notifications. "
+                      ResultType=":String" />
+                  </ChainExpression>
                 </ScreenExpressionTree>
               </ControlPropertySource>
             </ContentItem.PropertySources>
@@ -7584,7 +7641,7 @@
       </ScreenProperty>
       <ScreenProperty
         Name="Type"
-        PropertyType=":String?">
+        PropertyType=":String">
         <ScreenProperty.Attributes>
           <SupportedValue
             DisplayName="Carry-out"
@@ -7604,11 +7661,12 @@
           <SupportedValue
             DisplayName="Tactical Tracking"
             Value="TAC Tracking" />
+          <Required />
         </ScreenProperty.Attributes>
       </ScreenProperty>
       <ScreenProperty
         Name="Priority"
-        PropertyType=":String?">
+        PropertyType=":String">
         <ScreenProperty.Attributes>
           <SupportedValue
             DisplayName="Urgent or Life Threatening"
@@ -7616,14 +7674,25 @@
           <SupportedValue
             DisplayName="Non-Life Threatening"
             Value="2" />
+          <Required />
         </ScreenProperty.Attributes>
       </ScreenProperty>
       <ScreenProperty
         Name="Location"
-        PropertyType=":String?" />
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
       <ScreenProperty
         Name="StagingArea"
-        PropertyType=":String?" />
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="40" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
       <ScreenProperty
         Name="MaxFitList"
         PropertyType=":Int32">
@@ -8118,9 +8187,11 @@
               <ControlPropertySource
                 Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                 <ScreenExpressionTree>
-                  <ConstantExpression
-                    Value="Once you have defined a team, press the &quot;Send Order&quot; button below. An email will be sent to work and personal phone and email addresses of the team displayed above. \n\rDO NOT close or alter this screen once the &quot;Send Order&quot; has been executed! In order to execute the &quot;Order is Filled&quot; notice or &quot;Order is Cancelled&quot; notice, the SAME list \n\rwill have to be displayed above, so that the team that got the original resource order will continue to receive notifications. "
-                    ResultType=":String" />
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="Once you have defined a team, press the &quot;Send Order&quot; button below. An email will be sent to work and personal phone and email addresses of the team displayed below. \n\rDO NOT close or alter this screen once the &quot;Send Order&quot; has been executed! In order to execute the &quot;Order is Filled&quot; notice or &quot;Order is Cancelled&quot; notice, the SAME list \n\rwill have to be displayed above, so that the team that got the original resource order will continue to receive notifications. "
+                      ResultType=":String" />
+                  </ChainExpression>
                 </ScreenExpressionTree>
               </ControlPropertySource>
             </ContentItem.PropertySources>
@@ -8699,6 +8770,8 @@
         PropertyType=":String">
         <ScreenProperty.Attributes>
           <Required />
+          <MaxLength
+            Value="40" />
         </ScreenProperty.Attributes>
       </ScreenProperty>
       <ScreenProperty
@@ -8706,6 +8779,8 @@
         PropertyType=":String">
         <ScreenProperty.Attributes>
           <Required />
+          <MaxLength
+            Value="40" />
         </ScreenProperty.Attributes>
       </ScreenProperty>
       <ScreenProperty
@@ -8724,6 +8799,19 @@
       <ScreenProperty
         Name="AllSARCerts"
         PropertyType="SARCertifications" />
+      <ScreenProperty
+        Name="MedicList"
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName="Yes"
+            Value="Yes" />
+          <SupportedValue
+            DisplayName="No"
+            Value="No" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
     </Screen.Properties>
   </Screen>
   <Screen
@@ -9194,9 +9282,11 @@
               <ControlPropertySource
                 Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
                 <ScreenExpressionTree>
-                  <ConstantExpression
-                    Value="Once you have defined a team, press the &quot;Send Order&quot; button below. An email will be sent to work and personal phone and email addresses of the team displayed above. \n\rDO NOT close or alter this screen once the &quot;Send Order&quot; has been executed! In order to execute the &quot;Order is Filled&quot; notice or &quot;Order is Cancelled&quot; notice, the SAME list \n\rhave to be displayed above, so that the team that got the original resource order will continue to receive notifications. "
-                    ResultType=":String" />
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="Once you have defined a team, press the &quot;Send Order&quot; button below. An email will be sent to work and personal phone and email addresses of the team displayed below. \n\rDO NOT close or alter this screen once the &quot;Send Order&quot; has been executed! In order to execute the &quot;Order is Filled&quot; notice or &quot;Order is Cancelled&quot; notice, the SAME list \n\rhave to be displayed above, so that the team that got the original resource order will continue to receive notifications. "
+                      ResultType=":String" />
+                  </ChainExpression>
                 </ScreenExpressionTree>
               </ControlPropertySource>
             </ContentItem.PropertySources>
@@ -9773,6 +9863,8 @@
         PropertyType=":String">
         <ScreenProperty.Attributes>
           <Required />
+          <MaxLength
+            Value="40" />
         </ScreenProperty.Attributes>
       </ScreenProperty>
       <ScreenProperty
@@ -9780,6 +9872,1059 @@
         PropertyType=":String">
         <ScreenProperty.Attributes>
           <Required />
+          <MaxLength
+            Value="40" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+    </Screen.Properties>
+  </Screen>
+  <Screen
+    Name="Rescue_IRT">
+    <Screen.Attributes>
+      <SaveChangesTo
+        EntityContainer="ApplicationData" />
+    </Screen.Attributes>
+    <Screen.RootContentItem>
+      <ContentItem
+        Name="RootContentItem"
+        Kind="Screen"
+        View="Microsoft.LightSwitch.RichClient:Screen">
+        <ContentItem
+          Name="ScreenLayout"
+          Kind="Group">
+          <ContentItem
+            Name="Text"
+            Kind="ScreenContent"
+            View="Microsoft.LightSwitch.RichClient:StaticLabel">
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="The six choices below allow you to select incident-specific parameters and requirement of responders. These parameters are REQUIRED for each call-out notifcation!"
+                      ResultType=":String" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[FontStyle]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Warning"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
+          <ContentItem
+            Name="Group"
+            Kind="Group"
+            View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
+            <ContentItem
+              Name="Group1"
+              Kind="Group">
+              <ContentItem
+                Name="TypeOfIncident"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem.Attributes>
+                  <Description
+                    Value="Pick from the list of incident types." />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="Type"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.Attributes>
+                    <Description
+                      Value="Pick from the list of incident types." />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Rescue_IRT/Properties[Type]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="Left"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Name="IncidentPriority"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem.Attributes>
+                  <Description
+                    Value="Pick from the list of incident priorities. Select Urgent/Life-Threatening if Priority 2 resources cannot meet the order needs. " />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="Priority"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.Attributes>
+                    <Description
+                      Value="Pick from the list of incident priorities. Select Urgent/Life-Threatening if Priority 2 resources cannot meet the order needs. " />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Rescue_IRT/Properties[Priority]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="Left"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Left"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem
+              Name="Group2"
+              Kind="Group">
+              <ContentItem
+                Name="FitnessTest"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem.Attributes>
+                  <Description
+                    Value="Select the requirement for fitness test date (Within the last 1, or 2 years)." />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="Year"
+                  Kind="Value"
+                  DataType=":Int32">
+                  <ContentItem.Attributes>
+                    <Description
+                      Value="Select the requirement for fitness test date (Within the last 1, or 2 years)." />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Rescue_IRT/Properties[Year]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="Left"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Name="Group3"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem.Attributes>
+                  <Description
+                    Value="Pick from the list of fitness test levels." />
+                  <DisplayName
+                    Value="Fitness Level" />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="Certification"
+                  Kind="Value"
+                  DataType=":Int32">
+                  <ContentItem.Attributes>
+                    <Description
+                      Value="Pick from the list of fitness test levels." />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Rescue_IRT/Properties[MaxFitList]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="Left"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Left"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem
+              Name="Group4"
+              Kind="Group"
+              View="Microsoft.LightSwitch.RichClient:RowsLayout">
+              <ContentItem
+                Name="LocationOfIncident"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem.Attributes>
+                  <Description
+                    Value="Enter the location of the incident (e.g. Alum Cave Trail)." />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="Location"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.Attributes>
+                    <Description
+                      Value="Enter the location of the incident (e.g. Alum Cave Trail)." />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Rescue_IRT/Properties[Location]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="Left"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem
+                Name="ReportToStagingArea"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem.Attributes>
+                  <Description
+                    Value="Enter the location of the staging area (e.g. Ranger Station)." />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="StagingArea"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.Attributes>
+                    <Description
+                      Value="Enter the location of the staging area (e.g. Ranger Station)." />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Rescue_IRT/Properties[StagingArea]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="Left"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Left"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Top"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
+          <ContentItem
+            Name="Text1"
+            Kind="ScreenContent"
+            View="Microsoft.LightSwitch.RichClient:StaticLabel">
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="The one choice below allows you to define requirements for an Technical Rescue Response Team based on parameters supplied by the Incident Commander.\n\rBy default the list is populated with all Technical Rescuers that have taken a moderate fitness test within the last year. "
+                      ResultType=":String" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[FontStyle]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Warning"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Auto"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
+          <ContentItem
+            Name="Group5"
+            Kind="Group"
+            View="Microsoft.LightSwitch.RichClient:ColumnsLayout">
+            <ContentItem
+              Name="Group6"
+              Kind="Group">
+              <ContentItem
+                Name="TechnicalRescuer"
+                Kind="Group"
+                View="Microsoft.LightSwitch.RichClient:GroupBox">
+                <ContentItem.Attributes>
+                  <Description
+                    Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                </ContentItem.Attributes>
+                <ContentItem
+                  Name="RescueList"
+                  Kind="Value"
+                  DataType=":String">
+                  <ContentItem.Attributes>
+                    <DisplayName
+                      Value="Order Team?" />
+                    <Description
+                      Value="Selecting yes or no will enforce yes or no on the resulting list. " />
+                  </ContentItem.Attributes>
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression
+                          Member="Rescue_IRT/Properties[RescueList]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem.PropertySources>
+                    <ControlPropertySource
+                      Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                      <ScreenExpressionTree>
+                        <ConstantExpression
+                          Value="Left"
+                          ResultType=":String" />
+                      </ScreenExpressionTree>
+                    </ControlPropertySource>
+                  </ContentItem.PropertySources>
+                </ContentItem>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource
+                    Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                    <ScreenExpressionTree>
+                      <ConstantExpression
+                        Value="Left"
+                        ResultType=":String" />
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem.PropertySources>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HorizontalAlignment]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Left"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource
+                  Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ConstantExpression
+                      Value="Top"
+                      ResultType=":String" />
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+            </ContentItem>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Top"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
+          <ContentItem
+            Name="Text2"
+            Kind="ScreenContent"
+            View="Microsoft.LightSwitch.RichClient:StaticLabel">
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:StaticLabel/Properties[Text]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression
+                      Value="Once you have defined a team, press the &quot;Send Order&quot; button below. An email will be sent to work and personal phone and email addresses of the team displayed below. \n\rDO NOT close or alter this screen once the &quot;Send Order&quot; has been executed! In order to execute the &quot;Order is Filled&quot; notice or &quot;Order is Cancelled&quot; notice, the SAME list \n\rwill have to be displayed above, so that the team that got the original resource order will continue to receive notifications. "
+                      ResultType=":String" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[HeightSizingMode]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Auto"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[FontStyle]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Warning"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
+          <ContentItem
+            Name="RescueIRT"
+            Kind="Collection"
+            DataType="CollectionView$Employee">
+            <ContentItem.Attributes>
+              <DisplayName
+                Value="Technical Rescue Team" />
+            </ContentItem.Attributes>
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression
+                    Member="Rescue_IRT/Properties[RescueIRT]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem
+              Name="RescueIRTTemplate"
+              Kind="Details"
+              DataType="Employee">
+              <ContentItem.Attributes>
+                <DisplayName
+                  Value="Team" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem
+                Name="Summary"
+                Kind="Value"
+                DataType=":String">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[Summary]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="FitnessLevel"
+                Kind="Value"
+                DataType=":Int32?"
+                View="Microsoft.LightSwitch.RichClient:Label">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[FitnessLevel]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="DaysSinceLastFit"
+                Kind="Value"
+                DataType=":Int32">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[DaysSinceLastFit]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="SARCertifications"
+                Kind="Details"
+                DataType="SARCertifications"
+                View="Microsoft.LightSwitch.RichClient:Summary">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[SARCertifications]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="TechRescue"
+                Kind="Value"
+                DataType=":String?"
+                View="Microsoft.LightSwitch.RichClient:Label">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[TechRescue]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="Tracker"
+                Kind="Value"
+                DataType=":String?"
+                View="Microsoft.LightSwitch.RichClient:Label">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[Tracker]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="MEDIC"
+                Kind="Value"
+                DataType=":String"
+                View="Microsoft.LightSwitch.RichClient:Label">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[MEDIC]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="CLEO"
+                Kind="Value"
+                DataType=":String"
+                View="Microsoft.LightSwitch.RichClient:Label">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[CLEO]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="WorkMobile"
+                Kind="Value"
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                View="Microsoft.LightSwitch.Extensions:PhoneNumberViewerControl">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[WorkMobile]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="WorksSMS"
+                Kind="Value"
+                DataType=":String">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[WorksSMS]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="PersonalMobile"
+                Kind="Value"
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                View="Microsoft.LightSwitch.Extensions:PhoneNumberViewerControl">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[PersonalMobile]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="PersonalSMS"
+                Kind="Value"
+                DataType=":String">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[PersonalSMS]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="WorkEmail"
+                Kind="Value"
+                DataType="Microsoft.LightSwitch.Extensions:EmailAddress?"
+                View="Microsoft.LightSwitch.Extensions:EmailAddressViewerControl">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[WorkEmail]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="HomeEmail"
+                Kind="Value"
+                DataType="Microsoft.LightSwitch.Extensions:EmailAddress?"
+                View="Microsoft.LightSwitch.Extensions:EmailAddressViewerControl">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[HomeEmail]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="WorkPhone"
+                Kind="Value"
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                View="Microsoft.LightSwitch.Extensions:PhoneNumberViewerControl">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[WorkPhone]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="HomePhone"
+                Kind="Value"
+                DataType="Microsoft.LightSwitch.Extensions:PhoneNumber?"
+                View="Microsoft.LightSwitch.Extensions:PhoneNumberViewerControl">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[HomePhone]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="ParkDivision"
+                Kind="Details"
+                DataType="ParkDivision"
+                View="Microsoft.LightSwitch.RichClient:Summary">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[ParkDivision]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+            <ContentItem.CommandItems>
+              <ContentItem
+                Name="RescueIRT_AddAndEditNew"
+                Kind="Command">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Rescue_IRT/Properties[RescueIRT]" />
+                      <CallExpression
+                        Target="AddAndEditNew" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="RescueIRT_EditSelected"
+                Kind="Command">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Rescue_IRT/Properties[RescueIRT]" />
+                      <CallExpression
+                        Target="EditSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem
+                Name="RescueIRT_DeleteSelected"
+                Kind="Command">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Rescue_IRT/Properties[RescueIRT]" />
+                      <CallExpression
+                        Target="DeleteSelected" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem.CommandItems>
+            <ContentItem.PropertySources>
+              <ControlPropertySource
+                Property="Microsoft.LightSwitch.RichClient:RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ConstantExpression
+                    Value="Top"
+                    ResultType=":String" />
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+          </ContentItem>
+        </ContentItem>
+        <ContentItem.CommandItems>
+          <ContentItem
+            Name="Refresh"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="Rescue_IRT/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Name="SendOrder"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="Rescue_IRT/Methods[SendOrder]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Name="OrderIsFilled"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="Rescue_IRT/Methods[OrderIsFilled]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem
+            Name="OrderIsCancelled"
+            Kind="Command">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression
+                    Target="Rescue_IRT/Methods[OrderIsCancelled]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+      </ContentItem>
+    </Screen.RootContentItem>
+    <Screen.Methods>
+      <ScreenMethod
+        Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+          <ImageResource
+            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod
+        Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+          <ImageResource
+            ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod
+        Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault
+            Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod
+        Name="SendOrder" />
+      <ScreenMethod
+        Name="OrderIsFilled" />
+      <ScreenMethod
+        Name="OrderIsCancelled" />
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty
+        Name="RescueIRT"
+        PageSize="45"
+        PropertyType="CollectionView$Employee">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition
+            Name="RescueIRTQuery"
+            ReturnType="Employee*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree>
+                <BinaryExpression
+                  NodeType="Equal">
+                  <BinaryExpression.Left>
+                    <ChainExpression>
+                      <MemberExpression
+                        Member="Employee/Properties[TechRescue]" />
+                    </ChainExpression>
+                  </BinaryExpression.Left>
+                  <BinaryExpression.Right>
+                    <ParameterExpression
+                      Parameter="Rescue" />
+                  </BinaryExpression.Right>
+                </BinaryExpression>
+              </QueryFilterExpressionTree>
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression
+                  Member="ApplicationData/Members[QRYParameters]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+            <ScreenQueryDefinition.Parameters>
+              <QueryParameter
+                Name="Rescue"
+                ParameterType=":String?" />
+            </ScreenQueryDefinition.Parameters>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression
+              Target="Rescue_IRT/Properties[RescueIRT]/Query">
+              <ArgumentExpression
+                Parameter="Year">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="Rescue_IRT/Properties[Year]" />
+                </ChainExpression>
+              </ArgumentExpression>
+              <ArgumentExpression
+                Parameter="MaxRank">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="Rescue_IRT/Properties[AllSARCerts]" />
+                  <MemberExpression
+                    Member="Rank" />
+                </ChainExpression>
+              </ArgumentExpression>
+              <ArgumentExpression
+                Parameter="MaxFit">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="Rescue_IRT/Properties[MaxFitList]" />
+                </ChainExpression>
+              </ArgumentExpression>
+              <ArgumentExpression
+                Parameter="Rescue">
+                <ChainExpression>
+                  <MemberExpression
+                    Member="Rescue_IRT/Properties[RescueList]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty
+        Name="RescueList"
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName="Yes"
+            Value="Yes" />
+          <SupportedValue
+            DisplayName="No"
+            Value="No" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="Year"
+        PropertyType=":Int32">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName=" Within Last Year"
+            Value="1" />
+          <SupportedValue
+            DisplayName="Within Last Two Years"
+            Value="2" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="AllSARCerts"
+        PropertyType="SARCertifications" />
+      <ScreenProperty
+        Name="MaxFitList"
+        PropertyType=":Int32">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName="Moderate"
+            Value="0" />
+          <SupportedValue
+            DisplayName="Arduous "
+            Value="1" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="Type"
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName="Carry-out"
+            Value="Carry-out" />
+          <SupportedValue
+            DisplayName="Search"
+            Value="Search" />
+          <SupportedValue
+            DisplayName="Advanced Life Support"
+            Value="ALS" />
+          <SupportedValue
+            DisplayName="Technical Rescue"
+            Value="Tech. Rescue" />
+          <SupportedValue
+            DisplayName="Law Enforcement Incident"
+            Value="LE  Incident" />
+          <SupportedValue
+            DisplayName="Tactical Tracking"
+            Value="TAC Tracking" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="Priority"
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+          <SupportedValue
+            DisplayName="Urgent or Life Threatening"
+            Value="1" />
+          <SupportedValue
+            DisplayName="Non-Life Threatening"
+            Value="2" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="Location"
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="40" />
+        </ScreenProperty.Attributes>
+      </ScreenProperty>
+      <ScreenProperty
+        Name="StagingArea"
+        PropertyType=":String">
+        <ScreenProperty.Attributes>
+          <Required />
+          <MaxLength
+            Value="40" />
         </ScreenProperty.Attributes>
       </ScreenProperty>
     </Screen.Properties>
